@@ -4,6 +4,13 @@
     <title><![CDATA[Two Sum]]></title>
     <url>%2F2017%2F09%2F30%2FtwoSum%2F</url>
     <content type="text"><![CDATA[算法练习Two Sum原题：Given an array of integers, return indices of the two numbers such that they add up to a specific target.You may assume that each input would have exactly one solution, and you may not use the same element twice. Example: Given nums = [2, 7, 11, 15], target = 9, Because nums[0] + nums[1] = 2 + 7 = 9,return [0, 1]. 翻译：给定一个整数数组，返回两个数字的索引，使它们相加到一个特定的目标。你可以假设每个输入都只有一个解决方案，而你可能不会使用相同的元素两次。 解决思路：第一种可以用两层循环（时间复杂度O(n^2)），实现代码（纯手打）：123456789public int[] twoSum1(int[] tmp, int target) &#123; for (int i = 0; i &lt; tmp.length; i++)&#123; for (int j = i + 1; j &lt; tmp.length; j++)&#123; if (tmp[i] + tmp[j] == target) return new int[]&#123;i, j&#125;; &#125; &#125; throw new IllegalArgumentException("don't have two sum equals target"); &#125; 第二种可以定义一个map然后把数组的值作为key，索引作为value存到map中，循环数组，每次循环用目标值减去该值，用结果作为key去map中查找，找到了返回索引数组，没找到把该次和循环的值和索引作为key和value存入map中，直到找到结果。（时间复杂度O(n)）实现：1234567891011public int[] twoSum(int[] tmp, int target) &#123; Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;(); for (int i = 0; i&lt;tmp.length; i++)&#123; int m = target - tmp[i]; if (map.containsKey(m)) &#123; return new int[] &#123; map.get(m), i &#125;; &#125; map.put(tmp[i], i); &#125; throw new IllegalArgumentException("No two sum solution"); &#125; python实现最近也在学习python，附上python的实现（第二种方案）:1234567891011121314151617class Solution: def twoSum(self, nums, target): map = &#123;&#125; i = 0 for x in nums: if target - x in map: return i,map[target - x] print str(x) + " " + str(i) map[x] = i print map i += 1 returnif __name__=="__main__": a = [5, 4, 9, 3, 7] solution = Solution() print solution.twoSum(a, 10)]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[ArrayList源码分析]]></title>
@@ -12,6 +19,10 @@
       <categories>
         <category>java</category>
       </categories>
+      <tags>
+        <tag>java源码</tag>
+        <tag>数据结构</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Hello World]]></title>
