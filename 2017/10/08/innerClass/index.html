@@ -69,18 +69,18 @@
 
 
 
-<meta name="description" content="内部类什么是内部类？可以将一个类的定义放在另一个类的定义内部，这就是内部类。内部类是一种非常有用的特性，因为它允许把一些逻辑相关的类组织在一起，并控制位于内部的类的可视性。然而，内部类和组合式完全不同的概念。 创建内部类1234567891011121314151617public class Outer &amp;#123;    class Inner &amp;#123;        private St">
+<meta name="description" content="内部类可以将一个类的定义放在另一个类的定义内部，这就是内部类。内部类是一种非常有用的特性，因为它允许把一些逻辑相关的类组织在一起，并控制位于内部的类的可视性。然而，内部类和组合式完全不同的概念。 创建内部类1234567891011121314151617public class Outer &amp;#123;    class Inner &amp;#123;        private String st">
 <meta name="keywords" content="java基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content=" 内部类">
+<meta property="og:title" content="内部类">
 <meta property="og:url" content="http://yoursite.com/2017/10/08/innerClass/index.html">
 <meta property="og:site_name" content="海滨小筑">
-<meta property="og:description" content="内部类什么是内部类？可以将一个类的定义放在另一个类的定义内部，这就是内部类。内部类是一种非常有用的特性，因为它允许把一些逻辑相关的类组织在一起，并控制位于内部的类的可视性。然而，内部类和组合式完全不同的概念。 创建内部类1234567891011121314151617public class Outer &amp;#123;    class Inner &amp;#123;        private St">
+<meta property="og:description" content="内部类可以将一个类的定义放在另一个类的定义内部，这就是内部类。内部类是一种非常有用的特性，因为它允许把一些逻辑相关的类组织在一起，并控制位于内部的类的可视性。然而，内部类和组合式完全不同的概念。 创建内部类1234567891011121314151617public class Outer &amp;#123;    class Inner &amp;#123;        private String st">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-08T09:46:33.000Z">
+<meta property="og:updated_time" content="2017-10-08T09:48:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=" 内部类">
-<meta name="twitter:description" content="内部类什么是内部类？可以将一个类的定义放在另一个类的定义内部，这就是内部类。内部类是一种非常有用的特性，因为它允许把一些逻辑相关的类组织在一起，并控制位于内部的类的可视性。然而，内部类和组合式完全不同的概念。 创建内部类1234567891011121314151617public class Outer &amp;#123;    class Inner &amp;#123;        private St">
+<meta name="twitter:title" content="内部类">
+<meta name="twitter:description" content="内部类可以将一个类的定义放在另一个类的定义内部，这就是内部类。内部类是一种非常有用的特性，因为它允许把一些逻辑相关的类组织在一起，并控制位于内部的类的可视性。然而，内部类和组合式完全不同的概念。 创建内部类1234567891011121314151617public class Outer &amp;#123;    class Inner &amp;#123;        private String st">
 
 
 
@@ -116,7 +116,7 @@
 
 
 
-  <title> 内部类 | 海滨小筑</title>
+  <title>内部类 | 海滨小筑</title>
   
 
 
@@ -296,7 +296,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"> 内部类</h1>
+          <h1 class="post-title" itemprop="name headline">内部类</h1>
         
 
         <div class="post-meta">
@@ -379,7 +379,7 @@
       
 
       
-        <h1 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h1><h2 id="什么是内部类？"><a href="#什么是内部类？" class="headerlink" title="什么是内部类？"></a>什么是内部类？</h2><p>可以将一个类的定义放在另一个类的定义内部，这就是内部类。<br>内部类是一种非常有用的特性，因为它允许把一些逻辑相关的类组织在一起，并控制位于内部的类的可视性。然而，内部类和组合式完全不同的概念。</p>
+        <h2 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h2><p>可以将一个类的定义放在另一个类的定义内部，这就是内部类。<br>内部类是一种非常有用的特性，因为它允许把一些逻辑相关的类组织在一起，并控制位于内部的类的可视性。然而，内部类和组合式完全不同的概念。</p>
 <h3 id="创建内部类"><a href="#创建内部类" class="headerlink" title="创建内部类"></a>创建内部类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span> </span>&#123;</div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>&#123;</div><div class="line">        <span class="keyword">private</span> String str;</div><div class="line">        Inner(String str) &#123;</div><div class="line">            <span class="keyword">this</span>.str = str;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Inner <span class="title">to</span><span class="params">(String str)</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Inner(str);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Outer outer = <span class="keyword">new</span> Outer();</div><div class="line">        Inner inner = outer.to(<span class="string">"hello"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>编译后的class文件如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Outer</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> Outer.<span class="function">Inner <span class="title">to</span><span class="params">(String str)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Outer.Inner(str);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Outer outer = <span class="keyword">new</span> Outer();</div><div class="line">        Outer.Inner inner = outer.to(<span class="string">"hello"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>&#123;</div><div class="line">        <span class="keyword">private</span> String str;</div><div class="line"></div><div class="line">        Inner(String str) &#123;</div><div class="line">            <span class="keyword">this</span>.str = str;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>如果想从外部类的非静态方法之外的的任意位置创建某个内部类的对象，那么必须具体的指明这个对象的类型：OuterClassName.InnerClassName。（由虚拟机完成）</p>
@@ -597,7 +597,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#内部类"><span class="nav-number">1.</span> <span class="nav-text">内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是内部类？"><span class="nav-number">1.1.</span> <span class="nav-text">什么是内部类？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建内部类"><span class="nav-number">1.1.1.</span> <span class="nav-text">创建内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-this和-new"><span class="nav-number">1.1.2.</span> <span class="nav-text">使用.this和.new</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名内部类"><span class="nav-number">1.1.3.</span> <span class="nav-text">匿名内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌套类"><span class="nav-number">1.1.4.</span> <span class="nav-text">嵌套类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么使用内部类"><span class="nav-number">1.1.5.</span> <span class="nav-text">为什么使用内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内部类的继承"><span class="nav-number">1.1.6.</span> <span class="nav-text">内部类的继承</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#内部类"><span class="nav-number">1.</span> <span class="nav-text">内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建内部类"><span class="nav-number">1.1.</span> <span class="nav-text">创建内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-this和-new"><span class="nav-number">1.2.</span> <span class="nav-text">使用.this和.new</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名内部类"><span class="nav-number">1.3.</span> <span class="nav-text">匿名内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌套类"><span class="nav-number">1.4.</span> <span class="nav-text">嵌套类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么使用内部类"><span class="nav-number">1.5.</span> <span class="nav-text">为什么使用内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内部类的继承"><span class="nav-number">1.6.</span> <span class="nav-text">内部类的继承</span></a></li></ol></li></ol></div>
             
 
           </div>
