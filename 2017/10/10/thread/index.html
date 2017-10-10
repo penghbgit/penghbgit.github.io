@@ -80,7 +80,7 @@
 <meta property="og:image" content="http://yoursite.com/2017/10/10/thread/join.jpg">
 <meta property="og:image" content="http://yoursite.com/2017/10/10/thread/javaStatus.jpg">
 <meta property="og:image" content="http://yoursite.com/2017/10/10/thread/systemStatus.jpg">
-<meta property="og:updated_time" content="2017-10-10T15:22:39.000Z">
+<meta property="og:updated_time" content="2017-10-10T15:28:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Thread源码分析">
 <meta name="twitter:description" content="什么是线程？线程可以理解为在进程中独立运行的子任务。线程是CPU调度的最基本单元。线程的资源开销相对于进程的开销是相对较少的，所以我们一般创建线程执行，而不是进程执行。java中要创建一个线程可以继承Thread类和实现Runnable接口。 注意：多线程是异步的。 下面我们来看一下Thread类的源码。12publicclass Thread implements Runnable 从上面的代码">
@@ -452,8 +452,9 @@
 <li>BLOCKED：阻塞状态；</li>
 <li>WAITING：等待状态，比如中断，需要其他的线程来唤醒；</li>
 <li>TIME_WAITING：超时等待，可以在指定的时间内自行返回；</li>
-<li>TERMINATED：终止状态，线程执行完毕。<br>java层次的状态转换图<br><img src="/2017/10/10/thread/javaStatus.jpg" alt="image"></li>
+<li>TERMINATED：终止状态，线程执行完毕。</li>
 </ul>
+<p>java层次的状态转换图<br><img src="/2017/10/10/thread/javaStatus.jpg" alt="image"></p>
 <p>操作系统层次的状态转换图<br><img src="/2017/10/10/thread/systemStatus.jpg" alt="image"></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="wait-和notify-notifyAll"><a href="#wait-和notify-notifyAll" class="headerlink" title="wait()和notify/notifyAll()"></a>wait()和notify/notifyAll()</h3><p>线程中常用wait()和notify/notifyAll()方法，这是Object类中的方法。</p>
 <h4 id="wait"><a href="#wait" class="headerlink" title="wait()"></a>wait()</h4><p>线程进入WAITING状态，并且释放掉它所占有的“锁标志”，从而使别的线程有机会抢占该锁，等待其他线程调用“锁标志“对象的notify或notifyAll方法恢复<br>wait方法是一个本地方法，其底层是通过一个叫做监视器锁的对象来完成的，所以调用wait方式时必须获取到monitor对象的所有权即通过Synchronized关键字，否则抛出IllegalMonitorStateException异常</p>
@@ -492,8 +493,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/09/validPalindrome/" rel="next" title="Valid Palindrome">
-                <i class="fa fa-chevron-left"></i> Valid Palindrome
+              <a href="/2017/10/09/validPalindrome/" rel="next" title="leetCode--Valid Palindrome">
+                <i class="fa fa-chevron-left"></i> leetCode--Valid Palindrome
               </a>
             
           </div>
@@ -501,6 +502,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/10/judgeRouteCircle/" rel="prev" title="leetCode--Judge Route Circle">
+                leetCode--Judge Route Circle <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -608,7 +613,7 @@ var jiathis_config={
             
               <a href="/archives">
             
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -630,7 +635,7 @@ var jiathis_config={
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
