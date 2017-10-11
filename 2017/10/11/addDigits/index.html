@@ -69,20 +69,18 @@
 
 
 
-<meta name="description" content="Array Partition I原题Given an array of 2n integers, your task is to group these integers into n pairs of integer, say (a1, b1), (a2, b2), …, (an, bn) which makes sum of min(ai, bi) for all i from 1 to n">
+<meta name="description" content="Add Digits原题Given a non-negative integer num, repeatedly add all its digits until the result has only one digit. Example Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only on">
 <meta name="keywords" content="数据结构,算法,leetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetCode--Array Partition I">
-<meta property="og:url" content="http://yoursite.com/2017/10/11/arrayPartition1/index.html">
+<meta property="og:title" content="leetCode--Add Digits">
+<meta property="og:url" content="http://yoursite.com/2017/10/11/addDigits/index.html">
 <meta property="og:site_name" content="海滨小筑">
-<meta property="og:description" content="Array Partition I原题Given an array of 2n integers, your task is to group these integers into n pairs of integer, say (a1, b1), (a2, b2), …, (an, bn) which makes sum of min(ai, bi) for all i from 1 to n">
+<meta property="og:description" content="Add Digits原题Given a non-negative integer num, repeatedly add all its digits until the result has only one digit. Example Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only on">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2017/10/11/arrayPartition1/jishu.png">
-<meta property="og:updated_time" content="2017-10-11T13:15:56.000Z">
+<meta property="og:updated_time" content="2017-10-11T13:32:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetCode--Array Partition I">
-<meta name="twitter:description" content="Array Partition I原题Given an array of 2n integers, your task is to group these integers into n pairs of integer, say (a1, b1), (a2, b2), …, (an, bn) which makes sum of min(ai, bi) for all i from 1 to n">
-<meta name="twitter:image" content="http://yoursite.com/2017/10/11/arrayPartition1/jishu.png">
+<meta name="twitter:title" content="leetCode--Add Digits">
+<meta name="twitter:description" content="Add Digits原题Given a non-negative integer num, repeatedly add all its digits until the result has only one digit. Example Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only on">
 
 
 
@@ -112,13 +110,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/11/arrayPartition1/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/11/addDigits/"/>
 
 
 
 
 
-  <title>leetCode--Array Partition I | 海滨小筑</title>
+  <title>leetCode--Add Digits | 海滨小筑</title>
   
 
 
@@ -281,7 +279,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/11/arrayPartition1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/11/addDigits/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="彭海滨">
@@ -298,7 +296,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">leetCode--Array Partition I</h1>
+          <h1 class="post-title" itemprop="name headline">leetCode--Add Digits</h1>
         
 
         <div class="post-meta">
@@ -310,7 +308,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-11T20:17:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-11T21:19:00+08:00">
                 2017-10-11
               </time>
             
@@ -352,8 +350,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2017/10/11/arrayPartition1/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/10/11/arrayPartition1/" itemprop="commentsCount"></span>
+                <a href="/2017/10/11/addDigits/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/10/11/addDigits/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -381,14 +379,13 @@
       
 
       
-        <h2 id="Array-Partition-I"><a href="#Array-Partition-I" class="headerlink" title="Array Partition I"></a>Array Partition I</h2><h3 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h3><p>Given an array of 2n integers, your task is to group these integers into n pairs of integer, say (a1, b1), (a2, b2), …, (an, bn) which makes sum of min(ai, bi) for all i from 1 to n as large as possible.</p>
+        <h2 id="Add-Digits"><a href="#Add-Digits" class="headerlink" title="Add Digits"></a>Add Digits</h2><h3 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h3><p>Given a non-negative integer num, repeatedly add all its digits until the result has only one digit.</p>
 <h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><blockquote>
-<p>Input: [1,4,3,2]</p>
-<p>Output: 4<br>Explanation: n is 2, and the maximum sum of pairs is 4 = &gt;min(1, 2) + min(3, 4).</p>
+<p>Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one digit, return it.</p>
 </blockquote>
-<h3 id="翻译"><a href="#翻译" class="headerlink" title="翻译"></a>翻译</h3><p>大概意思就是给定一个长度为2n的数组，分成n个小组，返回每组中较小值的和sum，使sum尽量大</p>
-<p>解题思路：<br>要取sum为最大值，分组的话就要把两个大的数分在一起，然后以此类推，所以先把数组排序，依次把下标为偶数位的值相加即为所求值。代码实现（java）：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">arrayPairSum</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">       Arrays.sort(nums);</div><div class="line">       <span class="keyword">int</span> res = <span class="number">0</span>;</div><div class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i += <span class="number">2</span>)</div><div class="line">           res += nums[i];</div><div class="line">       <span class="keyword">return</span> res;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
-<p>发现有很多大神的代码执行时间更少，发现他们用的排序算法是计数排序。每隔一个数进行相加：<br><img src="/2017/10/11/arrayPartition1/jishu.png" alt="image"><br>代码实现（python）：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">arrayPairSum</span><span class="params">(self, nums)</span>:</span></div><div class="line">       <span class="keyword">if</span> isinstance(nums, list) <span class="keyword">and</span> len(nums) == <span class="number">0</span>:</div><div class="line">           <span class="keyword">return</span> <span class="number">0</span></div><div class="line">       nums.sort()</div><div class="line">       res = <span class="number">0</span></div><div class="line">       <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(nums), <span class="number">2</span>):</div><div class="line">           res += nums[i]</div><div class="line">       <span class="keyword">return</span> res</div></pre></td></tr></table></figure></p>
+<h3 id="翻译"><a href="#翻译" class="headerlink" title="翻译"></a>翻译</h3><p>大概意思就是给你一个数，把这个数的各个位上的数相加，得到一个新的数，重复下去直到最后相加出来的数为个位数为止。</p>
+<p>解题思路：<br>我最开始想的是把每位上的数取出来相加，然后利用递归去做，直到得到符合的答案，原题要求不用循环和递归用O(1)的时间复杂度求出结果，很显然这不符合的。然后想到找规律，发现num%9符合规律，测试发现9%9的时候出现问题，于是改成（num－1）％9+1，代码实现（java）：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">addDigits</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</div><div class="line">       <span class="keyword">return</span> (num - <span class="number">1</span>) % <span class="number">9</span> + <span class="number">1</span>;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>代码实现（python）：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">addDigits</span><span class="params">(self, num)</span>:</span></div><div class="line">       <span class="keyword">if</span>(num == <span class="number">0</span>):</div><div class="line">           <span class="keyword">return</span> <span class="number">0</span></div><div class="line">       <span class="keyword">return</span> (num - <span class="number">1</span>) % <span class="number">9</span> + <span class="number">1</span></div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -423,8 +420,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/10/judgeRouteCircle/" rel="next" title="leetCode--Judge Route Circle">
-                <i class="fa fa-chevron-left"></i> leetCode--Judge Route Circle
+              <a href="/2017/10/11/arrayPartition1/" rel="next" title="leetCode--Array Partition I">
+                <i class="fa fa-chevron-left"></i> leetCode--Array Partition I
               </a>
             
           </div>
@@ -432,10 +429,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/11/addDigits/" rel="prev" title="leetCode--Add Digits">
-                leetCode--Add Digits <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -600,7 +593,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-Partition-I"><span class="nav-number">1.</span> <span class="nav-text">Array Partition I</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原题"><span class="nav-number">1.1.</span> <span class="nav-text">原题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Example"><span class="nav-number">1.1.1.</span> <span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#翻译"><span class="nav-number">1.2.</span> <span class="nav-text">翻译</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Add-Digits"><span class="nav-number">1.</span> <span class="nav-text">Add Digits</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原题"><span class="nav-number">1.1.</span> <span class="nav-text">原题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Example"><span class="nav-number">1.1.1.</span> <span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#翻译"><span class="nav-number">1.2.</span> <span class="nav-text">翻译</span></a></li></ol></li></ol></div>
             
 
           </div>

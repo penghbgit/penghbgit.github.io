@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[leetCode--Add Digits]]></title>
+    <url>%2F2017%2F10%2F11%2FaddDigits%2F</url>
+    <content type="text"><![CDATA[Add Digits原题Given a non-negative integer num, repeatedly add all its digits until the result has only one digit. Example Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one digit, return it. 翻译大概意思就是给你一个数，把这个数的各个位上的数相加，得到一个新的数，重复下去直到最后相加出来的数为个位数为止。 解题思路：我最开始想的是把每位上的数取出来相加，然后利用递归去做，直到得到符合的答案，原题要求不用循环和递归用O(1)的时间复杂度求出结果，很显然这不符合的。然后想到找规律，发现num%9符合规律，测试发现9%9的时候出现问题，于是改成（num－1）％9+1，代码实现（java）：123public int addDigits(int num) &#123; return (num - 1) % 9 + 1; &#125; 代码实现（python）：1234def addDigits(self, num): if(num == 0): return 0 return (num - 1) % 9 + 1]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+        <tag>leetCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[leetCode--Array Partition I]]></title>
     <url>%2F2017%2F10%2F11%2FarrayPartition1%2F</url>
     <content type="text"><![CDATA[Array Partition I原题Given an array of 2n integers, your task is to group these integers into n pairs of integer, say (a1, b1), (a2, b2), …, (an, bn) which makes sum of min(ai, bi) for all i from 1 to n as large as possible. Example Input: [1,4,3,2] Output: 4Explanation: n is 2, and the maximum sum of pairs is 4 = &gt;min(1, 2) + min(3, 4). 翻译大概意思就是给定一个长度为2n的数组，分成n个小组，返回每组中较小值的和sum，使sum尽量大 解题思路：要取sum为最大值，分组的话就要把两个大的数分在一起，然后以此类推，所以先把数组排序，依次把下标为偶数位的值相加即为所求值。代码实现（java）：1234567public int arrayPairSum(int[] nums) &#123; Arrays.sort(nums); int res = 0; for(int i = 0; i &lt; nums.length; i += 2) res += nums[i]; return res; &#125; 发现有很多大神的代码执行时间更少，发现他们用的排序算法是计数排序。每隔一个数进行相加：代码实现（python）：12345678def arrayPairSum(self, nums): if isinstance(nums, list) and len(nums) == 0: return 0 nums.sort() res = 0 for i in range(0, len(nums), 2): res += nums[i] return res]]></content>
@@ -83,8 +96,8 @@
         <category>java</category>
       </categories>
       <tags>
-        <tag>java源码</tag>
         <tag>数据结构</tag>
+        <tag>java源码</tag>
       </tags>
   </entry>
   <entry>
