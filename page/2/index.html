@@ -53,7 +53,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="教程," />
+  <meta name="keywords" content="penghb" />
 
 
 
@@ -69,20 +69,13 @@
 
 
 
-<meta name="description" content="hexo + github 创建自己的个人博客最近想搞一个自己的博客，写一些自己平时工作中的积累，终于搭好了，写一下搭建博客的过程。hexo是一款基于Node.js的静态博客框架,所以安装node.js是必须的（这个就不写了，node官网下载，安装）。申请GitHub（必须）作用：是用来做博客的远程创库、域名、服务器之类的，怎么与本地hexo建立连接等下讲。 安装hexonode和git安装好后创">
-<meta name="keywords" content="教程">
-<meta property="og:type" content="article">
-<meta property="og:title" content="HEXO + github 创建自己的个人博客">
-<meta property="og:url" content="http://yoursite.com/2017/09/24/hexoBlog/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="海滨小筑">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="海滨小筑">
-<meta property="og:description" content="hexo + github 创建自己的个人博客最近想搞一个自己的博客，写一些自己平时工作中的积累，终于搭好了，写一下搭建博客的过程。hexo是一款基于Node.js的静态博客框架,所以安装node.js是必须的（这个就不写了，node官网下载，安装）。申请GitHub（必须）作用：是用来做博客的远程创库、域名、服务器之类的，怎么与本地hexo建立连接等下讲。 安装hexonode和git安装好后创">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2017/09/24/hexoBlog/gitkey.png">
-<meta property="og:updated_time" content="2017-10-08T10:46:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HEXO + github 创建自己的个人博客">
-<meta name="twitter:description" content="hexo + github 创建自己的个人博客最近想搞一个自己的博客，写一些自己平时工作中的积累，终于搭好了，写一下搭建博客的过程。hexo是一款基于Node.js的静态博客框架,所以安装node.js是必须的（这个就不写了，node官网下载，安装）。申请GitHub（必须）作用：是用来做博客的远程创库、域名、服务器之类的，怎么与本地hexo建立连接等下讲。 安装hexonode和git安装好后创">
-<meta name="twitter:image" content="http://yoursite.com/2017/09/24/hexoBlog/gitkey.png">
+<meta name="twitter:title" content="海滨小筑">
 
 
 
@@ -112,13 +105,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/09/24/hexoBlog/"/>
+  <link rel="canonical" href="http://yoursite.com/page/2/"/>
 
 
 
 
 
-  <title>HEXO + github 创建自己的个人博客 | 海滨小筑</title>
+  <title>海滨小筑</title>
   
 
 
@@ -139,7 +132,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -276,9 +270,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -308,7 +302,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">HEXO + github 创建自己的个人博客</h1>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/24/hexoBlog/" itemprop="url">HEXO + github 创建自己的个人博客</a></h1>
         
 
         <div class="post-meta">
@@ -363,7 +359,7 @@
               </span>
               
                 <a href="/2017/09/24/hexoBlog/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/09/24/hexoBlog/" itemprop="commentsCount"></span>
+                  <span id="url::http://yoursite.com/2017/09/24/hexoBlog/" class="cy_cmt_count" data-xid="2017/09/24/hexoBlog/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -422,53 +418,18 @@
       
 
       
-        <h1 id="hexo-github-创建自己的个人博客"><a href="#hexo-github-创建自己的个人博客" class="headerlink" title="hexo + github 创建自己的个人博客"></a>hexo + github 创建自己的个人博客</h1><p>最近想搞一个自己的博客，写一些自己平时工作中的积累，终于搭好了，写一下搭建博客的过程。<br>hexo是一款基于Node.js的静态博客框架,所以安装node.js是必须的（这个就不写了，node官网下载，安装）。<br>申请GitHub（必须）<br>作用：是用来做博客的远程创库、域名、服务器之类的，怎么与本地hexo建立连接等下讲。</p>
-<h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><p>node和git安装好后创建一个文件夹blog，安装hexo：</p>
-<blockquote>
-<p>sudo npm install -g hexo</p>
-</blockquote>
-<p>执行init命令初始化hexo:</p>
-<blockquote>
-<p>hexo init</p>
-</blockquote>
-<p>生成静态页面:</p>
-<blockquote>
-<p>hexo generate（hexo g也可以）</p>
-</blockquote>
-<h3 id="配置github"><a href="#配置github" class="headerlink" title="配置github"></a>配置github</h3><p>建立Repository</p>
-<p>建立与你用户名对应的仓库，仓库名必须为【your_user_name.github.io】，固定写法</p>
-<p>然后建立关联，我的blog在本地/user/local/bin/blog，blog是我之前建的东西也全在这里面，有：</p>
-<pre><code>_config.yml    node_modules    public      source
-
-db.json        package.json    scaffolds  themes
-</code></pre><p>现在我们需要_config.yml文件，来建立关联，命令：</p>
-<p>vi _config.yml</p>
-<p>翻到最下面，改成我这样子的</p>
-<blockquote>
-<p>deploy:<br>    type: git<br>    repo: <a href="https://github.com/yougithub/youname.github.io.git" target="_blank" rel="external">https://github.com/yougithub/youname.github.io.git</a><br>    branch: master</p>
-</blockquote>
-<p>repo也可以写成yougithubname:youpassword@<a href="https://github.com/yougithub/youname.github.io.git" target="_blank" rel="external">https://github.com/yougithub/youname.github.io.git</a><br>注意所有的：后面都有一个空格。</p>
-<h3 id="生成添加秘钥"><a href="#生成添加秘钥" class="headerlink" title="生成添加秘钥"></a>生成添加秘钥</h3><p>在终端（Terminal）输入：</p>
-<blockquote>
-<p>ssh-keygen -t rsa -C “Github的注册邮箱地址”</p>
-</blockquote>
-<p>一路Enter过来就好，待秘钥生成完毕，会得到两个文件id_rsa和id_rsa.pub，用带格式的记事本打开id_rsa.pub，Ctrl + a复制里面的所有内容，然后进入<a href="https://github.com/settings/ssh：" target="_blank" rel="external">https://github.com/settings/ssh：</a></p>
-<p>将复制的内容粘贴到Key的输入框，随便写好Title里面的内容，点击Add SSH key按钮即可。<br><img src="/2017/09/24/hexoBlog/gitkey.png" alt="image"><br>可以本地启动服务进行预览，命令：</p>
-<blockquote>
-<p>hexo server (hexo s 也可以)</p>
-</blockquote>
-<p>浏览器输入localhost:4000</p>
-<p>每次部署的步骤，可按以下三步来进行。</p>
-<pre><code>hexo clean
-
-hexo generate(hexo g)
-
-hexo deploy(hexo d)
-</code></pre><h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><p><a href="http://www.jianshu.com/p/465830080ea9" target="_blank" rel="external">http://www.jianshu.com/p/465830080ea9</a><br><a href="http://www.jianshu.com/p/e99ed60390a8" target="_blank" rel="external">http://www.jianshu.com/p/e99ed60390a8</a></p>
-<p>标签页／分类页 参考：<br><a href="http://theme-next.iissnan.com/theme-settings.html#syntax-highlight-scheme" target="_blank" rel="external">http://theme-next.iissnan.com/theme-settings.html#syntax-highlight-scheme</a></p>
-<p>头像／logo 参考：<br><a href="http://cherryblog.site/Hexo-high-level-tutorialcloudmusic,bg-customthemes-statistical.html" target="_blank" rel="external">http://cherryblog.site/Hexo-high-level-tutorialcloudmusic,bg-customthemes-statistical.html</a></p>
-<p>站内搜索 参考：<br><a href="https://zetaoyang.github.io/post/2016/07/08/hexo-localsearch.html" target="_blank" rel="external">https://zetaoyang.github.io/post/2016/07/08/hexo-localsearch.html</a></p>
-
+        
+          
+          hexo + github 创建自己的个人博客最近想搞一个自己的博客，写一些自己平时工作中的积累，终于搭好了，写一下搭建博客的过程。hexo是一款基于Node.js的静态博客框架,所以安装node.js是必须的（这个就不写了，node官网下载，安装）。申请GitHub（必须）作用：是用来做博客的远程
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/24/hexoBlog/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
     
@@ -483,36 +444,14 @@ hexo deploy(hexo d)
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/教程/" rel="tag"># 教程</a>
-          
-        </div>
+
+      
+
       
 
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/29/arrayList/" rel="prev" title="ArrayList源码分析">
-                ArrayList源码分析 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -522,37 +461,14 @@ hexo deploy(hexo d)
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-<span class="jiathis_txt">分享到：</span>
-<a class="jiathis_button_fav">收藏夹</a>
-<a class="jiathis_button_copy">复制网址</a>
-<a class="jiathis_button_email">邮件</a>
-<a class="jiathis_button_weixin">微信</a>
-<a class="jiathis_button_qzone">QQ空间</a>
-<a class="jiathis_button_tqq">腾讯微博</a>
-<a class="jiathis_button_douban">豆瓣</a>
-<a class="jiathis_button_share">一键分享</a>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
-<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-<a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" >
-var jiathis_config={
-  data_track_clickback:true,
-  summary:"",
-  shortUrl:false,
-  hideMore:false
-}
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-      
-    </div>
-  </div>
 
 
           </div>
@@ -560,12 +476,6 @@ var jiathis_config={
 
 
           
-  <div class="comments" id="comments">
-    
-      <div id="SOHUCS"></div>
-    
-  </div>
-
 
         </div>
         
@@ -586,17 +496,8 @@ var jiathis_config={
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           
             <img class="site-author-image" itemprop="image"
@@ -661,22 +562,6 @@ var jiathis_config={
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo-github-创建自己的个人博客"><span class="nav-number">1.</span> <span class="nav-text">hexo + github 创建自己的个人博客</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装hexo"><span class="nav-number">1.0.1.</span> <span class="nav-text">安装hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置github"><span class="nav-number">1.0.2.</span> <span class="nav-text">配置github</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成添加秘钥"><span class="nav-number">1.0.3.</span> <span class="nav-text">生成添加秘钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考："><span class="nav-number">1.0.4.</span> <span class="nav-text">参考：</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -847,18 +732,7 @@ var jiathis_config={
 
 
   
-    <script type="text/javascript">
-    (function(){
-      var appid = 'cytf4EXyb';
-      var conf = '7427f2c96cc596de7e6d279b88d16e73';
-      var width = window.innerWidth || document.documentElement.clientWidth;
-      if (width < 960) {
-      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
-        window.changyan.api.config({appid:appid,conf:conf})});
-      }
-    })();
-    </script>
-    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+    <script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cytf4EXyb"></script>
   
 
 

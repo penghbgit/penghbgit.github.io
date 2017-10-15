@@ -13,6 +13,19 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[leetCode--Two Sum II - Input array is sorted]]></title>
+    <url>%2F2017%2F10%2F14%2FtwoSum2%2F</url>
+    <content type="text"><![CDATA[Two Sum II - Input array is sorted原题：Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number. The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based. You may assume that each input would have exactly one solution and you may not use the same element twice. 翻译大意是给出一个数组（升序）和一个目标数，求数组中的两个数相加正好等于目标数的两个元素的下标 解题思路left代表左下标，right代表右下标，numbers[left] + numbers[right]如果等于target返回两个下标志分别加一，如果大于target，right左移，否则left右移。代码实现（java）：12345678910111213141516class Solution &#123; public int[] twoSum(int[] numbers, int target) &#123; int left = 0; int right = numbers.length - 1; while(right &gt; left)&#123; int res = numbers[left] + numbers[right]; if(res == target) return new int[]&#123;left + 1, right + 1&#125;; else if(res &lt; target) left++; else right--; &#125; return null; &#125;&#125; 代码实现（python）：12345678910111213class Solution(object): def twoSum(self, numbers, target): left = 0 right = len(numbers) - 1 while(right &gt; left): res = numbers[left] + numbers[right] if res == target: return left + 1, right + 1 elif res &lt; target: left += 1 else: right -= 1 return null]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+        <tag>leetCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[leetCode--Add Digits]]></title>
     <url>%2F2017%2F10%2F11%2FaddDigits%2F</url>
     <content type="text"><![CDATA[Add Digits原题Given a non-negative integer num, repeatedly add all its digits until the result has only one digit. Example Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one digit, return it. 翻译大概意思就是给你一个数，把这个数的各个位上的数相加，得到一个新的数，重复下去直到最后相加出来的数为个位数为止。 解题思路：我最开始想的是把每位上的数取出来相加，然后利用递归去做，直到得到符合的答案，原题要求不用循环和递归用O(1)的时间复杂度求出结果，很显然这不符合的。然后想到找规律，发现num%9符合规律，测试发现9%9的时候出现问题，于是改成（num－1）％9+1，代码实现（java）：123public int addDigits(int num) &#123; return (num - 1) % 9 + 1; &#125; 代码实现（python）：1234def addDigits(self, num): if(num == 0): return 0 return (num - 1) % 9 + 1]]></content>
