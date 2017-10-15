@@ -77,16 +77,15 @@
 <meta property="og:site_name" content="海滨小筑">
 <meta property="og:description" content="HashMap基于哈希表的 Map 接口的实现。此实现提供所有可选的映射操作，并允许使用 null 值和 null 键。（除了不同步和允许使用 null 之外，HashMap 类与 Hashtable 大致相同。）此类不保证映射的顺序，特别是它不保证该顺序恒久不变。HashMap有两个参数影响其性能：初始容量和加载因子。默认初始容量是16，加载因子是0.75。容量是哈希表中桶(Entry数组)的数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2017/10/15/hashMap/before8Strecture.png">
-<meta property="og:image" content="http://yoursite.com/2017/10/15/hashMap/8Strecture.png">
+<meta property="og:image" content="http://yoursite.com/2017/10/15/hashMap/strecture.png">
 <meta property="og:image" content="http://yoursite.com/2017/10/15/hashMap/hashMap1.png">
 <meta property="og:image" content="http://yoursite.com/2017/10/15/hashMap/hashMap2.png">
 <meta property="og:image" content="http://yoursite.com/2017/10/15/hashMap/hashMap3.png">
-<meta property="og:updated_time" content="2017-10-15T09:15:42.000Z">
+<meta property="og:updated_time" content="2017-10-15T09:21:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HashMap源码分析">
 <meta name="twitter:description" content="HashMap基于哈希表的 Map 接口的实现。此实现提供所有可选的映射操作，并允许使用 null 值和 null 键。（除了不同步和允许使用 null 之外，HashMap 类与 Hashtable 大致相同。）此类不保证映射的顺序，特别是它不保证该顺序恒久不变。HashMap有两个参数影响其性能：初始容量和加载因子。默认初始容量是16，加载因子是0.75。容量是哈希表中桶(Entry数组)的数">
-<meta name="twitter:image" content="http://yoursite.com/2017/10/15/hashMap/before8Strecture.png">
+<meta name="twitter:image" content="http://yoursite.com/2017/10/15/hashMap/strecture.png">
 
 
 
@@ -385,8 +384,7 @@
       
 
       
-        <p>HashMap基于哈希表的 Map 接口的实现。此实现提供所有可选的映射操作，并允许使用 null 值和 null 键。（除了不同步和允许使用 null 之外，HashMap 类与 Hashtable 大致相同。）此类不保证映射的顺序，特别是它不保证该顺序恒久不变。<br>HashMap有两个参数影响其性能：初始容量和加载因子。默认初始容量是16，加载因子是0.75。容量是哈希表中桶(Entry数组)的数量，初始容量只是哈希表在创建时的容量。加载因子是哈希表在其容量自动增加之前可以达到多满的一种尺度。当哈希表中的条目数超出了加载因子与当前容量的乘积时，通过调用resize方法将容量翻倍。<br>本文是基于JDK1.8分析的，JDK 1.8中HashMap的实现有了一些改进，数据存储结构引进了红黑树，使得查询更加的快捷.<br>JDK1.8以前HashMap的结构：<br><img src="/2017/10/15/hashMap/before8Strecture.png" alt="image"></p>
-<p>JDK1.8 HashMap的结构：<br><img src="/2017/10/15/hashMap/8Strecture.png" alt="image"></p>
+        <p>HashMap基于哈希表的 Map 接口的实现。此实现提供所有可选的映射操作，并允许使用 null 值和 null 键。（除了不同步和允许使用 null 之外，HashMap 类与 Hashtable 大致相同。）此类不保证映射的顺序，特别是它不保证该顺序恒久不变。<br>HashMap有两个参数影响其性能：初始容量和加载因子。默认初始容量是16，加载因子是0.75。容量是哈希表中桶(Entry数组)的数量，初始容量只是哈希表在创建时的容量。加载因子是哈希表在其容量自动增加之前可以达到多满的一种尺度。当哈希表中的条目数超出了加载因子与当前容量的乘积时，通过调用resize方法将容量翻倍。<br>本文是基于JDK1.8分析的，JDK 1.8中HashMap的实现有了一些改进，数据存储结构引进了红黑树，使得查询更加的快捷.<br>JDK1.8 HashMap的结构：<br><img src="/2017/10/15/hashMap/strecture.png" alt="image"></p>
 <p>HashMap不是线程安全的，如果想要线程安全的HashMap，可以通过Collections类的静态方法synchronizedMap获得线程安全的HashMap。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Map map = Collections.synchronizedMap(<span class="keyword">new</span> HashMap());</div></pre></td></tr></table></figure></p>
 <p>也可以使用ConcurrentHashMap。</p>
 <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span></div><div class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">Map</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;, <span class="title">Cloneable</span>, <span class="title">Serializable</span></span></div></pre></td></tr></table></figure>
