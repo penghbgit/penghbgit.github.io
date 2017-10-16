@@ -27,7 +27,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[reverseString]]></title>
+    <title><![CDATA[leetCode--Reverse String]]></title>
     <url>%2F2017%2F10%2F16%2FreverseString%2F</url>
     <content type="text"><![CDATA[Reverse String原题：Write a function that takes a string as input and returns the string reversed. Example Given s = “hello”, return “olleh”. 翻译相对简单，就是翻转一个字符串。 代码实现（java）：12345class Solution &#123; public String reverseString(String s) &#123; return new StringBuilder(s).reverse().toString(); &#125;&#125; 用StringBuilder的reverse()运行时间用了4ms。尝试用了异或位运算，用时减少了一倍，变为2ms，代码实现：12345678910111213141516class Solution &#123; public String reverseString(String s) &#123; char[] str = s.toCharArray(); int begin = 0; int end = s.length() - 1; while (begin &lt; end) &#123; str[begin] = (char) (str[begin] ^ str[end]); str[end] = (char) (str[begin] ^ str[end]); str[begin] = (char) (str[end] ^ str[begin]); begin++; end--; &#125; return new String(str); &#125;&#125; python实现：123class Solution(object): def reverseString(self, s): return s[::-1]]]></content>
       <categories>
@@ -95,8 +95,8 @@
         <category>java</category>
       </categories>
       <tags>
-        <tag>java源码</tag>
         <tag>数据结构</tag>
+        <tag>java源码</tag>
       </tags>
   </entry>
   <entry>
@@ -208,8 +208,8 @@
         <category>java</category>
       </categories>
       <tags>
-        <tag>java源码</tag>
         <tag>数据结构</tag>
+        <tag>java源码</tag>
       </tags>
   </entry>
   <entry>
