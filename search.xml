@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[leetCode--reverseWords3]]></title>
+    <title><![CDATA[leetCode--Baseball Game]]></title>
+    <url>%2F2017%2F10%2F16%2FbaseballGame%2F</url>
+    <content type="text"><![CDATA[Baseball Game原题：You’re now a baseball game point recorder. Given a list of strings, each string can be one of the 4 following types: 1.Integer (one round’s score): Directly represents the number of points you get in this round.2.”+” (one round’s score): Represents that the points you get in this round are the sum of the last two valid round’s points.3.”D” (one round’s score): Represents that the points you get in this round are the doubled data of the last valid round’s points.4.”C” (an operation, which isn’t a round’s score): Represents the last valid round’s points you get were invalid and should be removed.Each round’s operation is permanent and could have an impact on the round before and the round after. You need to return the sum of the points you could get in all the rounds. Example1 Input: [“5”,”2”,”C”,”D”,”+”]Output: 30Explanation:Round 1: You could get 5 points. The sum is: 5.Round 2: You could get 2 points. The sum is: 7.Operation 1: The round 2’s data was invalid. The sum is: 5.Round 3: You could get 10 points (the round 2’s data has been removed). The sum is: 15.Round 4: You could get 5 + 10 = 15 points. The sum is: 30. Example2 Input: [“5”,”-2”,”4”,”C”,”D”,”9”,”+”,”+”]Output: 27Explanation:Round 1: You could get 5 points. The sum is: 5.Round 2: You could get -2 points. The sum is: 3.Round 3: You could get 4 points. The sum is: 7.Operation 1: The round 3’s data is invalid. The sum is: 3.Round 4: You could get -4 points (the round 3’s data has been removed). The sum is: -1.Round 5: You could get 9 points. The sum is: 8.Round 6: You could get -4 + 9 = 5 points. The sum is 13.Round 7: You could get 9 + 5 = 14 points. The sum is 27. Note The size of the input list will be between 1 and 1000. Every integer represented in the list will be between -30000 and 30000. 题目大意输入一组字符串：1.数字表示分数2.’+’表示当前轮次的分数等于上两轮分数之和3.’D’表示当前轮次的分数等于上一轮分数加倍4.’C’表示清除上一次的分数 解题思路根据不同的情况做判断，先想到了栈，然后又想到了数组。两种实现（java）：代码实现（java）：1234567891011121314151617181920212223class Solution &#123; public int calPoints(String[] ops) &#123; if (ops == null || ops.length == 0) return 0; Stack&lt;Integer&gt; stack = new Stack&lt;&gt;(); int res = 0; for (String op : ops)&#123; if ("C".equals(op))&#123; res -= stack.pop(); &#125;else if ("D".equals(op))&#123; stack.push(stack.peek() * 2); res += stack.peek(); &#125;else if ("+".equals(op))&#123; stack.push(stack.peek() + stack.get(stack.size()-2)); res += stack.peek(); &#125;else &#123; stack.push(Integer.valueOf(op)); res += stack.peek(); &#125; &#125; return res; &#125;&#125; 用栈实现运行时间11ms，用数组实现运行时间8ms，见代码：123456789101112131415161718192021222324252627class Solution &#123; public int calPoints(String[] ops) &#123; if (ops == null || ops.length == 0) return 0; int[] points = new int[ops.length]; int top = -1; int res = 0; for(String op : ops)&#123; if("C".equals(op))&#123; res -= points[top--]; &#125;else if("D".equals(op))&#123; int p = points[top]*2; points[++top] = p; res += p; &#125;else if("+".equals(op))&#123; int p = points[top] + points[top - 1]; points[++top] = p; res += p; &#125;else&#123; int p = Integer.parseInt(op); points[++top] = p ; res += p; &#125; &#125; return res; &#125;&#125; python实现：12345678910111213141516class Solution(object): def calPoints(self, ops): res = 0 points = [] top = -1 for op in ops: if op == "C": points.pop() elif op == "D": points.append(points[-1] * 2) elif op == "+": points.append(points[-1] + points[-2]) else: points.append(int(op)) return sum(points)]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+        <tag>leetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[reverseString]]></title>
+    <url>%2F2017%2F10%2F16%2FreverseString%2F</url>
+    <content type="text"><![CDATA[Reverse String原题：Write a function that takes a string as input and returns the string reversed. Example Given s = “hello”, return “olleh”. 翻译相对简单，就是翻转一个字符串。 代码实现（java）：12345class Solution &#123; public String reverseString(String s) &#123; return new StringBuilder(s).reverse().toString(); &#125;&#125; 用StringBuilder的reverse()运行时间用了4ms。尝试用了异或位运算，用时减少了一倍，变为2ms，代码实现：12345678910111213141516class Solution &#123; public String reverseString(String s) &#123; char[] str = s.toCharArray(); int begin = 0; int end = s.length() - 1; while (begin &lt; end) &#123; str[begin] = (char) (str[begin] ^ str[end]); str[end] = (char) (str[begin] ^ str[end]); str[begin] = (char) (str[end] ^ str[begin]); begin++; end--; &#125; return new String(str); &#125;&#125; python实现：123class Solution(object): def reverseString(self, s): return s[::-1]]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+        <tag>leetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[leetCode--Reverse Words in a String III]]></title>
     <url>%2F2017%2F10%2F16%2FreverseWords3%2F</url>
     <content type="text"><![CDATA[Reverse Words in a String III原题：Given a string, you need to reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order. Example Input: “Let’s take LeetCode contest”Output: “s’teL ekat edoCteeL tsetnoc” NoteIn the string, each word is separated by single space and there will not be any extra space in the string. 翻译大意就是给定一个list输出每个单词的顺序原来不变，单词的顺序反转。 解题思路根据空格拆分，然后依次反转每个单词。代码实现（java）：1234567891011121314151617class Solution &#123; public String reverseWords(String s) &#123; String[] strs = s.split(" "); StringBuilder sb = new StringBuilder(); boolean t = true; for(String str : strs)&#123; String resWord = new StringBuilder(str).reverse().toString(); if(t)&#123; sb.append(resWord); t = false; &#125;else&#123; sb.append(" ").append(resWord); &#125; &#125; return sb.toString(); &#125;&#125; python实现：1234567class Solution(object): def reverseWords(self, s): list = s.split() k = [] for n in list: k.append(n[::-1]) return ' '.join(k)]]></content>
       <categories>
