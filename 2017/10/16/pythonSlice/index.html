@@ -53,7 +53,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="penghb" />
+  <meta name="keywords" content="python," />
 
 
 
@@ -69,17 +69,20 @@
 
 
 
-<meta name="description" content="一只努力学习的小菜鸟">
-<meta property="og:type" content="website">
-<meta property="og:title" content="分类">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta name="description" content="什么是切片？可以用方括号加一个下标的方式访问序列的每一个元素，或者通过在方括号中用冒号把开始下标和结束下标分开的方式访问一组连续的元素。序列类型是其元素被顺序放置的一种数据类型结构，这种方式允许通过指定下标的方式来获取某一个数据元素，或者通过指定下标范围来获得一组序列的元素。这种访问序列的方式叫做切片，我们通过切片操作符就可以实现这个操作。 切片操作符[]sequence[index]sequen">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python--切片">
+<meta property="og:url" content="http://yoursite.com/2017/10/16/pythonSlice/index.html">
 <meta property="og:site_name" content="海滨小筑">
-<meta property="og:description" content="一只努力学习的小菜鸟">
+<meta property="og:description" content="什么是切片？可以用方括号加一个下标的方式访问序列的每一个元素，或者通过在方括号中用冒号把开始下标和结束下标分开的方式访问一组连续的元素。序列类型是其元素被顺序放置的一种数据类型结构，这种方式允许通过指定下标的方式来获取某一个数据元素，或者通过指定下标范围来获得一组序列的元素。这种访问序列的方式叫做切片，我们通过切片操作符就可以实现这个操作。 切片操作符[]sequence[index]sequen">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-30T12:56:52.000Z">
+<meta property="og:image" content="http://yoursite.com/2017/10/16/pythonSlice/slice1.png">
+<meta property="og:updated_time" content="2017-10-16T11:51:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分类">
-<meta name="twitter:description" content="一只努力学习的小菜鸟">
+<meta name="twitter:title" content="python--切片">
+<meta name="twitter:description" content="什么是切片？可以用方括号加一个下标的方式访问序列的每一个元素，或者通过在方括号中用冒号把开始下标和结束下标分开的方式访问一组连续的元素。序列类型是其元素被顺序放置的一种数据类型结构，这种方式允许通过指定下标的方式来获取某一个数据元素，或者通过指定下标范围来获得一组序列的元素。这种访问序列的方式叫做切片，我们通过切片操作符就可以实现这个操作。 切片操作符[]sequence[index]sequen">
+<meta name="twitter:image" content="http://yoursite.com/2017/10/16/pythonSlice/slice1.png">
 
 
 
@@ -109,13 +112,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/16/pythonSlice/"/>
 
 
 
 
 
-  <title>分类 | 海滨小筑</title>
+  <title>python--切片 | 海滨小筑</title>
   
 
 
@@ -276,40 +279,255 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/16/pythonSlice/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="彭海滨">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="海滨小筑">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">分类</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                目前共计 4 个分类
+          <h1 class="post-title" itemprop="name headline">python--切片</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-16T19:40:59+08:00">
+                2017-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python基础/" itemprop="url" rel="index">
+                    <span itemprop="name">python基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2017/10/16/pythonSlice/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/10/16/pythonSlice/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  537
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
             </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python基础/">python基础</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/经验/">经验</a><span class="category-list-count">1</span></li></ul>
-            </div>
-          </div>
-        
-      </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="什么是切片？"><a href="#什么是切片？" class="headerlink" title="什么是切片？"></a>什么是切片？</h2><p>可以用方括号加一个下标的方式访问序列的每一个元素，或者通过在方括号中用冒号把开始下标和结束下标分开的方式访问一组连续的元素。序列类型是其元素被顺序放置的一种数据类型结构，这种方式允许通过指定下标的方式来获取某一个数据元素，或者通过指定下标范围来获得一组序列的元素。这种访问序列的方式叫做切片，我们通过切片操作符就可以实现这个操作。</p>
+<h2 id="切片操作符"><a href="#切片操作符" class="headerlink" title="切片操作符"></a>切片操作符</h2><h3 id=""><a href="#" class="headerlink" title="[]"></a>[]</h3><p>sequence[index]<br>sequence是序列的名字，index是想要访问元素对应的偏移量。可以使用0到最大值，也可以使用负值。正索引以序列的开始为起点，负索引以序列的结束为起点。如图(引用):<br><img src="/2017/10/16/pythonSlice/slice1.png" alt="image"></p>
+<h3 id="-1"><a href="#-1" class="headerlink" title="[:]"></a>[:]</h3><p>sequence[start_index: end_index]<br>通过这种方式可以得到起始索引到结束索引之间的数据。如果没有提供切片会从序列的最开始处开始，直到最末尾处结束。</p>
+<h3 id="-2"><a href="#-2" class="headerlink" title="[::]"></a>[::]</h3><p>sequence[start_index: end_index: delta]<br>delta变化量（步长），可以把这个参数当做for循环里的步长一样的东西。</p>
+<p>注意:</p>
+<blockquote>
+<p>列表切片产生的是列表的副本，与原列表不是同一份空间。</p>
+</blockquote>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">定义一个列表 str = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>]</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> str[<span class="number">3</span>:] <span class="comment">#截取第4个字符到结尾</span></div><div class="line">   output: [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>]</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> str[:<span class="number">-3</span>] <span class="comment">#截取从头开始到倒数第三个字符之前</span></div><div class="line">output: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> str[<span class="number">2</span>] <span class="comment">#截取第三个字符</span></div><div class="line">   output: <span class="number">3</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> str[<span class="number">-1</span>] <span class="comment">#截取倒数第一个字符</span></div><div class="line">   output: <span class="number">8</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> str[::<span class="number">-1</span>] <span class="comment">#创造一个与原字符串顺序相反的字符串</span></div><div class="line">   output: [<span class="number">8</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>]</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> str[<span class="number">-3</span>:<span class="number">-1</span>] <span class="comment">#截取倒数第三位与倒数第一位之前的字符</span></div><div class="line">   output: [<span class="number">6</span>, <span class="number">7</span>]</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> str[<span class="number">-3</span>:] <span class="comment">#截取倒数第三位到结尾</span></div><div class="line">output: [<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>]</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> str[:<span class="number">-5</span>:<span class="number">-3</span>] <span class="comment">#逆序截取</span></div><div class="line">output: [<span class="number">8</span>, <span class="number">5</span>]</div></pre></td></tr></table></figure>
+<p>参考：《Python核心编程中文版（第二版）》</p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/15/hashMap/" rel="next" title="HashMap源码分析">
+                <i class="fa fa-chevron-left"></i> HashMap源码分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/16/pythonSet/" rel="prev" title="python内置函数--set">
+                python内置函数--set <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
   </div>
 
 
@@ -344,8 +562,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           
             <img class="site-author-image" itemprop="image"
@@ -410,6 +637,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是切片？"><span class="nav-number">1.</span> <span class="nav-text">什么是切片？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切片操作符"><span class="nav-number">2.</span> <span class="nav-text">切片操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">2.1.</span> <span class="nav-text">[]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#-1"><span class="nav-number">2.2.</span> <span class="nav-text">[:]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#-2"><span class="nav-number">2.3.</span> <span class="nav-text">[::]</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子"><span class="nav-number">3.</span> <span class="nav-text">例子</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
