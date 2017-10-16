@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[leetCode--reverseWords3]]></title>
+    <url>%2F2017%2F10%2F16%2FreverseWords3%2F</url>
+    <content type="text"><![CDATA[Reverse Words in a String III原题：Given a string, you need to reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order. Example Input: “Let’s take LeetCode contest”Output: “s’teL ekat edoCteeL tsetnoc” NoteIn the string, each word is separated by single space and there will not be any extra space in the string. 翻译大意就是给定一个list输出每个单词的顺序原来不变，单词的顺序反转。 解题思路根据空格拆分，然后依次反转每个单词。代码实现（java）：1234567891011121314151617class Solution &#123; public String reverseWords(String s) &#123; String[] strs = s.split(" "); StringBuilder sb = new StringBuilder(); boolean t = true; for(String str : strs)&#123; String resWord = new StringBuilder(str).reverse().toString(); if(t)&#123; sb.append(resWord); t = false; &#125;else&#123; sb.append(" ").append(resWord); &#125; &#125; return sb.toString(); &#125;&#125; python实现：1234567class Solution(object): def reverseWords(self, s): list = s.split() k = [] for n in list: k.append(n[::-1]) return ' '.join(k)]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+        <tag>leetCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[leetCode--keyboardRow]]></title>
     <url>%2F2017%2F10%2F16%2FkeyboardRow%2F</url>
     <content type="text"><![CDATA[Keyboard Row原题：Given a List of words, return the words that can be typed using letters of alphabet on only one row’s of American keyboard like the image below. Example Input: [“Hello”, “Alaska”, “Dad”, “Peace”]Output: [“Alaska”, “Dad”] Note1.You may use one character in the keyboard more than once.2.You may assume the input string will only contain letters of alphabet. 翻译大意就是给定一个list输出单词都在同一行的单词。 解题思路设定每行代表一个数字初始值为0，遍历每个单词如果出现在某一行，则该代表该行的值赋为1.代码实现（java）：12345678910111213141516171819202122232425class Solution &#123; public String[] findWords(String[] words) &#123; String line1 = "QWERTYUIOP"; String line2 = "ASDFGHJKL"; String line3 = "ZXCVBNM"; List&lt;String&gt; res = new ArrayList&lt;String&gt;(); for(String word : words)&#123; char[] ch = word.toUpperCase().toCharArray(); int n1 = 0, n2 = 0, n3 = 0; for(char c : ch)&#123; if(line1.indexOf(c) &gt;= 0) n1 = 1; if(line2.indexOf(c) &gt;= 0) n2 = 1; if(line3.indexOf(c) &gt;= 0) n3 = 1; if(n1 + n2 + n3 &gt; 1) break; &#125; if(n1 + n2 + n3 == 1) res.add(word); &#125; return res.toArray(new String[0]); &#125;&#125; python实现（遍历list中的每个单词放到set中判断set中的单词是否都包含在键盘行中）：12345678910class Solution(object): def findWords(self, words): keyBoards = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"] res = [] for word in words: wordUP = word.upper() for keyBoard in keyBoards: if set(wordUP).issubset(set(keyBoard)): res.append(word) return res]]></content>
