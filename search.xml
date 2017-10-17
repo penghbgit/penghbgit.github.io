@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[test]]></title>
-    <url>%2F2017%2F10%2F17%2Ftest%2F</url>
-    <content type="text"><![CDATA[This link has no title attribute.a]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>test</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[leetCode--Distribute Candies]]></title>
     <url>%2F2017%2F10%2F16%2FleetCode%2FdistributeCandies%2F</url>
     <content type="text"><![CDATA[Distribute Candies原题：Given an integer array with even length, where different numbers in this array represent different kinds of candies. Each number means one candy of the corresponding kind. You need to distribute these candies equally in number to brother and sister. Return the maximum number of kinds of candies the sister could gain. You need to return the sum of the points you could get in all the rounds. Example1 Input: candies = [1,1,2,2,3,3]Output: 3Explanation:There are three different kinds of candies (1, 2 and 3), and two candies for each kind.Optimal distribution: The sister has candies [1,2,3] and the brother has candies [1,2,3], too.The sister has three different kinds of candies. Example2 Input: candies = [1,1,2,3]Output: 2Explanation: For example, the sister has candies [2,3] and the brother has candies [1,1].The sister has two different kinds of candies, the brother has only one kind of candies. Note The length of the given array is in range [2, 10,000], and will be even. The number in given array is in range [-100,000, 100,000]. 题目大意把不同种类的糖平均分两份，一份哥哥一份妹妹，求妹妹获得糖的最多种类数 解题思路求出糖的种类，如果种类大于糖数量的一半，则妹妹最多分的数量为糖数量的一半，否则为糖的种类两种实现（java）：代码实现（java）：1234567891011class Solution &#123; public int distributeCandies(int[] candies) &#123; Set&lt;Integer&gt; set = new HashSet&lt;&gt;(); for(int candy : candies)&#123; set.add(candy); &#125; if (set.size() &gt; candies.length/2) return candies.length/2; return set.size(); &#125;&#125; 123456789class Solution &#123; public int distributeCandies(int[] candies) &#123; Set&lt;Integer&gt; set = new HashSet&lt;&gt;(); for(int candy : candies)&#123; set.add(candy); &#125; return Math.min(set.size(), candies.length &gt;&gt; 1); &#125;&#125; python实现：123class Solution(object): def distributeCandies(self, candies): return min(len(set(candies)), len(candies) &gt;&gt; 1)]]></content>
@@ -26,7 +15,7 @@
   </entry>
   <entry>
     <title><![CDATA[leetCode--Baseball Game]]></title>
-    <url>%2F2017%2F10%2F16%2FbaseballGame%2F</url>
+    <url>%2F2017%2F10%2F16%2FleetCode%2FbaseballGame%2F</url>
     <content type="text"><![CDATA[Baseball Game原题：You’re now a baseball game point recorder. Given a list of strings, each string can be one of the 4 following types: 1.Integer (one round’s score): Directly represents the number of points you get in this round.2.”+” (one round’s score): Represents that the points you get in this round are the sum of the last two valid round’s points.3.”D” (one round’s score): Represents that the points you get in this round are the doubled data of the last valid round’s points.4.”C” (an operation, which isn’t a round’s score): Represents the last valid round’s points you get were invalid and should be removed.Each round’s operation is permanent and could have an impact on the round before and the round after. You need to return the sum of the points you could get in all the rounds. Example1 Input: [“5”,”2”,”C”,”D”,”+”]Output: 30Explanation:Round 1: You could get 5 points. The sum is: 5.Round 2: You could get 2 points. The sum is: 7.Operation 1: The round 2’s data was invalid. The sum is: 5.Round 3: You could get 10 points (the round 2’s data has been removed). The sum is: 15.Round 4: You could get 5 + 10 = 15 points. The sum is: 30. Example2 Input: [“5”,”-2”,”4”,”C”,”D”,”9”,”+”,”+”]Output: 27Explanation:Round 1: You could get 5 points. The sum is: 5.Round 2: You could get -2 points. The sum is: 3.Round 3: You could get 4 points. The sum is: 7.Operation 1: The round 3’s data is invalid. The sum is: 3.Round 4: You could get -4 points (the round 3’s data has been removed). The sum is: -1.Round 5: You could get 9 points. The sum is: 8.Round 6: You could get -4 + 9 = 5 points. The sum is 13.Round 7: You could get 9 + 5 = 14 points. The sum is 27. Note The size of the input list will be between 1 and 1000. Every integer represented in the list will be between -30000 and 30000. 题目大意输入一组字符串：1.数字表示分数2.’+’表示当前轮次的分数等于上两轮分数之和3.’D’表示当前轮次的分数等于上一轮分数加倍4.’C’表示清除上一次的分数 解题思路根据不同的情况做判断，先想到了栈，然后又想到了数组。两种实现（java）：代码实现（java）：1234567891011121314151617181920212223class Solution &#123; public int calPoints(String[] ops) &#123; if (ops == null || ops.length == 0) return 0; Stack&lt;Integer&gt; stack = new Stack&lt;&gt;(); int res = 0; for (String op : ops)&#123; if ("C".equals(op))&#123; res -= stack.pop(); &#125;else if ("D".equals(op))&#123; stack.push(stack.peek() * 2); res += stack.peek(); &#125;else if ("+".equals(op))&#123; stack.push(stack.peek() + stack.get(stack.size()-2)); res += stack.peek(); &#125;else &#123; stack.push(Integer.valueOf(op)); res += stack.peek(); &#125; &#125; return res; &#125;&#125; 用栈实现运行时间11ms，用数组实现运行时间8ms，见代码：123456789101112131415161718192021222324252627class Solution &#123; public int calPoints(String[] ops) &#123; if (ops == null || ops.length == 0) return 0; int[] points = new int[ops.length]; int top = -1; int res = 0; for(String op : ops)&#123; if("C".equals(op))&#123; res -= points[top--]; &#125;else if("D".equals(op))&#123; int p = points[top]*2; points[++top] = p; res += p; &#125;else if("+".equals(op))&#123; int p = points[top] + points[top - 1]; points[++top] = p; res += p; &#125;else&#123; int p = Integer.parseInt(op); points[++top] = p ; res += p; &#125; &#125; return res; &#125;&#125; python实现：12345678910111213141516class Solution(object): def calPoints(self, ops): res = 0 points = [] top = -1 for op in ops: if op == "C": points.pop() elif op == "D": points.append(points[-1] * 2) elif op == "+": points.append(points[-1] + points[-2]) else: points.append(int(op)) return sum(points)]]></content>
       <categories>
         <category>算法</category>
@@ -106,13 +95,13 @@
         <category>java</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>java源码</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[leetCode--Two Sum II - Input array is sorted]]></title>
-    <url>%2F2017%2F10%2F14%2FtwoSum2%2F</url>
+    <url>%2F2017%2F10%2F14%2FleetCode%2FtwoSum2%2F</url>
     <content type="text"><![CDATA[Two Sum II - Input array is sorted原题：Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number. The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based. You may assume that each input would have exactly one solution and you may not use the same element twice. 翻译大意是给出一个数组（升序）和一个目标数，求数组中的两个数相加正好等于目标数的两个元素的下标 解题思路left代表左下标，right代表右下标，numbers[left] + numbers[right]如果等于target返回两个下标志分别加一，如果大于target，right左移，否则left右移。代码实现（java）：12345678910111213141516class Solution &#123; public int[] twoSum(int[] numbers, int target) &#123; int left = 0; int right = numbers.length - 1; while(right &gt; left)&#123; int res = numbers[left] + numbers[right]; if(res == target) return new int[]&#123;left + 1, right + 1&#125;; else if(res &lt; target) left++; else right--; &#125; return null; &#125;&#125; 代码实现（python）：12345678910111213class Solution(object): def twoSum(self, numbers, target): left = 0 right = len(numbers) - 1 while(right &gt; left): res = numbers[left] + numbers[right] if res == target: return left + 1, right + 1 elif res &lt; target: left += 1 else: right -= 1 return null]]></content>
       <categories>
         <category>算法</category>
@@ -125,7 +114,7 @@
   </entry>
   <entry>
     <title><![CDATA[leetCode--Add Digits]]></title>
-    <url>%2F2017%2F10%2F11%2FaddDigits%2F</url>
+    <url>%2F2017%2F10%2F11%2FleetCode%2FaddDigits%2F</url>
     <content type="text"><![CDATA[Add Digits原题Given a non-negative integer num, repeatedly add all its digits until the result has only one digit. Example Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one digit, return it. 翻译大概意思就是给你一个数，把这个数的各个位上的数相加，得到一个新的数，重复下去直到最后相加出来的数为个位数为止。 解题思路：我最开始想的是把每位上的数取出来相加，然后利用递归去做，直到得到符合的答案，原题要求不用循环和递归用O(1)的时间复杂度求出结果，很显然这不符合的。然后想到找规律，发现num%9符合规律，测试发现9%9的时候出现问题，于是改成（num－1）％9+1，代码实现（java）：123public int addDigits(int num) &#123; return (num - 1) % 9 + 1; &#125; 代码实现（python）：1234def addDigits(self, num): if(num == 0): return 0 return (num - 1) % 9 + 1]]></content>
       <categories>
         <category>算法</category>
@@ -151,7 +140,7 @@
   </entry>
   <entry>
     <title><![CDATA[leetCode--Judge Route Circle]]></title>
-    <url>%2F2017%2F10%2F10%2FjudgeRouteCircle%2F</url>
+    <url>%2F2017%2F10%2F10%2FleetCode%2FjudgeRouteCircle%2F</url>
     <content type="text"><![CDATA[Judge Route Circle原题Initially, there is a Robot at position (0, 0). Given a sequence of its moves, judge if this robot makes a circle, which means it moves back to the original place. The move sequence is represented by a string. And each move is represent by a character. The valid robot moves are R (Right), L (Left), U (Up) and D (down). The output should be true or false representing whether the robot makes a circle. Example Input: “UD”Output: true Input: “LL”Output: false 翻译大概意思就是起点为（0，0），R(右),L(左),U(上)和D(下).给定一串移动的串，判断最后是否回到原点。 解题思路：这是一个横纵坐标移动的问题，向左移动x–，向右x++，向上y++，向下y–，最后判断 x == 0 &amp;&amp; y == 0即可。代码实现（java）：1234567891011121314151617181920212223242526public boolean judgeCircle(String moves) &#123; if(moves == null || "".equals(moves)) return true; int x = 0; int y = 0; for(int i = 0; i&lt;moves.length(); i++)&#123; char c = moves.charAt(i); switch(c)&#123; case 'U': y++; break; case 'D': y--; break; case 'L': x--; break; case 'R': x++; break; &#125; &#125; if(x == 0 &amp;&amp; y == 0) return true; return false; &#125; 也可以判断给定的字符串中UD和LR是否成对的出现。代码实现（python）：12def judgeCircle(self, moves): return moves.count('L') == moves.count('R') and moves.count('U') == moves.count('D')]]></content>
       <categories>
         <category>算法</category>
@@ -176,7 +165,7 @@
   </entry>
   <entry>
     <title><![CDATA[leetCode--Valid Palindrome]]></title>
-    <url>%2F2017%2F10%2F09%2FvalidPalindrome%2F</url>
+    <url>%2F2017%2F10%2F09%2FleetCode%2FvalidPalindrome%2F</url>
     <content type="text"><![CDATA[原题Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases. For example, “A man, a plan, a canal: Panama” is a palindrome.“race a car” is not a palindrome. 翻译：给定一个字符串，判断其是否为一个回文串。只包含字母和数字，忽略大小写。 解题思路利用首尾指针，找到符合条件的索引，进行比较，符合条件进行下一组比较，不相等返回false，直到所有的字母都处理完。 代码实现java实现，时间复杂度O(n).12345678910111213141516171819202122232425262728293031323334353637public class Solution &#123; public Boolean solution(String str)&#123; if(str == null || "".equals(str)) return true; str = str.toLowerCase(); int left = 0; int right = str.length() - 1; while (left &lt; right) &#123; char leftChar = str.charAt(left); char rightChar = str.charAt(right); while (!isValid(leftChar))&#123; left++; leftChar = str.charAt(left); if (left &gt;= right) return true; &#125; while (!isValid(rightChar))&#123; right--; rightChar = str.charAt(right); if (right &lt;= left) return true; &#125; if (leftChar != rightChar) return false; left++; right--; &#125; return true; &#125; private Boolean isValid(Character character)&#123; if (Character.isLetterOrDigit(character)) return true; return false; &#125;&#125; python实现1234567891011121314151617181920212223242526272829303132333435class Solution: def palindrome(self, str): if str.strip() == "": return True str = str.lower() left = 0 right = len(str) - 1 while(left &lt; right): leftStr = str[left] rightStr = str[right] while(not self.__isvalid(leftStr)): left += 1 leftStr = str[left] if(left &gt;= right): return True while(not self.__isvalid(rightStr)): right -= 1 rightStr = str[right] if(right &lt;= left): return True if(leftStr != rightStr): return False left += 1 right -= 1 def __isvalid(self, str): if(str.isalnum()): return True return Falseif __name__=="__main__": str = "A man, a plan, a canal: Panama" solution = Solution() print solution.palindrome(str)]]></content>
       <categories>
         <category>算法</category>
@@ -200,7 +189,7 @@
   </entry>
   <entry>
     <title><![CDATA[leetCode--Two Sum]]></title>
-    <url>%2F2017%2F09%2F30%2FtwoSum%2F</url>
+    <url>%2F2017%2F09%2F30%2FleetCode%2FtwoSum%2F</url>
     <content type="text"><![CDATA[Two Sum原题：Given an array of integers, return indices of the two numbers such that they add up to a specific target.You may assume that each input would have exactly one solution, and you may not use the same element twice. Example: Given nums = [2, 7, 11, 15], target = 9, Because nums[0] + nums[1] = 2 + 7 = 9,return [0, 1]. 翻译：给定一个整数数组，返回两个数字的索引，使它们相加到一个特定的目标。你可以假设每个输入都只有一个解决方案，而你可能不会使用相同的元素两次。 解决思路：第一种可以用两层循环（时间复杂度O(n^2)），实现代码：123456789public int[] twoSum1(int[] tmp, int target) &#123; for (int i = 0; i &lt; tmp.length; i++)&#123; for (int j = i + 1; j &lt; tmp.length; j++)&#123; if (tmp[i] + tmp[j] == target) return new int[]&#123;i, j&#125;; &#125; &#125; throw new IllegalArgumentException("don't have two sum equals target"); &#125; 第二种可以定义一个map然后把数组的值作为key，索引作为value存到map中，循环数组，每次循环用目标值减去该值，用结果作为key去map中查找，找到了返回索引数组，没找到把该次和循环的值和索引作为key和value存入map中，直到找到结果。（时间复杂度O(n)）实现：1234567891011public int[] twoSum(int[] tmp, int target) &#123; Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;(); for (int i = 0; i&lt;tmp.length; i++)&#123; int m = target - tmp[i]; if (map.containsKey(m)) &#123; return new int[] &#123; map.get(m), i &#125;; &#125; map.put(tmp[i], i); &#125; throw new IllegalArgumentException("No two sum solution"); &#125; python实现最近也在学习python，附上python的实现（第二种方案）:1234567891011121314151617class Solution: def twoSum(self, nums, target): map = &#123;&#125; i = 0 for x in nums: if target - x in map: return i,map[target - x] print str(x) + " " + str(i) map[x] = i print map i += 1 returnif __name__=="__main__": a = [5, 4, 9, 3, 7] solution = Solution() print solution.twoSum(a, 10)]]></content>
       <categories>
         <category>算法</category>
@@ -219,8 +208,8 @@
         <category>java</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>java源码</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
