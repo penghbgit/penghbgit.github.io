@@ -4,6 +4,12 @@
     <title><![CDATA[test]]></title>
     <url>%2F2017%2F10%2F17%2Fa%2F</url>
     <content type="text"><![CDATA[This link has no title attribute.a]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>test</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[leetCode--Distribute Candies]]></title>
@@ -87,8 +93,8 @@
         <category>java</category>
       </categories>
       <tags>
-        <tag>java源码</tag>
         <tag>数据结构</tag>
+        <tag>java源码</tag>
       </tags>
   </entry>
   <entry>
@@ -200,8 +206,8 @@
         <category>java</category>
       </categories>
       <tags>
-        <tag>java源码</tag>
         <tag>数据结构</tag>
+        <tag>java源码</tag>
       </tags>
   </entry>
   <entry>
