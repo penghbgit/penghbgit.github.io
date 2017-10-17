@@ -73,16 +73,16 @@
 <meta name="keywords" content="数据结构,算法,leetCode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetCode--Array Partition I">
-<meta property="og:url" content="http://yoursite.com/2017/10/11/arrayPartition1/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/10/11/leetCode/arrayPartition1/index.html">
 <meta property="og:site_name" content="海滨小筑">
 <meta property="og:description" content="Array Partition I原题Given an array of 2n integers, your task is to group these integers into n pairs of integer, say (a1, b1), (a2, b2), …, (an, bn) which makes sum of min(ai, bi) for all i from 1 to n">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2017/10/11/arrayPartition1/jishu.png">
+<meta property="og:image" content="http://yoursite.com/2017/10/11/leetCode/arrayPartition1/jishu.png">
 <meta property="og:updated_time" content="2017-10-11T13:15:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetCode--Array Partition I">
 <meta name="twitter:description" content="Array Partition I原题Given an array of 2n integers, your task is to group these integers into n pairs of integer, say (a1, b1), (a2, b2), …, (an, bn) which makes sum of min(ai, bi) for all i from 1 to n">
-<meta name="twitter:image" content="http://yoursite.com/2017/10/11/arrayPartition1/jishu.png">
+<meta name="twitter:image" content="http://yoursite.com/2017/10/11/leetCode/arrayPartition1/jishu.png">
 
 
 
@@ -112,7 +112,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/11/arrayPartition1/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/11/leetCode/arrayPartition1/"/>
 
 
 
@@ -291,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/11/arrayPartition1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/11/leetCode/arrayPartition1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="彭海滨">
@@ -362,8 +362,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2017/10/11/arrayPartition1/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/10/11/arrayPartition1/" itemprop="commentsCount"></span>
+                <a href="/2017/10/11/leetCode/arrayPartition1/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/10/11/leetCode/arrayPartition1/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -434,7 +434,7 @@
 </blockquote>
 <h3 id="翻译"><a href="#翻译" class="headerlink" title="翻译"></a>翻译</h3><p>大概意思就是给定一个长度为2n的数组，分成n个小组，返回每组中较小值的和sum，使sum尽量大</p>
 <p>解题思路：<br>要取sum为最大值，分组的话就要把两个大的数分在一起，然后以此类推，所以先把数组排序，依次把下标为偶数位的值相加即为所求值。代码实现（java）：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">arrayPairSum</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">       Arrays.sort(nums);</div><div class="line">       <span class="keyword">int</span> res = <span class="number">0</span>;</div><div class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i += <span class="number">2</span>)</div><div class="line">           res += nums[i];</div><div class="line">       <span class="keyword">return</span> res;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
-<p>发现有很多大神的代码执行时间更少，发现他们用的排序算法是计数排序。每隔一个数进行相加：<br><img src="/2017/10/11/arrayPartition1/jishu.png" alt="image"><br>代码实现（python）：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">arrayPairSum</span><span class="params">(self, nums)</span>:</span></div><div class="line">       <span class="keyword">if</span> isinstance(nums, list) <span class="keyword">and</span> len(nums) == <span class="number">0</span>:</div><div class="line">           <span class="keyword">return</span> <span class="number">0</span></div><div class="line">       nums.sort()</div><div class="line">       res = <span class="number">0</span></div><div class="line">       <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(nums), <span class="number">2</span>):</div><div class="line">           res += nums[i]</div><div class="line">       <span class="keyword">return</span> res</div></pre></td></tr></table></figure></p>
+<p>发现有很多大神的代码执行时间更少，发现他们用的排序算法是计数排序。每隔一个数进行相加：<br><img src="/2017/10/11/leetCode/arrayPartition1/jishu.png" alt="image"><br>代码实现（python）：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">arrayPairSum</span><span class="params">(self, nums)</span>:</span></div><div class="line">       <span class="keyword">if</span> isinstance(nums, list) <span class="keyword">and</span> len(nums) == <span class="number">0</span>:</div><div class="line">           <span class="keyword">return</span> <span class="number">0</span></div><div class="line">       nums.sort()</div><div class="line">       res = <span class="number">0</span></div><div class="line">       <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(nums), <span class="number">2</span>):</div><div class="line">           res += nums[i]</div><div class="line">       <span class="keyword">return</span> res</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -589,7 +589,7 @@ var jiathis_config={
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -684,7 +684,7 @@ var jiathis_config={
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
     <span title="Site words total count">
-      15.8k
+      16.0k
     </span>
   
 </div>
