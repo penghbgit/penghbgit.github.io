@@ -73,18 +73,18 @@
 <meta name="keywords" content="java源码,操作系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Thread源码分析">
-<meta property="og:url" content="http://yoursite.com/2017/10/10/thread/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/10/10/java/thread/index.html">
 <meta property="og:site_name" content="海滨小筑">
 <meta property="og:description" content="什么是线程？线程可以理解为在进程中独立运行的子任务。线程是CPU调度的最基本单元。线程的资源开销相对于进程的开销是相对较少的，所以我们一般创建线程执行，而不是进程执行。java中要创建一个线程可以继承Thread类和实现Runnable接口。 注意：多线程是异步的。 下面我们来看一下Thread类的源码。12publicclass Thread implements Runnable 从上面的代码">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2017/10/10/thread/join.jpg">
-<meta property="og:image" content="http://yoursite.com/2017/10/10/thread/javaStatus.jpg">
-<meta property="og:image" content="http://yoursite.com/2017/10/10/thread/systemStatus.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/10/10/java/thread/join.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/10/10/java/thread/javaStatus.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/10/10/java/thread/systemStatus.jpg">
 <meta property="og:updated_time" content="2017-10-10T15:28:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Thread源码分析">
 <meta name="twitter:description" content="什么是线程？线程可以理解为在进程中独立运行的子任务。线程是CPU调度的最基本单元。线程的资源开销相对于进程的开销是相对较少的，所以我们一般创建线程执行，而不是进程执行。java中要创建一个线程可以继承Thread类和实现Runnable接口。 注意：多线程是异步的。 下面我们来看一下Thread类的源码。12publicclass Thread implements Runnable 从上面的代码">
-<meta name="twitter:image" content="http://yoursite.com/2017/10/10/thread/join.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2017/10/10/java/thread/join.jpg">
 
 
 
@@ -114,7 +114,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/10/thread/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/10/java/thread/"/>
 
 
 
@@ -293,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/10/thread/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/10/java/thread/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="彭海滨">
@@ -364,8 +364,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2017/10/10/thread/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/10/10/thread/" itemprop="commentsCount"></span>
+                <a href="/2017/10/10/java/thread/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/10/10/java/thread/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -486,7 +486,7 @@
 <h4 id="suspend"><a href="#suspend" class="headerlink" title="suspend"></a>suspend</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//暂停一个线程（不推荐使用）依靠本地方法suspend0，可能会造成死锁和不同步</span></div><div class="line"><span class="meta">@Deprecated</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">suspend</span><span class="params">()</span> </span>&#123;</div><div class="line">       checkAccess();</div><div class="line">       suspend0();</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
 <h4 id="resume"><a href="#resume" class="headerlink" title="resume"></a>resume</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//重新激活一个线程（不推荐使用）依靠本地方法resume0，可能会造成死锁和不同步</span></div><div class="line"><span class="meta">@Deprecated</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">resume</span><span class="params">()</span> </span>&#123;</div><div class="line">       checkAccess();</div><div class="line">       resume0();</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
 <h3 id="join"><a href="#join" class="headerlink" title="join"></a>join</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">join</span><span class="params">(<span class="keyword">long</span> millis)</span></span></div><div class="line"><span class="function">   <span class="keyword">throws</span> InterruptedException </span>&#123;</div><div class="line">       <span class="keyword">long</span> base = System.currentTimeMillis();</div><div class="line">       <span class="keyword">long</span> now = <span class="number">0</span>;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (millis &lt; <span class="number">0</span>) &#123;</div><div class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"timeout value is negative"</span>);</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (millis == <span class="number">0</span>) &#123;</div><div class="line">           <span class="keyword">while</span> (isAlive()) &#123;</div><div class="line">               wait(<span class="number">0</span>);</div><div class="line">           &#125;</div><div class="line">       &#125; <span class="keyword">else</span> &#123;</div><div class="line">           <span class="keyword">while</span> (isAlive()) &#123;</div><div class="line">               <span class="keyword">long</span> delay = millis - now;</div><div class="line">               <span class="keyword">if</span> (delay &lt;= <span class="number">0</span>) &#123;</div><div class="line">                   <span class="keyword">break</span>;</div><div class="line">               &#125;</div><div class="line">               wait(delay);</div><div class="line">               now = System.currentTimeMillis() - base;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<p>join会锁住当前线程，等待子线程结束之后继续执行。如图:<br><img src="/2017/10/10/thread/join.jpg" alt="image"></p>
+<p>join会锁住当前线程，等待子线程结束之后继续执行。如图:<br><img src="/2017/10/10/java/thread/join.jpg" alt="image"></p>
 <h3 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h3><h4 id="exit"><a href="#exit" class="headerlink" title="exit"></a>exit</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//由系统调用，可以使Thread在销毁前释放资源</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">exit</span><span class="params">()</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span> (group != <span class="keyword">null</span>) &#123;</div><div class="line">           group.threadTerminated(<span class="keyword">this</span>);</div><div class="line">           group = <span class="keyword">null</span>;</div><div class="line">       &#125;</div><div class="line">       target = <span class="keyword">null</span>;</div><div class="line">       <span class="comment">/* Speed the release of some of these resources */</span></div><div class="line">       threadLocals = <span class="keyword">null</span>;</div><div class="line">       inheritableThreadLocals = <span class="keyword">null</span>;</div><div class="line">       inheritedAccessControlContext = <span class="keyword">null</span>;</div><div class="line">       blocker = <span class="keyword">null</span>;</div><div class="line">       uncaughtExceptionHandler = <span class="keyword">null</span>;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
 <h4 id="checkAccess"><a href="#checkAccess" class="headerlink" title="checkAccess"></a>checkAccess</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//确定当前运行的线程是否有权限修改此线程。</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">checkAccess</span><span class="params">()</span> </span>&#123;</div><div class="line">       SecurityManager security = System.getSecurityManager();</div><div class="line">       <span class="keyword">if</span> (security != <span class="keyword">null</span>) &#123;</div><div class="line">           security.checkAccess(<span class="keyword">this</span>);</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
 <h4 id="dumpStack"><a href="#dumpStack" class="headerlink" title="dumpStack"></a>dumpStack</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//将当前线程的堆栈跟踪打印到标准错误流。此方法仅用于调试。</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">dumpStack</span><span class="params">()</span> </span>&#123;</div><div class="line">       <span class="keyword">new</span> Exception(<span class="string">"Stack trace"</span>).printStackTrace();</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
@@ -500,8 +500,8 @@
 <li>TIME_WAITING：超时等待，可以在指定的时间内自行返回；</li>
 <li>TERMINATED：终止状态，线程执行完毕。</li>
 </ul>
-<p>java层次的状态转换图<br><img src="/2017/10/10/thread/javaStatus.jpg" alt="image"></p>
-<p>操作系统层次的状态转换图<br><img src="/2017/10/10/thread/systemStatus.jpg" alt="image"></p>
+<p>java层次的状态转换图<br><img src="/2017/10/10/java/thread/javaStatus.jpg" alt="image"></p>
+<p>操作系统层次的状态转换图<br><img src="/2017/10/10/java/thread/systemStatus.jpg" alt="image"></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="wait-和notify-notifyAll"><a href="#wait-和notify-notifyAll" class="headerlink" title="wait()和notify/notifyAll()"></a>wait()和notify/notifyAll()</h3><p>线程中常用wait()和notify/notifyAll()方法，这是Object类中的方法。</p>
 <h4 id="wait"><a href="#wait" class="headerlink" title="wait()"></a>wait()</h4><p>线程进入WAITING状态，并且释放掉它所占有的“锁标志”，从而使别的线程有机会抢占该锁，等待其他线程调用“锁标志“对象的notify或notifyAll方法恢复<br>wait方法是一个本地方法，其底层是通过一个叫做监视器锁的对象来完成的，所以调用wait方式时必须获取到monitor对象的所有权即通过Synchronized关键字，否则抛出IllegalMonitorStateException异常</p>
 <h4 id="notify-amp-notifyAll"><a href="#notify-amp-notifyAll" class="headerlink" title="notify &amp; notifyAll()"></a>notify &amp; notifyAll()</h4><p>在同一对象上去调用notify/notifyAll方法，就可以唤醒对应对象monitor上等待的线程了。notify和notifyAll的区别在于前者只能唤醒monitor上的一个线程，对其他线程没有影响，而notifyAll则唤醒所有的线程</p>
@@ -659,7 +659,7 @@ var jiathis_config={
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -754,7 +754,7 @@ var jiathis_config={
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
     <span title="Site words total count">
-      16.0k
+      17.7k
     </span>
   
 </div>

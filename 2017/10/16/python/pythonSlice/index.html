@@ -73,16 +73,16 @@
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python--切片">
-<meta property="og:url" content="http://yoursite.com/2017/10/16/pythonSlice/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/10/16/python/pythonSlice/index.html">
 <meta property="og:site_name" content="海滨小筑">
 <meta property="og:description" content="什么是切片？可以用方括号加一个下标的方式访问序列的每一个元素，或者通过在方括号中用冒号把开始下标和结束下标分开的方式访问一组连续的元素。序列类型是其元素被顺序放置的一种数据类型结构，这种方式允许通过指定下标的方式来获取某一个数据元素，或者通过指定下标范围来获得一组序列的元素。这种访问序列的方式叫做切片，我们通过切片操作符就可以实现这个操作。 切片操作符[]sequence[index]sequen">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2017/10/16/pythonSlice/slice1.png">
+<meta property="og:image" content="http://yoursite.com/2017/10/16/python/pythonSlice/slice1.png">
 <meta property="og:updated_time" content="2017-10-16T11:51:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python--切片">
 <meta name="twitter:description" content="什么是切片？可以用方括号加一个下标的方式访问序列的每一个元素，或者通过在方括号中用冒号把开始下标和结束下标分开的方式访问一组连续的元素。序列类型是其元素被顺序放置的一种数据类型结构，这种方式允许通过指定下标的方式来获取某一个数据元素，或者通过指定下标范围来获得一组序列的元素。这种访问序列的方式叫做切片，我们通过切片操作符就可以实现这个操作。 切片操作符[]sequence[index]sequen">
-<meta name="twitter:image" content="http://yoursite.com/2017/10/16/pythonSlice/slice1.png">
+<meta name="twitter:image" content="http://yoursite.com/2017/10/16/python/pythonSlice/slice1.png">
 
 
 
@@ -112,7 +112,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/16/pythonSlice/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/16/python/pythonSlice/"/>
 
 
 
@@ -291,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/16/pythonSlice/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/16/python/pythonSlice/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="彭海滨">
@@ -362,8 +362,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2017/10/16/pythonSlice/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/10/16/pythonSlice/" itemprop="commentsCount"></span>
+                <a href="/2017/10/16/python/pythonSlice/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/10/16/python/pythonSlice/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -428,7 +428,7 @@
 
       
         <h2 id="什么是切片？"><a href="#什么是切片？" class="headerlink" title="什么是切片？"></a>什么是切片？</h2><p>可以用方括号加一个下标的方式访问序列的每一个元素，或者通过在方括号中用冒号把开始下标和结束下标分开的方式访问一组连续的元素。序列类型是其元素被顺序放置的一种数据类型结构，这种方式允许通过指定下标的方式来获取某一个数据元素，或者通过指定下标范围来获得一组序列的元素。这种访问序列的方式叫做切片，我们通过切片操作符就可以实现这个操作。</p>
-<h2 id="切片操作符"><a href="#切片操作符" class="headerlink" title="切片操作符"></a>切片操作符</h2><h3 id=""><a href="#" class="headerlink" title="[]"></a>[]</h3><p>sequence[index]<br>sequence是序列的名字，index是想要访问元素对应的偏移量。可以使用0到最大值，也可以使用负值。正索引以序列的开始为起点，负索引以序列的结束为起点。如图(引用):<br><img src="/2017/10/16/pythonSlice/slice1.png" alt="image"></p>
+<h2 id="切片操作符"><a href="#切片操作符" class="headerlink" title="切片操作符"></a>切片操作符</h2><h3 id=""><a href="#" class="headerlink" title="[]"></a>[]</h3><p>sequence[index]<br>sequence是序列的名字，index是想要访问元素对应的偏移量。可以使用0到最大值，也可以使用负值。正索引以序列的开始为起点，负索引以序列的结束为起点。如图(引用):<br><img src="/2017/10/16/python/pythonSlice/slice1.png" alt="image"></p>
 <h3 id="-1"><a href="#-1" class="headerlink" title="[:]"></a>[:]</h3><p>sequence[start_index: end_index]<br>通过这种方式可以得到起始索引到结束索引之间的数据。如果没有提供切片会从序列的最开始处开始，直到最末尾处结束。</p>
 <h3 id="-2"><a href="#-2" class="headerlink" title="[::]"></a>[::]</h3><p>sequence[start_index: end_index: delta]<br>delta变化量（步长），可以把这个参数当做for循环里的步长一样的东西。</p>
 <p>注意:</p>
@@ -475,7 +475,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/15/hashMap/" rel="next" title="HashMap源码分析">
+              <a href="/2017/10/15/java/hashMap/" rel="next" title="HashMap源码分析">
                 <i class="fa fa-chevron-left"></i> HashMap源码分析
               </a>
             
@@ -485,7 +485,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/10/16/pythonSet/" rel="prev" title="python内置函数--set">
+              <a href="/2017/10/16/python/pythonSet/" rel="prev" title="python内置函数--set">
                 python内置函数--set <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -595,7 +595,7 @@ var jiathis_config={
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -690,7 +690,7 @@ var jiathis_config={
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
     <span title="Site words total count">
-      16.0k
+      17.7k
     </span>
   
 </div>
