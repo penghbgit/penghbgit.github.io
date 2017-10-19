@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode--Fizz Buzz]]></title>
+    <url>%2F2017%2F10%2F19%2FleetCode%2FfizzBuzz%2F</url>
+    <content type="text"><![CDATA[Fizz Buzz原题：Write a program that outputs the string representation of numbers from 1 to n. But for multiples of three it should output “Fizz” instead of the number and for the multiples of five output “Buzz”. For numbers which are multiples of both three and five output “FizzBuzz”. Example n = 15,Return:[ “1”, “2”, “Fizz”, “4”, “Buzz”, “Fizz”, “7”, “8”, “Fizz”, “Buzz”, “11”, “Fizz”, “13”, “14”, “FizzBuzz”] 题目大意输入一个数，遍历的输出从1到这个数，遇到三的倍数输出“Fizz”，遇到5的倍数输出“Buzz”，遇到3和5共同的倍数输出“FizzBuzz”。 解题思路循环判断。代码实现（java）：123456789101112class Solution &#123; public List&lt;String&gt; fizzBuzz(int n) &#123; List&lt;String&gt; list = new ArrayList&lt;&gt;(); for(int i = 1; i &lt; n + 1; i++)&#123; if (i % 15 == 0) list.add("FizzBuzz"); else if (i % 3 == 0) list.add("Fizz"); else if (i % 5 == 0) list.add("Buzz"); else list.add(String.valueOf(i)); &#125; return list; &#125;&#125; AC后看到一位大神的代码，他是重写了AbstractList中的get方法，代码实现：123456789101112131415161718192021222324class Solution &#123; private int size = 0; private final List&lt;String&gt; fizzbuzzList = new AbstractList&lt;String&gt;() &#123; @Override public String get(int index) &#123; final int i = index + 1; return i % 15 == 0 ? "FizzBuzz" : i % 5 == 0 ? "Buzz" : i % 3 == 0 ? "Fizz" : String.valueOf(i); &#125; @Override public int size() &#123; return Solution.this.size; &#125; &#125;; public List&lt;String&gt; fizzBuzz(int n)&#123; this.size = n; return fizzbuzzList; &#125;&#125; python实现：123456789101112131415class Solution(object): def fizzBuzz(self, n): res = []; x = 1 while x &lt;= n: if x % 3 == 0 and x % 5 == 0: res.append("FizzBuzz") elif x % 3 == 0: res.append("Fizz") elif x % 5 == 0: res.append("Buzz") else: res.append(str(x)) x += 1 return res]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数据结构</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Threadlocal--源码分析]]></title>
     <url>%2F2017%2F10%2F18%2Fjava%2FthreadLocal%2F</url>
     <content type="text"><![CDATA[Threadlocal详解这个类其实并不是一个线程，只是Thread的一个局部变量。看看官网的解释： 该类提供线程本地变量。这些变量与一般的变量不同，每个线程访问一个线程（通过get或set方法）有自己独立的变量初始化副本。 参数threadLocalHashCode每个对象都有一个HashCode来标示自己的唯一性1234567891011/** * ThreadLocals rely on per-thread linear-probe hash maps attached * to each thread (Thread.threadLocals and * inheritableThreadLocals). The ThreadLocal objects act as keys, * searched via threadLocalHashCode. This is a custom hash code * (useful only within ThreadLocalMaps) that eliminates collisions * in the common case where consecutively constructed ThreadLocals * are used by the same threads, while remaining well-behaved in * less common cases. */ private final int threadLocalHashCode = nextHashCode(); nextHashCode原子类保证线程安全，保证每个对象的hashcode唯一，并且是静态的123456/** * The next hash code to be given out. Updated atomically. Starts at * zero. */ private static AtomicInteger nextHashCode = new AtomicInteger(); HASH_INCREMENT是为了减少碰撞选定的这个值123456/** * The difference between successively generated hash codes - turns * implicit sequential thread-local IDs into near-optimally spread * multiplicative hash values for power-of-two-sized tables. */ private static final int HASH_INCREMENT = 0x61c88647; nextHashCode()返回原始值，加上HASH_INCREMENT.为了让哈希码能均匀的分布在2的N次方的数组里, 即 Entry[] table123456/** * Returns the next hash code. */ private static int nextHashCode() &#123; return nextHashCode.getAndAdd(HASH_INCREMENT); &#125; 方法initialValue123protected T initialValue() &#123; return null; &#125; 返回此线程局部变量的当前线程的初始值。返回值为null需要子类覆盖这个方法。 withInitial123public static &lt;S&gt; ThreadLocal&lt;S&gt; withInitial(Supplier&lt;? extends S&gt; supplier) &#123; return new SuppliedThreadLocal&lt;&gt;(supplier); &#125; 创建线程局部变量。SuppliedThreadLocal类 get()123456789101112131415161718192021public T get() &#123; //获取当前线程t Thread t = Thread.currentThread(); //返回当前线程t的成员变量ThreadLocalMap ThreadLocalMap map = getMap(t); //map不为null，则获取以当前线程为key的ThreadLocalMap的Entry，如果e不为null，则直接返回该Entry的value； if (map != null) &#123; ThreadLocalMap.Entry e = map.getEntry(this); if (e != null) &#123; @SuppressWarnings("unchecked") T result = (T)e.value; return result; &#125; &#125; //如果map为null或者e为null，返回setInitialValue()的值。setInitialValue()调用重写的initialValue()返回新值（如果没有重写initialValue将返回默认值null），并将新值存入当前线程的ThreadLocalMap（如果当前线程没有ThreadLocalMap，会先创建一个）。 return setInitialValue(); &#125; ThreadLocalMap getMap(Thread t) &#123; return t.threadLocals; &#125; 返回该线程局部变量的当前线程的值复制。如果变量当前线程没有值，setInitialValue需要从初始化的地方取值。 setInitialValue初始化值的方法1234567891011121314151617private T setInitialValue() &#123; //调用重写的initialValue，返回新值 T value = initialValue(); Thread t = Thread.currentThread(); ThreadLocalMap map = getMap(t); //当前线程的ThreadLocalMap不为空，则直接赋值 if (map != null) map.set(this, value); // 为当前线程创造一个ThreadLocalMap(this, firstValue)并赋初值，this为当前线程 else createMap(t, value); return value; &#125; void createMap(Thread t, T firstValue) &#123; t.threadLocals = new ThreadLocalMap(this, firstValue); &#125; set12345678public void set(T value) &#123; Thread t = Thread.currentThread(); ThreadLocalMap map = getMap(t); if (map != null) map.set(this, value); else createMap(t, value); &#125; ThreadLocalMap下面看看ThreadLocal重要的内部类–ThreadLocalMapThreadLocalMap 是定义在 ThreadLocal 中的静态内部类，它是一种 Hash 的 Map，以 ThreadLocal 为 Key。但是 并不是用的继承自 Object 对象的 hashcode() 方法产生 hash 值 常量123456789101112131415161718192021222324/** * The initial capacity -- MUST be a power of two. */ //Map的初始容量 private static final int INITIAL_CAPACITY = 16; /** * The table, resized as necessary. * table.length MUST always be a power of two. */ //Entry类型的数组，用于存储数据 private Entry[] table; /** * The number of entries in the table. */ //表中的存储数目 private int size = 0; /** * The next size value at which to resize. */ //需要扩容时对应size的阈值。 private int threshold; // Default to 0 构造方法构造函数的第一个参数就是本ThreadLocal实例(this)，第二个参数就是要保存的线程本地变量。构造函数首先创建一个长度为16的Entry数组，然后计算出firstKey对应的哈希值，然后存储到table中，并设置size和threshold。注意一个细节，计算hash的时候里面采用了hashCode &amp; (size - 1)的算法，这相当于取模运算hashCode % size的一个更高效的实现（和HashMap中的思路相同）。正是因为这种算法，我们要求size必须是2的指数，因为这可以使得hash发生冲突的次数减小。1234567ThreadLocalMap(ThreadLocal&lt;?&gt; firstKey, Object firstValue) &#123; table = new Entry[INITIAL_CAPACITY]; int i = firstKey.threadLocalHashCode &amp; (INITIAL_CAPACITY - 1); table[i] = new Entry(firstKey, firstValue); size = 1; setThreshold(INITIAL_CAPACITY); &#125; set123456789101112131415161718192021222324252627282930313233343536private void set(ThreadLocal&lt;?&gt; key, Object value) &#123; // We don't use a fast path as with get() because it is at // least as common to use set() to create new entries as // it is to replace existing ones, in which case, a fast // path would fail more often than not. Entry[] tab = table; int len = tab.length; int i = key.threadLocalHashCode &amp; (len-1); for (Entry e = tab[i]; e != null; e = tab[i = nextIndex(i, len)]) &#123; ThreadLocal&lt;?&gt; k = e.get(); if (k == key) &#123; e.value = value; return; &#125; if (k == null) &#123; replaceStaleEntry(key, value, i); return; &#125; &#125; tab[i] = new Entry(key, value); int sz = ++size; if (!cleanSomeSlots(i, sz) &amp;&amp; sz &gt;= threshold) rehash(); &#125; private static int nextIndex(int i, int len) &#123; return ((i + 1 &lt; len) ? i + 1 : 0); &#125; 这里面解决冲突的方式和hashMap不同。如果key == null的话 替换当前的key和value。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657private void replaceStaleEntry(ThreadLocal&lt;?&gt; key, Object value, int staleSlot) &#123; Entry[] tab = table; int len = tab.length; Entry e; // Back up to check for prior stale entry in current run. // We clean out whole runs at a time to avoid continual // incremental rehashing due to garbage collector freeing // up refs in bunches (i.e., whenever the collector runs). int slotToExpunge = staleSlot; for (int i = prevIndex(staleSlot, len); (e = tab[i]) != null; i = prevIndex(i, len)) if (e.get() == null) slotToExpunge = i; // Find either the key or trailing null slot of run, whichever // occurs first for (int i = nextIndex(staleSlot, len); (e = tab[i]) != null; i = nextIndex(i, len)) &#123; ThreadLocal&lt;?&gt; k = e.get(); // If we find key, then we need to swap it // with the stale entry to maintain hash table order. // The newly stale slot, or any other stale slot // encountered above it, can then be sent to expungeStaleEntry // to remove or rehash all of the other entries in run. if (k == key) &#123; e.value = value; tab[i] = tab[staleSlot]; tab[staleSlot] = e; // Start expunge at preceding stale entry if it exists if (slotToExpunge == staleSlot) slotToExpunge = i; cleanSomeSlots(expungeStaleEntry(slotToExpunge), len); return; &#125; // If we didn't find stale entry on backward scan, the // first stale entry seen while scanning for key is the // first still present in the run. if (k == null &amp;&amp; slotToExpunge == staleSlot) slotToExpunge = i; &#125; // If key not found, put new entry in stale slot tab[staleSlot].value = null; tab[staleSlot] = new Entry(key, value); // If there are any other stale entries in run, expunge them if (slotToExpunge != staleSlot) cleanSomeSlots(expungeStaleEntry(slotToExpunge), len); &#125; 该方法中会清理没用的entry,调用cleanSomeSlots方法实现的。123456789101112131415private boolean cleanSomeSlots(int i, int n) &#123; boolean removed = false; Entry[] tab = table; int len = tab.length; do &#123; i = nextIndex(i, len); Entry e = tab[i]; if (e != null &amp;&amp; e.get() == null) &#123; n = len; removed = true; i = expungeStaleEntry(i); &#125; &#125; while ( (n &gt;&gt;&gt;= 1) != 0); return removed; &#125; 总结1.线程间数据隔离（每个线程在自己线程里使用自己的局部变量，各线程间的ThreadLocal对象互不影响）；2.ThreadLocal的应用场景非常多，（获取数据库连接，各大框架都有应用，比如Spring）3.每个Thread里都含有一个ThreadLocalMap的成员变量；4.当应用线程池的时候，由于线程池的线程一般会复用，Thread不结束，这时候用完更需要remove了。5.对于多线程资源共享的问题，同步机制采用了“以时间换空间”的方式，而ThreadLocal采用了“以空间换时间”的方式。前者仅提供一份变量，让不同的线程排队访问；而后者为每一个线程都提供了一份变量，因此可以同时访问而互不影响。]]></content>
@@ -13,7 +26,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetCode--Distribute Candies]]></title>
+    <title><![CDATA[LeetCode--Distribute Candies]]></title>
     <url>%2F2017%2F10%2F16%2FleetCode%2FdistributeCandies%2F</url>
     <content type="text"><![CDATA[Distribute Candies原题：Given an integer array with even length, where different numbers in this array represent different kinds of candies. Each number means one candy of the corresponding kind. You need to distribute these candies equally in number to brother and sister. Return the maximum number of kinds of candies the sister could gain. You need to return the sum of the points you could get in all the rounds. Example1 Input: candies = [1,1,2,2,3,3]Output: 3Explanation:There are three different kinds of candies (1, 2 and 3), and two candies for each kind.Optimal distribution: The sister has candies [1,2,3] and the brother has candies [1,2,3], too.The sister has three different kinds of candies. Example2 Input: candies = [1,1,2,3]Output: 2Explanation: For example, the sister has candies [2,3] and the brother has candies [1,1].The sister has two different kinds of candies, the brother has only one kind of candies. Note The length of the given array is in range [2, 10,000], and will be even. The number in given array is in range [-100,000, 100,000]. 题目大意把不同种类的糖平均分两份，一份哥哥一份妹妹，求妹妹获得糖的最多种类数 解题思路求出糖的种类，如果种类大于糖数量的一半，则妹妹最多分的数量为糖数量的一半，否则为糖的种类两种实现（java）：代码实现（java）：1234567891011class Solution &#123; public int distributeCandies(int[] candies) &#123; Set&lt;Integer&gt; set = new HashSet&lt;&gt;(); for(int candy : candies)&#123; set.add(candy); &#125; if (set.size() &gt; candies.length/2) return candies.length/2; return set.size(); &#125;&#125; 123456789class Solution &#123; public int distributeCandies(int[] candies) &#123; Set&lt;Integer&gt; set = new HashSet&lt;&gt;(); for(int candy : candies)&#123; set.add(candy); &#125; return Math.min(set.size(), candies.length &gt;&gt; 1); &#125;&#125; python实现：123class Solution(object): def distributeCandies(self, candies): return min(len(set(candies)), len(candies) &gt;&gt; 1)]]></content>
       <categories>
@@ -21,12 +34,12 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>leetCode</tag>
         <tag>数据结构</tag>
+        <tag>LeetCode</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetCode--Baseball Game]]></title>
+    <title><![CDATA[LeetCode--Baseball Game]]></title>
     <url>%2F2017%2F10%2F16%2FleetCode%2FbaseballGame%2F</url>
     <content type="text"><![CDATA[Baseball Game原题：You’re now a baseball game point recorder. Given a list of strings, each string can be one of the 4 following types: 1.Integer (one round’s score): Directly represents the number of points you get in this round.2.”+” (one round’s score): Represents that the points you get in this round are the sum of the last two valid round’s points.3.”D” (one round’s score): Represents that the points you get in this round are the doubled data of the last valid round’s points.4.”C” (an operation, which isn’t a round’s score): Represents the last valid round’s points you get were invalid and should be removed.Each round’s operation is permanent and could have an impact on the round before and the round after. You need to return the sum of the points you could get in all the rounds. Example1 Input: [“5”,”2”,”C”,”D”,”+”]Output: 30Explanation:Round 1: You could get 5 points. The sum is: 5.Round 2: You could get 2 points. The sum is: 7.Operation 1: The round 2’s data was invalid. The sum is: 5.Round 3: You could get 10 points (the round 2’s data has been removed). The sum is: 15.Round 4: You could get 5 + 10 = 15 points. The sum is: 30. Example2 Input: [“5”,”-2”,”4”,”C”,”D”,”9”,”+”,”+”]Output: 27Explanation:Round 1: You could get 5 points. The sum is: 5.Round 2: You could get -2 points. The sum is: 3.Round 3: You could get 4 points. The sum is: 7.Operation 1: The round 3’s data is invalid. The sum is: 3.Round 4: You could get -4 points (the round 3’s data has been removed). The sum is: -1.Round 5: You could get 9 points. The sum is: 8.Round 6: You could get -4 + 9 = 5 points. The sum is 13.Round 7: You could get 9 + 5 = 14 points. The sum is 27. Note The size of the input list will be between 1 and 1000. Every integer represented in the list will be between -30000 and 30000. 题目大意输入一组字符串：1.数字表示分数2.’+’表示当前轮次的分数等于上两轮分数之和3.’D’表示当前轮次的分数等于上一轮分数加倍4.’C’表示清除上一次的分数 解题思路根据不同的情况做判断，先想到了栈，然后又想到了数组。两种实现（java）：代码实现（java）：1234567891011121314151617181920212223class Solution &#123; public int calPoints(String[] ops) &#123; if (ops == null || ops.length == 0) return 0; Stack&lt;Integer&gt; stack = new Stack&lt;&gt;(); int res = 0; for (String op : ops)&#123; if ("C".equals(op))&#123; res -= stack.pop(); &#125;else if ("D".equals(op))&#123; stack.push(stack.peek() * 2); res += stack.peek(); &#125;else if ("+".equals(op))&#123; stack.push(stack.peek() + stack.get(stack.size()-2)); res += stack.peek(); &#125;else &#123; stack.push(Integer.valueOf(op)); res += stack.peek(); &#125; &#125; return res; &#125;&#125; 用栈实现运行时间11ms，用数组实现运行时间8ms，见代码：123456789101112131415161718192021222324252627class Solution &#123; public int calPoints(String[] ops) &#123; if (ops == null || ops.length == 0) return 0; int[] points = new int[ops.length]; int top = -1; int res = 0; for(String op : ops)&#123; if("C".equals(op))&#123; res -= points[top--]; &#125;else if("D".equals(op))&#123; int p = points[top]*2; points[++top] = p; res += p; &#125;else if("+".equals(op))&#123; int p = points[top] + points[top - 1]; points[++top] = p; res += p; &#125;else&#123; int p = Integer.parseInt(op); points[++top] = p ; res += p; &#125; &#125; return res; &#125;&#125; python实现：12345678910111213141516class Solution(object): def calPoints(self, ops): res = 0 points = [] top = -1 for op in ops: if op == "C": points.pop() elif op == "D": points.append(points[-1] * 2) elif op == "+": points.append(points[-1] + points[-2]) else: points.append(int(op)) return sum(points)]]></content>
       <categories>
@@ -34,12 +47,12 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>leetCode</tag>
         <tag>数据结构</tag>
+        <tag>LeetCode</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetCode--Reverse String]]></title>
+    <title><![CDATA[LeetCode--Reverse String]]></title>
     <url>%2F2017%2F10%2F16%2FleetCode%2FreverseString%2F</url>
     <content type="text"><![CDATA[Reverse String原题：Write a function that takes a string as input and returns the string reversed. Example Given s = “hello”, return “olleh”. 翻译相对简单，就是翻转一个字符串。 代码实现（java）：12345class Solution &#123; public String reverseString(String s) &#123; return new StringBuilder(s).reverse().toString(); &#125;&#125; 用StringBuilder的reverse()运行时间用了4ms。尝试用了异或位运算，用时减少了一倍，变为2ms，代码实现：12345678910111213141516class Solution &#123; public String reverseString(String s) &#123; char[] str = s.toCharArray(); int begin = 0; int end = s.length() - 1; while (begin &lt; end) &#123; str[begin] = (char) (str[begin] ^ str[end]); str[end] = (char) (str[begin] ^ str[end]); str[begin] = (char) (str[end] ^ str[begin]); begin++; end--; &#125; return new String(str); &#125;&#125; python实现：123class Solution(object): def reverseString(self, s): return s[::-1]]]></content>
       <categories>
@@ -47,12 +60,12 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>leetCode</tag>
         <tag>数据结构</tag>
+        <tag>LeetCode</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetCode--Reverse Words in a String III]]></title>
+    <title><![CDATA[LeetCode--Reverse Words in a String III]]></title>
     <url>%2F2017%2F10%2F16%2FleetCode%2FreverseWords3%2F</url>
     <content type="text"><![CDATA[Reverse Words in a String III原题：Given a string, you need to reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order. Example Input: “Let’s take LeetCode contest”Output: “s’teL ekat edoCteeL tsetnoc” NoteIn the string, each word is separated by single space and there will not be any extra space in the string. 翻译大意就是给定一个list输出每个单词的顺序原来不变，单词的顺序反转。 解题思路根据空格拆分，然后依次反转每个单词。代码实现（java）：1234567891011121314151617class Solution &#123; public String reverseWords(String s) &#123; String[] strs = s.split(" "); StringBuilder sb = new StringBuilder(); boolean t = true; for(String str : strs)&#123; String resWord = new StringBuilder(str).reverse().toString(); if(t)&#123; sb.append(resWord); t = false; &#125;else&#123; sb.append(" ").append(resWord); &#125; &#125; return sb.toString(); &#125;&#125; python实现：1234567class Solution(object): def reverseWords(self, s): list = s.split() k = [] for n in list: k.append(n[::-1]) return ' '.join(k)]]></content>
       <categories>
@@ -60,12 +73,12 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>leetCode</tag>
         <tag>数据结构</tag>
+        <tag>LeetCode</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetCode--keyboardRow]]></title>
+    <title><![CDATA[LeetCode--keyboardRow]]></title>
     <url>%2F2017%2F10%2F16%2FleetCode%2FkeyboardRow%2F</url>
     <content type="text"><![CDATA[Keyboard Row原题：Given a List of words, return the words that can be typed using letters of alphabet on only one row’s of American keyboard like the image below. Example Input: [“Hello”, “Alaska”, “Dad”, “Peace”]Output: [“Alaska”, “Dad”] Note1.You may use one character in the keyboard more than once.2.You may assume the input string will only contain letters of alphabet. 翻译大意就是给定一个list输出单词都在同一行的单词。 解题思路设定每行代表一个数字初始值为0，遍历每个单词如果出现在某一行，则该代表该行的值赋为1.代码实现（java）：12345678910111213141516171819202122232425class Solution &#123; public String[] findWords(String[] words) &#123; String line1 = "QWERTYUIOP"; String line2 = "ASDFGHJKL"; String line3 = "ZXCVBNM"; List&lt;String&gt; res = new ArrayList&lt;String&gt;(); for(String word : words)&#123; char[] ch = word.toUpperCase().toCharArray(); int n1 = 0, n2 = 0, n3 = 0; for(char c : ch)&#123; if(line1.indexOf(c) &gt;= 0) n1 = 1; if(line2.indexOf(c) &gt;= 0) n2 = 1; if(line3.indexOf(c) &gt;= 0) n3 = 1; if(n1 + n2 + n3 &gt; 1) break; &#125; if(n1 + n2 + n3 == 1) res.add(word); &#125; return res.toArray(new String[0]); &#125;&#125; python实现（遍历list中的每个单词放到set中判断set中的单词是否都包含在键盘行中）：12345678910class Solution(object): def findWords(self, words): keyBoards = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"] res = [] for word in words: wordUP = word.upper() for keyBoard in keyBoards: if set(wordUP).issubset(set(keyBoard)): res.append(word) return res]]></content>
       <categories>
@@ -73,8 +86,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>leetCode</tag>
         <tag>数据结构</tag>
+        <tag>LeetCode</tag>
       </tags>
   </entry>
   <entry>
@@ -112,7 +125,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetCode--Two Sum II - Input array is sorted]]></title>
+    <title><![CDATA[LeetCode--Two Sum II - Input array is sorted]]></title>
     <url>%2F2017%2F10%2F14%2FleetCode%2FtwoSum2%2F</url>
     <content type="text"><![CDATA[Two Sum II - Input array is sorted原题：Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number. The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based. You may assume that each input would have exactly one solution and you may not use the same element twice. 翻译大意是给出一个数组（升序）和一个目标数，求数组中的两个数相加正好等于目标数的两个元素的下标 解题思路left代表左下标，right代表右下标，numbers[left] + numbers[right]如果等于target返回两个下标志分别加一，如果大于target，right左移，否则left右移。代码实现（java）：12345678910111213141516class Solution &#123; public int[] twoSum(int[] numbers, int target) &#123; int left = 0; int right = numbers.length - 1; while(right &gt; left)&#123; int res = numbers[left] + numbers[right]; if(res == target) return new int[]&#123;left + 1, right + 1&#125;; else if(res &lt; target) left++; else right--; &#125; return null; &#125;&#125; 代码实现（python）：12345678910111213class Solution(object): def twoSum(self, numbers, target): left = 0 right = len(numbers) - 1 while(right &gt; left): res = numbers[left] + numbers[right] if res == target: return left + 1, right + 1 elif res &lt; target: left += 1 else: right -= 1 return null]]></content>
       <categories>
@@ -120,12 +133,12 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>leetCode</tag>
         <tag>数据结构</tag>
+        <tag>LeetCode</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetCode--Add Digits]]></title>
+    <title><![CDATA[LeetCode--Add Digits]]></title>
     <url>%2F2017%2F10%2F11%2FleetCode%2FaddDigits%2F</url>
     <content type="text"><![CDATA[Add Digits原题Given a non-negative integer num, repeatedly add all its digits until the result has only one digit. Example Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one digit, return it. 翻译大概意思就是给你一个数，把这个数的各个位上的数相加，得到一个新的数，重复下去直到最后相加出来的数为个位数为止。 解题思路：我最开始想的是把每位上的数取出来相加，然后利用递归去做，直到得到符合的答案，原题要求不用循环和递归用O(1)的时间复杂度求出结果，很显然这不符合的。然后想到找规律，发现num%9符合规律，测试发现9%9的时候出现问题，于是改成（num－1）％9+1，代码实现（java）：123public int addDigits(int num) &#123; return (num - 1) % 9 + 1; &#125; 代码实现（python）：1234def addDigits(self, num): if(num == 0): return 0 return (num - 1) % 9 + 1]]></content>
       <categories>
@@ -133,12 +146,12 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>leetCode</tag>
         <tag>数据结构</tag>
+        <tag>LeetCode</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetCode--Array Partition I]]></title>
+    <title><![CDATA[LeetCode--Array Partition I]]></title>
     <url>%2F2017%2F10%2F11%2FleetCode%2FarrayPartition1%2F</url>
     <content type="text"><![CDATA[Array Partition I原题Given an array of 2n integers, your task is to group these integers into n pairs of integer, say (a1, b1), (a2, b2), …, (an, bn) which makes sum of min(ai, bi) for all i from 1 to n as large as possible. Example Input: [1,4,3,2] Output: 4Explanation: n is 2, and the maximum sum of pairs is 4 = &gt;min(1, 2) + min(3, 4). 翻译大概意思就是给定一个长度为2n的数组，分成n个小组，返回每组中较小值的和sum，使sum尽量大 解题思路：要取sum为最大值，分组的话就要把两个大的数分在一起，然后以此类推，所以先把数组排序，依次把下标为偶数位的值相加即为所求值。代码实现（java）：1234567public int arrayPairSum(int[] nums) &#123; Arrays.sort(nums); int res = 0; for(int i = 0; i &lt; nums.length; i += 2) res += nums[i]; return res; &#125; 发现有很多大神的代码执行时间更少，发现他们用的排序算法是计数排序。每隔一个数进行相加：代码实现（python）：12345678def arrayPairSum(self, nums): if isinstance(nums, list) and len(nums) == 0: return 0 nums.sort() res = 0 for i in range(0, len(nums), 2): res += nums[i] return res]]></content>
       <categories>
@@ -146,12 +159,12 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>leetCode</tag>
         <tag>数据结构</tag>
+        <tag>LeetCode</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetCode--Judge Route Circle]]></title>
+    <title><![CDATA[LeetCode--Judge Route Circle]]></title>
     <url>%2F2017%2F10%2F10%2FleetCode%2FjudgeRouteCircle%2F</url>
     <content type="text"><![CDATA[Judge Route Circle原题Initially, there is a Robot at position (0, 0). Given a sequence of its moves, judge if this robot makes a circle, which means it moves back to the original place. The move sequence is represented by a string. And each move is represent by a character. The valid robot moves are R (Right), L (Left), U (Up) and D (down). The output should be true or false representing whether the robot makes a circle. Example Input: “UD”Output: true Input: “LL”Output: false 翻译大概意思就是起点为（0，0），R(右),L(左),U(上)和D(下).给定一串移动的串，判断最后是否回到原点。 解题思路：这是一个横纵坐标移动的问题，向左移动x–，向右x++，向上y++，向下y–，最后判断 x == 0 &amp;&amp; y == 0即可。代码实现（java）：1234567891011121314151617181920212223242526public boolean judgeCircle(String moves) &#123; if(moves == null || "".equals(moves)) return true; int x = 0; int y = 0; for(int i = 0; i&lt;moves.length(); i++)&#123; char c = moves.charAt(i); switch(c)&#123; case 'U': y++; break; case 'D': y--; break; case 'L': x--; break; case 'R': x++; break; &#125; &#125; if(x == 0 &amp;&amp; y == 0) return true; return false; &#125; 也可以判断给定的字符串中UD和LR是否成对的出现。代码实现（python）：12def judgeCircle(self, moves): return moves.count('L') == moves.count('R') and moves.count('U') == moves.count('D')]]></content>
       <categories>
@@ -159,8 +172,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>leetCode</tag>
         <tag>数据结构</tag>
+        <tag>LeetCode</tag>
       </tags>
   </entry>
   <entry>
@@ -176,7 +189,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetCode--Valid Palindrome]]></title>
+    <title><![CDATA[LeetCode--Valid Palindrome]]></title>
     <url>%2F2017%2F10%2F09%2FleetCode%2FvalidPalindrome%2F</url>
     <content type="text"><![CDATA[原题Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases. For example, “A man, a plan, a canal: Panama” is a palindrome.“race a car” is not a palindrome. 翻译：给定一个字符串，判断其是否为一个回文串。只包含字母和数字，忽略大小写。 解题思路利用首尾指针，找到符合条件的索引，进行比较，符合条件进行下一组比较，不相等返回false，直到所有的字母都处理完。 代码实现java实现，时间复杂度O(n).12345678910111213141516171819202122232425262728293031323334353637public class Solution &#123; public Boolean solution(String str)&#123; if(str == null || "".equals(str)) return true; str = str.toLowerCase(); int left = 0; int right = str.length() - 1; while (left &lt; right) &#123; char leftChar = str.charAt(left); char rightChar = str.charAt(right); while (!isValid(leftChar))&#123; left++; leftChar = str.charAt(left); if (left &gt;= right) return true; &#125; while (!isValid(rightChar))&#123; right--; rightChar = str.charAt(right); if (right &lt;= left) return true; &#125; if (leftChar != rightChar) return false; left++; right--; &#125; return true; &#125; private Boolean isValid(Character character)&#123; if (Character.isLetterOrDigit(character)) return true; return false; &#125;&#125; python实现1234567891011121314151617181920212223242526272829303132333435class Solution: def palindrome(self, str): if str.strip() == "": return True str = str.lower() left = 0 right = len(str) - 1 while(left &lt; right): leftStr = str[left] rightStr = str[right] while(not self.__isvalid(leftStr)): left += 1 leftStr = str[left] if(left &gt;= right): return True while(not self.__isvalid(rightStr)): right -= 1 rightStr = str[right] if(right &lt;= left): return True if(leftStr != rightStr): return False left += 1 right -= 1 def __isvalid(self, str): if(str.isalnum()): return True return Falseif __name__=="__main__": str = "A man, a plan, a canal: Panama" solution = Solution() print solution.palindrome(str)]]></content>
       <categories>
@@ -184,8 +197,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>leetCode</tag>
         <tag>数据结构</tag>
+        <tag>LeetCode</tag>
       </tags>
   </entry>
   <entry>
@@ -200,9 +213,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetCode刷题列表]]></title>
+    <title><![CDATA[leetCode题解]]></title>
     <url>%2F2017%2F10%2F01%2FleetCodeList%2F</url>
-    <content type="text"><![CDATA[leetCode是一个非常有用的网站，以下是本人近期刷leetCode的总结，该博文会持续更新。 657.Judge Route Circle561.Array Partition I500.Keyboard Row557.Reverse Words in a String III344.Reverse String682.Baseball Game575.Distribute Candies258.Add Digits1.Two Sum125. Valid Palindrome167. Two Sum II - Input array is sorted]]></content>
+    <content type="text"><![CDATA[leetCode是一个非常有用的网站，以下是本人近期刷leetCode的总结，该博文会持续更新。 657.Judge Route Circle561.Array Partition I500.Keyboard Row557.Reverse Words in a String III344.Reverse String682.Baseball Game575.Distribute Candies258.Add Digits1.Two Sum125. Valid Palindrome167. Two Sum II - Input array is sorted412.Fizz Buzz]]></content>
       <categories>
         <category>算法</category>
       </categories>
@@ -213,7 +226,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetCode--Two Sum]]></title>
+    <title><![CDATA[LeetCode--Two Sum]]></title>
     <url>%2F2017%2F09%2F30%2FleetCode%2FtwoSum%2F</url>
     <content type="text"><![CDATA[Two Sum原题：Given an array of integers, return indices of the two numbers such that they add up to a specific target.You may assume that each input would have exactly one solution, and you may not use the same element twice. Example: Given nums = [2, 7, 11, 15], target = 9, Because nums[0] + nums[1] = 2 + 7 = 9,return [0, 1]. 翻译：给定一个整数数组，返回两个数字的索引，使它们相加到一个特定的目标。你可以假设每个输入都只有一个解决方案，而你可能不会使用相同的元素两次。 解决思路：第一种可以用两层循环（时间复杂度O(n^2)），实现代码：123456789public int[] twoSum1(int[] tmp, int target) &#123; for (int i = 0; i &lt; tmp.length; i++)&#123; for (int j = i + 1; j &lt; tmp.length; j++)&#123; if (tmp[i] + tmp[j] == target) return new int[]&#123;i, j&#125;; &#125; &#125; throw new IllegalArgumentException("don't have two sum equals target"); &#125; 第二种可以定义一个map然后把数组的值作为key，索引作为value存到map中，循环数组，每次循环用目标值减去该值，用结果作为key去map中查找，找到了返回索引数组，没找到把该次和循环的值和索引作为key和value存入map中，直到找到结果。（时间复杂度O(n)）实现：1234567891011public int[] twoSum(int[] tmp, int target) &#123; Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;(); for (int i = 0; i&lt;tmp.length; i++)&#123; int m = target - tmp[i]; if (map.containsKey(m)) &#123; return new int[] &#123; map.get(m), i &#125;; &#125; map.put(tmp[i], i); &#125; throw new IllegalArgumentException("No two sum solution"); &#125; python实现最近也在学习python，附上python的实现（第二种方案）:1234567891011121314151617class Solution: def twoSum(self, nums, target): map = &#123;&#125; i = 0 for x in nums: if target - x in map: return i,map[target - x] print str(x) + " " + str(i) map[x] = i print map i += 1 returnif __name__=="__main__": a = [5, 4, 9, 3, 7] solution = Solution() print solution.twoSum(a, 10)]]></content>
       <categories>
@@ -221,8 +234,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>leetCode</tag>
         <tag>数据结构</tag>
+        <tag>LeetCode</tag>
       </tags>
   </entry>
   <entry>
