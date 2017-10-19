@@ -53,7 +53,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="算法,leetCode,数据结构," />
+  <meta name="keywords" content="算法,数据结构,LeetCode," />
 
 
 
@@ -69,18 +69,20 @@
 
 
 
-<meta name="description" content="leetCode是一个非常有用的网站，以下是本人近期刷leetCode的总结，里面的代码都是AC通过的，该博文会持续更新。 657. Judge Route Circle561. Array Partition I500. Keyboard Row557. Reverse Words in a String III344. Reverse String682. Baseball Game575.">
-<meta name="keywords" content="算法,leetCode,数据结构">
+<meta name="description" content="Island Perimeter原题：You are given a map in form of a two-dimensional integer grid where 1 represents land and 0 represents water. Grid cells are connected horizontally/vertically (not diagonally). The">
+<meta name="keywords" content="算法,数据结构,LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetCode题解">
-<meta property="og:url" content="http://yoursite.com/2017/10/01/leetCodeList/index.html">
+<meta property="og:title" content="LeetCode--Island Perimeter">
+<meta property="og:url" content="http://yoursite.com/2017/10/19/leetCode/islandPerimeter/index.html">
 <meta property="og:site_name" content="海滨小筑">
-<meta property="og:description" content="leetCode是一个非常有用的网站，以下是本人近期刷leetCode的总结，里面的代码都是AC通过的，该博文会持续更新。 657. Judge Route Circle561. Array Partition I500. Keyboard Row557. Reverse Words in a String III344. Reverse String682. Baseball Game575.">
+<meta property="og:description" content="Island Perimeter原题：You are given a map in form of a two-dimensional integer grid where 1 represents land and 0 represents water. Grid cells are connected horizontally/vertically (not diagonally). The">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-19T13:16:31.000Z">
+<meta property="og:image" content="http://yoursite.com/2017/10/19/leetCode/islandPerimeter/island.png">
+<meta property="og:updated_time" content="2017-10-19T13:13:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetCode题解">
-<meta name="twitter:description" content="leetCode是一个非常有用的网站，以下是本人近期刷leetCode的总结，里面的代码都是AC通过的，该博文会持续更新。 657. Judge Route Circle561. Array Partition I500. Keyboard Row557. Reverse Words in a String III344. Reverse String682. Baseball Game575.">
+<meta name="twitter:title" content="LeetCode--Island Perimeter">
+<meta name="twitter:description" content="Island Perimeter原题：You are given a map in form of a two-dimensional integer grid where 1 represents land and 0 represents water. Grid cells are connected horizontally/vertically (not diagonally). The">
+<meta name="twitter:image" content="http://yoursite.com/2017/10/19/leetCode/islandPerimeter/island.png">
 
 
 
@@ -110,13 +112,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/01/leetCodeList/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/19/leetCode/islandPerimeter/"/>
 
 
 
 
 
-  <title>leetCode题解 | 海滨小筑</title>
+  <title>LeetCode--Island Perimeter | 海滨小筑</title>
   
 
 
@@ -289,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/01/leetCodeList/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/19/leetCode/islandPerimeter/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="彭海滨">
@@ -306,7 +308,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">leetCode题解</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode--Island Perimeter</h1>
         
 
         <div class="post-meta">
@@ -318,8 +320,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-01T20:46:32+08:00">
-                2017-10-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T21:09:09+08:00">
+                2017-10-19
               </time>
             
 
@@ -360,8 +362,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2017/10/01/leetCodeList/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/10/01/leetCodeList/" itemprop="commentsCount"></span>
+                <a href="/2017/10/19/leetCode/islandPerimeter/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/10/19/leetCode/islandPerimeter/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -388,7 +390,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  96
+                  354
                 </span>
               
 
@@ -404,7 +406,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -425,8 +427,18 @@
       
 
       
-        <p>leetCode是一个非常有用的网站，以下是本人近期刷leetCode的总结，里面的代码都是AC通过的，该博文会持续更新。</p>
-<p><a href="http://penghb.com/2017/10/10/leetCode/judgeRouteCircle/" target="_blank" rel="external">657. Judge Route Circle</a><br><a href="http://penghb.com/2017/10/11/leetCode/arrayPartition1/" target="_blank" rel="external">561. Array Partition I</a><br><a href="http://penghb.com/2017/10/16/leetCode/keyboardRow/" target="_blank" rel="external">500. Keyboard Row</a><br><a href="http://penghb.com/2017/10/16/leetCode/reverseWords3/" target="_blank" rel="external">557. Reverse Words in a String III</a><br><a href="http://penghb.com/2017/10/16/leetCode/reverseString/" target="_blank" rel="external">344. Reverse String</a><br><a href="http://penghb.com/2017/10/16/leetCode/baseballGame/" target="_blank" rel="external">682. Baseball Game</a><br><a href="http://penghb.com/2017/10/16/leetCode/distributeCandies/" target="_blank" rel="external">575. Distribute Candies</a><br><a href="http://penghb.com/2017/10/11/leetCode/addDigits/" target="_blank" rel="external">258. Add Digits</a><br><a href="http://penghb.com/2017/09/30/leetCode/twoSum/" target="_blank" rel="external">1.Two Sum</a><br><a href="http://penghb.com/2017/10/09/leetCode/validPalindrome/" target="_blank" rel="external">125. Valid Palindrome</a><br><a href="http://penghb.com/2017/10/14/leetCode/twoSum2/" target="_blank" rel="external">167. Two Sum II - Input array is sorted</a><br><a href="http://penghb.com/2017/10/19/leetCode/fizzBuzz/" target="_blank" rel="external">412. Fizz Buzz</a><br><a href="http://penghb.com/2017/10/19/leetCode/reshapeTheMatrix/" target="_blank" rel="external">566. Reshape the Matrix</a><br><a href="http://penghb.com/2017/10/19/leetCode/islandPerimter/" target="_blank" rel="external">463. Island Perimter</a></p>
+        <h2 id="Island-Perimeter"><a href="#Island-Perimeter" class="headerlink" title="Island Perimeter"></a>Island Perimeter</h2><h3 id="原题："><a href="#原题：" class="headerlink" title="原题："></a>原题：</h3><p>You are given a map in form of a two-dimensional integer grid where 1 represents land and 0 represents water. Grid cells are connected horizontally/vertically (not diagonally). The grid is completely surrounded by water, and there is exactly one island (i.e., one or more connected land cells). The island doesn’t have “lakes” (water inside that isn’t connected to the water around the island). One cell is a square with side length 1. The grid is rectangular, width and height don’t exceed 100. Determine the perimeter of the island.</p>
+<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><blockquote>
+<p>[[0,1,0,0],<br> [1,1,1,0],<br> [0,1,0,0],<br> [1,1,0,0]]</p>
+</blockquote>
+<p>Answer: 16<br>Explanation: The perimeter is the 16 yellow stripes in the image below:<br><img src="/2017/10/19/leetCode/islandPerimeter/island.png" alt="image"></p>
+<h4 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h4><ul>
+<li>The height and width of the given matrix is in range [1, 100].</li>
+<li>The given r and c are all positive.</li>
+</ul>
+<h4 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h4><p>给出一个多维数组，为1的元素是岛屿，求岛屿的周长。</p>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>依次判断。<br>代码实现（java）：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">islandPerimeter</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> w = grid.length;</div><div class="line">        <span class="keyword">int</span> h = grid[<span class="number">0</span>].length;</div><div class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; w; i++)&#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; h; j++)&#123;</div><div class="line">                <span class="keyword">if</span>(grid[i][j] == <span class="number">1</span>)&#123;</div><div class="line">                    <span class="keyword">if</span>(i == <span class="number">0</span> || grid[i - <span class="number">1</span>][j] == <span class="number">0</span>)</div><div class="line">                        res++;</div><div class="line">                    <span class="keyword">if</span>(i == w - <span class="number">1</span> || grid[i + <span class="number">1</span>][j] == <span class="number">0</span>)</div><div class="line">                        res++;</div><div class="line">                    <span class="keyword">if</span>(j == <span class="number">0</span> || grid[i][j - <span class="number">1</span>] == <span class="number">0</span>)</div><div class="line">                        res++;</div><div class="line">                    <span class="keyword">if</span>(j == h - <span class="number">1</span> || grid[i][j + <span class="number">1</span>] == <span class="number">0</span>)</div><div class="line">                        res++;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>python实现：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">islandPerimeter</span><span class="params">(self, grid)</span>:</span></div><div class="line">        w = len(grid)</div><div class="line">        h = len(grid[<span class="number">0</span>])</div><div class="line">        res = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(w):</div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(h):</div><div class="line">                <span class="keyword">if</span> grid[i][j] == <span class="number">1</span>:</div><div class="line">                    <span class="keyword">if</span> j<span class="number">-1</span> &lt; <span class="number">0</span> <span class="keyword">or</span> grid[i][j<span class="number">-1</span>] == <span class="number">0</span>:</div><div class="line">                        res += <span class="number">1</span></div><div class="line">                    <span class="keyword">if</span> j+<span class="number">1</span> &gt;= h <span class="keyword">or</span> grid[i][j+<span class="number">1</span>] == <span class="number">0</span>:</div><div class="line">                        res += <span class="number">1</span></div><div class="line">                    <span class="keyword">if</span> i<span class="number">-1</span> &lt; <span class="number">0</span> <span class="keyword">or</span> grid[i<span class="number">-1</span>][j] == <span class="number">0</span>:</div><div class="line">                        res += <span class="number">1</span></div><div class="line">                    <span class="keyword">if</span> i+<span class="number">1</span> &gt;= w <span class="keyword">or</span> grid[i+<span class="number">1</span>][j] == <span class="number">0</span>:</div><div class="line">                        res += <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> res</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -446,9 +458,9 @@
           
             <a href="/tags/算法/" rel="tag"># 算法</a>
           
-            <a href="/tags/leetCode/" rel="tag"># leetCode</a>
-          
             <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
           
         </div>
       
@@ -461,8 +473,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/30/leetCode/twoSum/" rel="next" title="LeetCode--Two Sum">
-                <i class="fa fa-chevron-left"></i> LeetCode--Two Sum
+              <a href="/2017/10/19/leetCode/reshapeTheMatrix/" rel="next" title="LeetCode--Reshape the Matrix">
+                <i class="fa fa-chevron-left"></i> LeetCode--Reshape the Matrix
               </a>
             
           </div>
@@ -470,10 +482,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/08/java/innerClass/" rel="prev" title="内部类">
-                内部类 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -553,8 +561,17 @@ var jiathis_config={
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           
             <img class="site-author-image" itemprop="image"
@@ -619,6 +636,22 @@ var jiathis_config={
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Island-Perimeter"><span class="nav-number">1.</span> <span class="nav-text">Island Perimeter</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原题："><span class="nav-number">1.1.</span> <span class="nav-text">原题：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Example"><span class="nav-number">1.1.1.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Note"><span class="nav-number">1.1.2.</span> <span class="nav-text">Note</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题目大意"><span class="nav-number">1.1.3.</span> <span class="nav-text">题目大意</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解题思路"><span class="nav-number">1.2.</span> <span class="nav-text">解题思路</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

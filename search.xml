@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode--Island Perimeter]]></title>
+    <url>%2F2017%2F10%2F19%2FleetCode%2FislandPerimeter%2F</url>
+    <content type="text"><![CDATA[Island Perimeter原题：You are given a map in form of a two-dimensional integer grid where 1 represents land and 0 represents water. Grid cells are connected horizontally/vertically (not diagonally). The grid is completely surrounded by water, and there is exactly one island (i.e., one or more connected land cells). The island doesn’t have “lakes” (water inside that isn’t connected to the water around the island). One cell is a square with side length 1. The grid is rectangular, width and height don’t exceed 100. Determine the perimeter of the island. Example [[0,1,0,0], [1,1,1,0], [0,1,0,0], [1,1,0,0]] Answer: 16Explanation: The perimeter is the 16 yellow stripes in the image below: Note The height and width of the given matrix is in range [1, 100]. The given r and c are all positive. 题目大意给出一个多维数组，为1的元素是岛屿，求岛屿的周长。 解题思路依次判断。代码实现（java）：12345678910111213141516171819202122class Solution &#123; public int islandPerimeter(int[][] grid) &#123; int w = grid.length; int h = grid[0].length; int res = 0; for (int i = 0; i &lt; w; i++)&#123; for (int j = 0; j &lt; h; j++)&#123; if(grid[i][j] == 1)&#123; if(i == 0 || grid[i - 1][j] == 0) res++; if(i == w - 1 || grid[i + 1][j] == 0) res++; if(j == 0 || grid[i][j - 1] == 0) res++; if(j == h - 1 || grid[i][j + 1] == 0) res++; &#125; &#125; &#125; return res; &#125;&#125; python实现：1234567891011121314151617class Solution(object): def islandPerimeter(self, grid): w = len(grid) h = len(grid[0]) res = 0 for i in range(w): for j in range(h): if grid[i][j] == 1: if j-1 &lt; 0 or grid[i][j-1] == 0: res += 1 if j+1 &gt;= h or grid[i][j+1] == 0: res += 1 if i-1 &lt; 0 or grid[i-1][j] == 0: res += 1 if i+1 &gt;= w or grid[i+1][j] == 0: res += 1 return res]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数据结构</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode--Reshape the Matrix]]></title>
+    <url>%2F2017%2F10%2F19%2FleetCode%2FreshapeTheMatrix%2F</url>
+    <content type="text"><![CDATA[Reshape the Matrix原题：In MATLAB, there is a very useful function called ‘reshape’, which can reshape a matrix into a new one with different size but keep its original data. You’re given a matrix represented by a two-dimensional array, and two positive integers r and c representing the row number and column number of the wanted reshaped matrix, respectively. The reshaped matrix need to be filled with all the elements of the original matrix in the same row-traversing order as they were. If the ‘reshape’ operation with given parameters is possible and legal, output the new reshaped matrix; Otherwise, output the original matrix. Example1 Input:nums =[[1,2], [3,4]]r = 1, c = 4Output:[[1,2,3,4]]Explanation:The row-traversing of nums is [1,2,3,4]. The new reshaped matrix is a 1 * 4 matrix, fill it row by row by using the previous list. Example2 Input:nums =[[1,2], [3,4]]r = 2, c = 4Output:[[1,2], [3,4]]Explanation:There is no way to reshape a 2 2 matrix to a 2 4 matrix. So output the original matrix. Note The height and width of the given matrix is in range [1, 100]. The given r and c are all positive. 题目大意给出多维数组然后转换，不符合要求输出原数组。 解题思路两层循环。代码实现（java）：12345678910111213141516171819class Solution &#123; public int[][] matrixReshape(int[][] nums, int r, int c) &#123; int w = nums.length, h = nums[0].length; if (w * h != r * c) return nums; int[][] res = new int[r][c]; int row = 0, col = 0; for (int i = 0; i &lt; w; i++) &#123; for (int j = 0; j &lt; h; j++) &#123; res[row][col] = nums[i][j]; col++; if (col == c) &#123; col = 0; row++; &#125; &#125; &#125; return res; &#125;&#125; 找规律，代码实现：123456789101112131415class Solution &#123; public int[][] matrixReshape(int[][] nums, int r, int c) &#123; int w = nums.length; int h = nums[0].length; if (w * h == r * c) &#123; int[][] res = new int[r][c]; for (int i = 0; i &lt; r * c; i++) &#123; res[i / c][i % c] = nums[i / h][i % h]; &#125; return res; &#125; else &#123; return nums; &#125; &#125;&#125; python实现：12345678910111213141516class Solution(object): def matrixReshape(self, nums, r, c): w, h = len(nums), len(nums[0]) if w * h != r * c: return nums res = [] row = col = 0 for x in range(r): result = [] for y in range(c): result.append(nums[row][col]) col += 1 if col == h: row += 1 col = 0 res.append(result) return res]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数据结构</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode--Fizz Buzz]]></title>
     <url>%2F2017%2F10%2F19%2FleetCode%2FfizzBuzz%2F</url>
     <content type="text"><![CDATA[Fizz Buzz原题：Write a program that outputs the string representation of numbers from 1 to n. But for multiples of three it should output “Fizz” instead of the number and for the multiples of five output “Buzz”. For numbers which are multiples of both three and five output “FizzBuzz”. Example n = 15,Return:[ “1”, “2”, “Fizz”, “4”, “Buzz”, “Fizz”, “7”, “8”, “Fizz”, “Buzz”, “11”, “Fizz”, “13”, “14”, “FizzBuzz”] 题目大意输入一个数，遍历的输出从1到这个数，遇到三的倍数输出“Fizz”，遇到5的倍数输出“Buzz”，遇到3和5共同的倍数输出“FizzBuzz”。 解题思路循环判断。代码实现（java）：123456789101112class Solution &#123; public List&lt;String&gt; fizzBuzz(int n) &#123; List&lt;String&gt; list = new ArrayList&lt;&gt;(); for(int i = 1; i &lt; n + 1; i++)&#123; if (i % 15 == 0) list.add("FizzBuzz"); else if (i % 3 == 0) list.add("Fizz"); else if (i % 5 == 0) list.add("Buzz"); else list.add(String.valueOf(i)); &#125; return list; &#125;&#125; AC后看到一位大神的代码，他是重写了AbstractList中的get方法，代码实现：123456789101112131415161718192021222324class Solution &#123; private int size = 0; private final List&lt;String&gt; fizzbuzzList = new AbstractList&lt;String&gt;() &#123; @Override public String get(int index) &#123; final int i = index + 1; return i % 15 == 0 ? "FizzBuzz" : i % 5 == 0 ? "Buzz" : i % 3 == 0 ? "Fizz" : String.valueOf(i); &#125; @Override public int size() &#123; return Solution.this.size; &#125; &#125;; public List&lt;String&gt; fizzBuzz(int n)&#123; this.size = n; return fizzbuzzList; &#125;&#125; python实现：123456789101112131415class Solution(object): def fizzBuzz(self, n): res = []; x = 1 while x &lt;= n: if x % 3 == 0 and x % 5 == 0: res.append("FizzBuzz") elif x % 3 == 0: res.append("Fizz") elif x % 5 == 0: res.append("Buzz") else: res.append(str(x)) x += 1 return res]]></content>
@@ -215,7 +241,7 @@
   <entry>
     <title><![CDATA[leetCode题解]]></title>
     <url>%2F2017%2F10%2F01%2FleetCodeList%2F</url>
-    <content type="text"><![CDATA[leetCode是一个非常有用的网站，以下是本人近期刷leetCode的总结，该博文会持续更新。 657.Judge Route Circle561.Array Partition I500.Keyboard Row557.Reverse Words in a String III344.Reverse String682.Baseball Game575.Distribute Candies258.Add Digits1.Two Sum125. Valid Palindrome167. Two Sum II - Input array is sorted412.Fizz Buzz]]></content>
+    <content type="text"><![CDATA[leetCode是一个非常有用的网站，以下是本人近期刷leetCode的总结，里面的代码都是AC通过的，该博文会持续更新。 657. Judge Route Circle561. Array Partition I500. Keyboard Row557. Reverse Words in a String III344. Reverse String682. Baseball Game575. Distribute Candies258. Add Digits1.Two Sum125. Valid Palindrome167. Two Sum II - Input array is sorted412. Fizz Buzz566. Reshape the Matrix463. Island Perimter]]></content>
       <categories>
         <category>算法</category>
       </categories>
