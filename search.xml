@@ -1,6 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Sum of Two Integers]]></title>
+    <url>%2F2017%2F10%2F24%2FsumOfTwoIntegers%2F</url>
+    <content type="text"><![CDATA[Sum of Two Integers原题：Calculate the sum of two integers a and b, but you are not allowed to use the operator + and -. Example1 Given a = 1 and b = 2, return 3. 题目大意给两个数字a, b 求ab的和，不能使用＋/-. 解题思路第一个想法就是使用位运算，但是没有什么好的思路。网上查了一下：这里用到了一个半加法的思想, 即两位单独的位相加其结果可以用异或得到, 进位可以用与得到. 然后对于两个数字来说同样可以延伸这个思想.举个例子: 11+5, 其二进制形式为11: 1011, 5: 0101 那么两个位置都为1的地方就需要进位, 所以进位值就为0001. 原位置两个数相加的结果为那个位置值的异或即1110, 即两个位置值如果不一样就为1, 一样的话要么两个位置原来值都为0结果也为0, 要么进位, 那么结果依然是0. 接下来就要把进位位和下一位相加, 所以进位值左移一位,即0001变为0010, 重复上面操作可得新的进位值为0010, 原位置异或(即相加)结果为1100. 继续重复上面操作直到进位为0, 可得到最终结果10000, 即16代码实现（java）：123456789class Solution &#123; public int getSum(int a, int b) &#123; if(b == 0) return a; int r = a ^ b; int curry = (a &amp; b) &lt;&lt; 1; return getSum(r, curry); &#125;&#125; python实现就显得太不要脸了，哈哈：1234class Solution(object): def getSum(self, a, b): res = [a, b] return sum(res)]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Detect Capital]]></title>
+    <url>%2F2017%2F10%2F24%2FdetectCapital%2F</url>
+    <content type="text"><![CDATA[Detect Capital原题：Given a word, you need to judge whether the usage of capitals in it is right or not. We define the usage of capitals in a word to be right when one of the following cases holds: 1.All letters in this word are capitals, like “USA”.2.All letters in this word are not capitals, like “leetcode”.3.Only the first letter in this word is capital if it has more than one letter, like “Google”.Otherwise, we define that this word doesn’t use capitals in a right way. Example1 Input: “USA”Output: True Example2 Input: “FlaG”Output: False Note The input will be a non-empty word consisting of uppercase and lowercase latin letters. 题目大意给定一个字符串，如果全是大写或者小写或者首字母为大写其余全是小写 返回true 否则返回false 解题思路没什么好说的了就是判断了。代码实现（java）：1234567891011121314class Solution &#123; public boolean detectCapitalUse(String word) &#123; if (word == null) return false; if (word.equals(word.toLowerCase()) || word.equals(word.toUpperCase())) return true; if (Character.isUpperCase(word.charAt(0)))&#123; String str = word.substring(1, word.length()); if (str.equals(str.toLowerCase())) return true; &#125; return false; &#125;&#125; python实现：12345class Solution(object): def detectCapitalUse(self, word): if(word == word.upper() or word == word.lower() or word == word.capitalize()): return True return False]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Max Consecutive Ones]]></title>
+    <url>%2F2017%2F10%2F24%2FleetCode%2FmaxConsecutiveOnes%2F</url>
+    <content type="text"><![CDATA[Max Consecutive Ones原题：Given a binary array, find the maximum number of consecutive 1s in this array. Example1 Input: [1,1,0,1,1,1]Output: 3Explanation: The first two digits or the last three digits are consecutive 1s. The maximum number of consecutive 1s is 3. Note The input array will only contain 0 and 1. The length of input array is a positive integer and will not exceed 10,000 题目大意给定一个数组，求出里面连续1的最大个数。 解题思路第一种思路是把数组变为字符串根据0分割，求出最长的字符串。代码实现（java）：123456789101112131415class Solution &#123; public int findMaxConsecutiveOnes(int[] nums) &#123; int res = 0; StringBuilder in = new StringBuilder(); for(int num : nums)&#123; in.append(num); &#125; String[] strs = in.toString().split("0"); for(String str : strs)&#123; if(res &lt; str.length()) res = str.length(); &#125; return res; &#125;&#125; 第二种思路是把每次到0之前的长度算出来和最后结果比较把大的赋值给返回值，在去比较下一轮。代码实现（java）：1234567891011class Solution &#123; public int findMaxConsecutiveOnes(int[] nums) &#123; int res = 0; int count = 0; for(int num : nums)&#123; count = (num == 1) ? ++count : 0; res = Math.max(res, count); &#125; return res; &#125;&#125; python第二种思路实现：12345678class Solution(object): def findMaxConsecutiveOnes(self, nums): res = 0 count = 0 for i in range(len(nums)): count = count + 1 if nums[i] == 1 else 0; res = max(res, count) return res]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Binary Number with Aliternating Bits]]></title>
+    <url>%2F2017%2F10%2F24%2FleetCode%2FbinaryNumberWithAliternatingBits%2F</url>
+    <content type="text"><![CDATA[Binary Number with Alternating Bits原题：Given a positive integer, check whether it has alternating bits: namely, if two adjacent bits will always have different values. Example1 Input: 5Output: TrueExplanation:The binary representation of 5 is: 101 Example2 Input: 7Output: FalseExplanation:The binary representation of 7 is: 111. Example3 Input: 11Output: FalseExplanation:The binary representation of 11 is: 1011. Example4 Input: 10Output: TrueExplanation:The binary representation of 10 is: 1010. 题目大意给定一个数，判断这个数的二进制相邻的两个数都不相同。 解题思路求出二进制数，依次判断。代码实现（java）：1234567891011class Solution &#123; public boolean hasAlternatingBits(int n) &#123; String str = Integer.toBinaryString(n); for (int i = 0; i &lt; str.length() - 1; i++)&#123; if (str.charAt(i) == str.charAt(i + 1)) &#123; return false; &#125; &#125; return true; &#125;&#125; python实现：1234567class Solution(object): def hasAlternatingBits(self, n): str = bin(n).replace("0b", "") for i in range(len(str) - 1): if str[i] == str[i + 1]: return False return True]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Single Number]]></title>
     <url>%2F2017%2F10%2F24%2FleetCode%2FsingleNumber%2F</url>
     <content type="text"><![CDATA[Single Number原题：Given an array of integers, every element appears twice except for one. Find that single one. Note Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory? 题目大意给定一个数组，里面的元素有的出现两次，只有一个出现一次，找出出现一次的。 解题思路利用位运算：a^a=0 a^0=a。代码实现（java）：123456789class Solution &#123; public int singleNumber(int[] nums) &#123; int res = 0; for(int num : nums)&#123; res ^= num; &#125; return res; &#125;&#125; python实现：123456class Solution(object): def singleNumber(self, nums): res = 0 for i in range(len(nums)): res ^= nums[i] return res]]></content>
@@ -8,8 +60,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -21,8 +73,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -34,8 +86,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -47,8 +99,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -60,8 +112,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -73,8 +125,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -86,8 +138,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -111,8 +163,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -124,8 +176,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -137,8 +189,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -150,8 +202,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -163,8 +215,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -210,8 +262,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -223,8 +275,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -236,8 +288,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -249,8 +301,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -274,8 +326,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -293,14 +345,14 @@
   <entry>
     <title><![CDATA[leetCode题解]]></title>
     <url>%2F2017%2F10%2F01%2FleetCodeList%2F</url>
-    <content type="text"><![CDATA[leetCode是一个非常值得看看的网站，以下是本人近期刷leetCode的总结，里面的代码都是AC通过的，该博文会持续更新。 657. Judge Route Circle561. Array Partition I500. Keyboard Row557. Reverse Words in a String III344. Reverse String682. Baseball Game575. Distribute Candies258. Add Digits1.Two Sum125. Valid Palindrome167. Two Sum II - Input array is sorted412. Fizz Buzz566. Reshape the Matrix463. Island Perimter496. Next Greater Element I521. Longest Uncommon Subsequence I292. Nim Game136. Single Number]]></content>
+    <content type="text"><![CDATA[leetCode是一个非常值得看看的网站，以下是本人近期刷leetCode的总结，里面的代码都是AC通过的，该博文会持续更新。 371. Sum of Two Integers657. Judge Route Circle561. Array Partition I500. Keyboard Row557. Reverse Words in a String III344. Reverse String682. Baseball Game575. Distribute Candies258. Add Digits1.Two Sum125. Valid Palindrome167. Two Sum II - Input array is sorted412. Fizz Buzz566. Reshape the Matrix463. Island Perimter496. Next Greater Element I521. Longest Uncommon Subsequence I292. Nim Game136. Single Number693. Binary Number with Alternating Bits485. Max Consecutive Ones520. Detect Capital]]></content>
       <categories>
         <category>算法</category>
       </categories>
       <tags>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>leetCode</tag>
-        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -311,8 +363,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
