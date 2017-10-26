@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/10/26/operatingSystem/bitOperation/</loc>
+    <lastmod>2017-10-26T13:38:55.000Z</lastmod>
+    <data>
+        <display>
+        <title>Bit Operation(位运算)</title>
+        <pubTime>2017-10-26T13:33:59.000Z</pubTime>
+        
+        <tag>操作系统</tag>
+         
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://yoursite.com/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/10/01/leetCodeList/</loc>
     <lastmod>2017-10-25T14:04:44.000Z</lastmod>
     <data>
