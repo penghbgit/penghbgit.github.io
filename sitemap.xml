@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/11/02/java/threadPoolExecutor/</loc>
+    
+    <lastmod>2017-11-02T16:05:14.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/10/27/java/concurrentHashMap/</loc>
     
     <lastmod>2017-10-27T13:41:57.000Z</lastmod>

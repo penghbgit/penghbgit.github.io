@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/11/02/java/threadPoolExecutor/</loc>
+    <lastmod>2017-11-02T16:05:14.000Z</lastmod>
+    <data>
+        <display>
+        <title>ThreadPoolExecutor源码分析（JDK1.8）</title>
+        <pubTime>2017-11-02T15:59:26.000Z</pubTime>
+        
+        <tag>数据结构</tag>
+         
+        <tag>java源码</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://yoursite.com/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/10/27/java/concurrentHashMap/</loc>
     <lastmod>2017-10-27T13:41:57.000Z</lastmod>
     <data>
