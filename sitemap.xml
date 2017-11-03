@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/11/03/algorithm/binaryTree/</loc>
+    
+    <lastmod>2017-11-03T15:48:17.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/11/02/java/threadPoolExecutor/</loc>
     
     <lastmod>2017-11-02T16:09:51.000Z</lastmod>
