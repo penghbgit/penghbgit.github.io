@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode--Hamming Distance]]></title>
+    <url>%2F2017%2F11%2F04%2FleetCode%2FhammingDistance%2F</url>
+    <content type="text"><![CDATA[Hamming Distance原题：The Hamming distance between two integers is the number of positions at which the corresponding bits are different. Given two integers x and y, calculate the Hamming distance. Example Input: x = 1, y = 4Output: 2Explanation:1 (0 0 0 1)4 (0 1 0 0) ↑ ↑The above arrows point to positions where the corresponding bits are different. Note 0 ≤ x, y &lt; 2^31. 题目大意求两个数字的汉明距离（汉明距离就是两个数字的二进制相异的位的总数）。 解题思路两种解题思路，一种就是都转成二进制树，然后循环遍历，这里就不贴代码了，第二种就是利用位运算，异或然后&amp;1就能算出来汉明距离。代码实现（java）：123456789class Solution &#123; public int hammingDistance(int x, int y) &#123; int res = 0, e = x ^ y; for(int i = 0; i &lt; 32; i++)&#123; res += (e&gt;&gt;i) &amp; 1; &#125; return res; &#125;&#125; python实现：12345678910111213class Solution(object): def hammingDistance(self, x, y): """ :type x: int :type y: int :rtype: int """ e = x ^ y res = 0 for i in range(0, 31): res += (e &gt;&gt; i) &amp; 1 return res]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>LeetCode</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[二叉搜索树--java实现]]></title>
     <url>%2F2017%2F11%2F03%2Falgorithm%2FbinaryTree%2F</url>
     <content type="text"><![CDATA[前一段时间看jdk1.8中的hashmap源码的时候发现应用到了红黑树，想补一下红黑树的知识，这里先介绍一下二叉搜索树的结构。如果有不正确的地方欢迎指正～～ 什么是二叉搜索树二叉搜索树又名二叉查找树和二叉排序树。二叉搜索树是以一棵二叉树来组织的，如下图所示，这样的一棵树可以使用链表的数据结构来表示，每一个结点就是一个对象。每个结点包含key（值），left（左孩子），right（右孩子）和p（双亲）。如果某个孩子结点和父结点不存在，则相应属性值为NIL。根结点是树中唯一父结点指针为NIL的结点。 设x是二叉搜索树中的一个结点。如果y是x的左子树结点那么y.key&lt;=x.key。如果y是x的右子树结点，那么y.key&gt;=x.key。 定义介绍完了，下面就来看看二叉搜索树的基本操作。 java实现123456789101112131415161718192021222324252627public class BinaryTree&lt;K extends Comparable&lt;K&gt;&gt;&#123; static final class TreeNode&lt;K&gt;&#123; //结点中的值 K key; //左孩子 TreeNode&lt;K&gt; left; //右孩子 TreeNode&lt;K&gt; right; //父结点 TreeNode&lt;K&gt; p; TreeNode(K key) &#123; this(key, null, null, null); &#125; TreeNode(K key, TreeNode&lt;K&gt; left, TreeNode&lt;K&gt; right, TreeNode&lt;K&gt; p) &#123; this.key = key; this.left = left; this.right = right; this.p = p; &#125; &#125; //根结点 private TreeNode&lt;K&gt; root;&#125; 插入非递归操作。1234567891011121314151617181920212223242526272829303132public void insert(K k)&#123; //创建结点 TreeNode&lt;K&gt; treeNode = new TreeNode&lt;&gt;(k); if (root == null) root = treeNode; else &#123; //当前结点 TreeNode&lt;K&gt; currentNode = root; TreeNode&lt;K&gt; parent = null; int b; //查找结点插入位置 while (currentNode != null)&#123; //记录父结点 parent = currentNode; //比较结点值 b = k.compareTo(currentNode.key); if(b &lt; 0) currentNode = currentNode.left; else currentNode = currentNode.right; &#125; //找到位置后和父结点比较，插入 b = k.compareTo(parent.key); treeNode.p = parent; if (b &lt; 0) parent.left = treeNode; else parent.right = treeNode; &#125; &#125; 递归操作。12345678910111213141516public void insertRecursion(K k)&#123; insertRec(k, root); &#125; private TreeNode&lt;K&gt; insertRec(K k, TreeNode&lt;K&gt; x)&#123; if(x==null) return new TreeNode&lt;K&gt;(k); int b = k.compareTo(x.key); if(b &lt; 0) x.left = insertRec(k, x.left); else if(b &gt; 0) x.right = insertRec(k, x.right); return x; &#125; 查寻非递归操作。1234567891011121314151617public TreeNode&lt;K&gt; search(K k)&#123; //从根结点开始查找 TreeNode&lt;K&gt; currentNode = root; int b; //循环判断结点值是否相等 while (currentNode != null &amp;&amp; currentNode.key != k)&#123; b = k.compareTo(currentNode.key); //当前结点值赋为左结点 if (b &lt; 0) currentNode = currentNode.left; //当前结点值赋为右结点 else currentNode = currentNode.right; &#125; return currentNode; &#125; 递归操作。12345678910111213141516private TreeNode&lt;K&gt; s(TreeNode&lt;K&gt; x, K k)&#123; if (x==null) return x; int cmp = k.compareTo(x.key); if (cmp &lt; 0) return s(x.left, k); else if (cmp &gt; 0) return s(x.right, k); else return x; &#125; public TreeNode&lt;K&gt; searchRecursion(K k) &#123; return s(root, k); &#125; 最大值和最小值最大值一定在结点的右子树中。最小值一定在结点的左子树中。12345678910111213public TreeNode&lt;K&gt; min(TreeNode&lt;K&gt; x)&#123; while (x != null)&#123; x = x.left; &#125; return x; &#125; public TreeNode&lt;K&gt; max(TreeNode&lt;K&gt; x)&#123; while (x != null)&#123; x = x.right; &#125; return x; &#125; 前驱和后继结点的前驱：是该结点的左子树中的最大结点。结点的后继：是该结点的右子树中的最小结点。12345678910111213141516171819202122232425262728293031public TreeNode&lt;K&gt; predecessor(TreeNode&lt;K&gt; x)&#123; //如果x结点的左子树不为空，则左子树中的最大值即为前驱结点 if (x.left != null) return max(x.left); //如果x没有左孩子。则有两种可能： //1.x是一个右孩子，则x的前驱结点为它的父结点。 //2.x是一个左孩子，则查找x的最低的父结点，并且该父结点要具有右孩子，找到的这个最低的父结点就是x的前驱结点。 TreeNode&lt;K&gt; parent = x.p; while (parent != null &amp;&amp; parent.left == x)&#123; x = parent; parent = parent.p; &#125; return parent; &#125; public TreeNode&lt;K&gt; successor(TreeNode&lt;K&gt; x)&#123; //如果x结点的右子树不为空，则右子树中的最小值即为后继结点 if (x.right != null) return min(x.right); //如果x没有右孩子。则有两种可能： //1.x是一个左孩子，则x的后继结点为它的父结点。 //2.x是一个右孩子，则查找x的最低的父结点，并且该父结点要具有左孩子，找到的这个最低的父结点就是x的后继结点。 TreeNode&lt;K&gt; parent = x.p; while (parent != null &amp;&amp; parent.right == x)&#123; x = parent; parent = parent.p; &#125; return parent; &#125; 遍历二叉搜索树允许通过一个简单的递归算法按顺序输出二叉搜索树的所有元素。 先序遍历若二叉树非空，则执行以下操作：1.访问根结点；2.先序遍历左子树；3.先序遍历右子树。1234567891011public void preinorder()&#123; preinorder(root); &#125; private void preinorder(TreeNode&lt;K&gt; x)&#123; if (x != null)&#123; System.out.print(x.key + " "); preinorder(x.left); preinorder(x.right); &#125; &#125; 中序遍历若二叉树非空，则执行以下操作：1.中序遍历左子树；2.访问根结点；3.中序遍历右子树。1234567891011public void inorder()&#123; inorder(root); &#125; private void inorder(TreeNode&lt;K&gt; x)&#123; if (x != null)&#123; inorder(x.left); System.out.print(x.key + " "); inorder(x.right); &#125; &#125; 后序遍历若二叉树非空，则执行以下操作：1.后序遍历左子树；2.后序遍历右子树；3.访问根结点。1234567891011public void postinorder()&#123; postinorder(root); &#125; private void postinorder(TreeNode&lt;K&gt; x)&#123; if (x != null)&#123; postinorder(x.left); postinorder(x.right); System.out.print(x.key + " "); &#125; &#125; 删除从一棵二叉搜索树中删除一个结点x的整个策略分为三种情况：1.如果z没有孩子结点，那么只是简单的将它删除，并修改它的父结点用null来作为孩子来替换x。2.如果z只有一个孩子，那么将这个孩子提升到树中z的位置并修改z的父结点用x的孩子来替换x。3.如果z有两个孩子，那么z的后继y（一定在z的右子树中），并让y占据树中z的位置。z的原来右子树部分部分成为y的新的右子树，并且z的左子树成为y的新的左子树。如图所示： 为了再二叉搜索树中移动子树，定义一个子过程transplant，它是用另一棵子树替换一棵子树并成为其双亲结点的孩子结点。当transplant用一棵以v为根的子树来替换一棵以u为根的子树时，结点u的双亲变为结点v的双亲，并且最后v成为u的双亲的相应孩子。transplant没有处理v.left和v.right的更新；这些更新由transplant的调用者处理。123456789101112131415161718192021222324252627282930313233343536373839404142434445private void transplant(TreeNode&lt;K&gt; u, TreeNode&lt;K&gt; v)&#123; //u是根的情况 if(u.p == null) root = v; //如果u是一个左孩子，对u.p.left进行更新 else if (u == u.p.left) u.p.left = v; //如果u是一个右孩子，对u.p.right进行更新 else u.p.right = v; //如果v非null更新v.p if (v != null) v.p = u.p; &#125; private void delete(TreeNode&lt;K&gt; z)&#123; //没有左孩子 if (z.left == null) transplant(z, z.right); //有左孩子但是没有右孩子 else if (z.right == null) transplant(z, z.left); //有两个孩子的情况 else &#123; //查找后继结点 TreeNode&lt;K&gt; y = min(z.right); //如果y不是z的左孩子，将y移除原来的位置，并替换树中的z if (y.p != z)&#123; //用y的右孩子替换y并成为y的双亲的一个孩子 transplant(y, y.right); //将z的右孩子转为y的右孩子 y.right = z.right; y.right.p = y; &#125; //如果y是z的右孩子，用y替换z并成为z的双亲的孩子，用z的左孩子替换y的左孩子 transplant(z, y); y.left = z.left; y.left.p = y; &#125; &#125; public void remove(K k)&#123; delete(search(k)); &#125; 总结1.如果x是一棵有n个结点子树的根，那么遍历的这棵树需要O(n)时间。2.在一棵高度为h的二叉搜索树上，动态集合上的操作search，min，max，successor，predecessor可以在O(h)时间内完成。3.在一棵高度为h的二叉搜索树上，实现动态的集合操作insert和remove的运行时间均为O(h)。 参考《算法导论》第三版 本文为原创文章，如需转载请注明出处。]]></content>
@@ -33,8 +46,8 @@
         <category>java</category>
       </categories>
       <tags>
-        <tag>java源码</tag>
         <tag>java</tag>
+        <tag>java源码</tag>
       </tags>
   </entry>
   <entry>
@@ -58,8 +71,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>LeetCode</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -71,8 +84,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>LeetCode</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -84,8 +97,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>LeetCode</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -97,8 +110,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>LeetCode</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -110,8 +123,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>LeetCode</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -123,8 +136,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>LeetCode</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -136,8 +149,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>LeetCode</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -149,8 +162,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>LeetCode</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -162,8 +175,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>LeetCode</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -175,8 +188,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>LeetCode</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -188,8 +201,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>LeetCode</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -201,8 +214,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>LeetCode</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -214,8 +227,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>LeetCode</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -239,8 +252,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>LeetCode</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -252,8 +265,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>LeetCode</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -265,8 +278,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>LeetCode</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -278,8 +291,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>LeetCode</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -291,8 +304,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>LeetCode</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -338,8 +351,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>LeetCode</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -351,8 +364,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>LeetCode</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -364,8 +377,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>LeetCode</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -377,8 +390,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>LeetCode</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -402,8 +415,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>LeetCode</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -420,13 +433,13 @@
   <entry>
     <title><![CDATA[leetCode题解]]></title>
     <url>%2F2017%2F10%2F01%2FleetCodeList%2F</url>
-    <content type="text"><![CDATA[leetCode是一个非常值得学习的网站，以下是本人近期刷leetCode的总结，里面的代码都是AC通过的，该博文会持续更新。 389. Find the Difference448. Find All Numbers Disappeared in an Array371. Sum of Two Integers657. Judge Route Circle561. Array Partition I500. Keyboard Row557. Reverse Words in a String III344. Reverse String682. Baseball Game575. Distribute Candies258. Add Digits1.Two Sum125. Valid Palindrome167. Two Sum II - Input array is sorted412. Fizz Buzz566. Reshape the Matrix463. Island Perimter496. Next Greater Element I521. Longest Uncommon Subsequence I292. Nim Game136. Single Number693. Binary Number with Alternating Bits485. Max Consecutive Ones520. Detect Capital]]></content>
+    <content type="text"><![CDATA[leetCode是一个非常值得学习的网站，以下是本人近期刷leetCode的总结，里面的代码都是AC通过的，该博文会持续更新。 461. Hamming Distance389. Find the Difference448. Find All Numbers Disappeared in an Array371. Sum of Two Integers657. Judge Route Circle561. Array Partition I500. Keyboard Row557. Reverse Words in a String III344. Reverse String682. Baseball Game575. Distribute Candies258. Add Digits1.Two Sum125. Valid Palindrome167. Two Sum II - Input array is sorted412. Fizz Buzz566. Reshape the Matrix463. Island Perimter496. Next Greater Element I521. Longest Uncommon Subsequence I292. Nim Game136. Single Number693. Binary Number with Alternating Bits485. Max Consecutive Ones520. Detect Capital]]></content>
       <categories>
         <category>算法</category>
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>leetCode</tag>
+        <tag>LeetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -439,8 +452,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>LeetCode</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>

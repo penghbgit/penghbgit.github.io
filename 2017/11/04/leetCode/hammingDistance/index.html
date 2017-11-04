@@ -69,18 +69,18 @@
 
 
 
-<meta name="description" content="Binary Number with Alternating Bits原题：Given a positive integer, check whether it has alternating bits: namely, if two adjacent bits will always have different values. Example1 Input: 5Output: TrueExpl">
+<meta name="description" content="Hamming Distance原题：The Hamming distance between two integers is the number of positions at which the corresponding bits are different. Given two integers x and y, calculate the Hamming distance. Examp">
 <meta name="keywords" content="算法,LeetCode,数据结构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode--Binary Number with Aliternating Bits">
-<meta property="og:url" content="http://yoursite.com/2017/10/24/leetCode/binaryNumberWithAliternatingBits/index.html">
+<meta property="og:title" content="LeetCode--Hamming Distance">
+<meta property="og:url" content="http://yoursite.com/2017/11/04/leetCode/hammingDistance/index.html">
 <meta property="og:site_name" content="海滨小筑">
-<meta property="og:description" content="Binary Number with Alternating Bits原题：Given a positive integer, check whether it has alternating bits: namely, if two adjacent bits will always have different values. Example1 Input: 5Output: TrueExpl">
+<meta property="og:description" content="Hamming Distance原题：The Hamming distance between two integers is the number of positions at which the corresponding bits are different. Given two integers x and y, calculate the Hamming distance. Examp">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-24T15:34:22.000Z">
+<meta property="og:updated_time" content="2017-11-04T11:43:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode--Binary Number with Aliternating Bits">
-<meta name="twitter:description" content="Binary Number with Alternating Bits原题：Given a positive integer, check whether it has alternating bits: namely, if two adjacent bits will always have different values. Example1 Input: 5Output: TrueExpl">
+<meta name="twitter:title" content="LeetCode--Hamming Distance">
+<meta name="twitter:description" content="Hamming Distance原题：The Hamming distance between two integers is the number of positions at which the corresponding bits are different. Given two integers x and y, calculate the Hamming distance. Examp">
 
 
 
@@ -110,13 +110,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/24/leetCode/binaryNumberWithAliternatingBits/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/04/leetCode/hammingDistance/"/>
 
 
 
 
 
-  <title>LeetCode--Binary Number with Aliternating Bits | 海滨小筑</title>
+  <title>LeetCode--Hamming Distance | 海滨小筑</title>
   
 
 
@@ -287,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/24/leetCode/binaryNumberWithAliternatingBits/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/04/leetCode/hammingDistance/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="彭海滨">
@@ -304,7 +304,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">LeetCode--Binary Number with Aliternating Bits</h2>
+          <h2 class="post-title" itemprop="name headline">LeetCode--Hamming Distance</h2>
         
 
         <div class="post-meta">
@@ -316,8 +316,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-24T21:58:12+08:00">
-                2017-10-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-04T19:38:15+08:00">
+                2017-11-04
               </time>
             
 
@@ -358,8 +358,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2017/10/24/leetCode/binaryNumberWithAliternatingBits/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/10/24/leetCode/binaryNumberWithAliternatingBits/" itemprop="commentsCount"></span>
+                <a href="/2017/11/04/leetCode/hammingDistance/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/11/04/leetCode/hammingDistance/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -386,7 +386,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  193
+                  234
                 </span>
               
 
@@ -423,22 +423,17 @@
       
 
       
-        <h2 id="Binary-Number-with-Alternating-Bits"><a href="#Binary-Number-with-Alternating-Bits" class="headerlink" title="Binary Number with Alternating Bits"></a>Binary Number with Alternating Bits</h2><h3 id="原题："><a href="#原题：" class="headerlink" title="原题："></a>原题：</h3><p>Given a positive integer, check whether it has alternating bits: namely, if two adjacent bits will always have different values.</p>
-<h4 id="Example1"><a href="#Example1" class="headerlink" title="Example1"></a>Example1</h4><blockquote>
-<p>Input: 5<br>Output: True<br>Explanation:<br>The binary representation of 5 is: 101</p>
+        <h2 id="Hamming-Distance"><a href="#Hamming-Distance" class="headerlink" title="Hamming Distance"></a>Hamming Distance</h2><h3 id="原题："><a href="#原题：" class="headerlink" title="原题："></a>原题：</h3><p>The Hamming distance between two integers is the number of positions at which the corresponding bits are different.</p>
+<p>Given two integers x and y, calculate the Hamming distance.</p>
+<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><blockquote>
+<p>Input: x = 1, y = 4<br>Output: 2<br>Explanation:<br>1   (0 0 0 1)<br>4   (0 1 0 0)<br>       ↑   ↑<br>The above arrows point to positions where the corresponding bits are different.</p>
 </blockquote>
-<h4 id="Example2"><a href="#Example2" class="headerlink" title="Example2"></a>Example2</h4><blockquote>
-<p>Input: 7<br>Output: False<br>Explanation:<br>The binary representation of 7 is: 111.</p>
-</blockquote>
-<h4 id="Example3"><a href="#Example3" class="headerlink" title="Example3"></a>Example3</h4><blockquote>
-<p>Input: 11<br>Output: False<br>Explanation:<br>The binary representation of 11 is: 1011.</p>
-</blockquote>
-<h4 id="Example4"><a href="#Example4" class="headerlink" title="Example4"></a>Example4</h4><blockquote>
-<p>Input: 10<br>Output: True<br>Explanation:<br>The binary representation of 10 is: 1010.</p>
-</blockquote>
-<h4 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h4><p>给定一个数，判断这个数的二进制相邻的两个数都不相同。</p>
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>求出二进制数，依次判断。<br>代码实现（java）：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasAlternatingBits</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        String str = Integer.toBinaryString(n);</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length() - <span class="number">1</span>; i++)&#123;</div><div class="line">            <span class="keyword">if</span> (str.charAt(i) == str.charAt(i + <span class="number">1</span>)) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>python实现：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hasAlternatingBits</span><span class="params">(self, n)</span>:</span></div><div class="line">        str = bin(n).replace(<span class="string">"0b"</span>, <span class="string">""</span>)</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(str) - <span class="number">1</span>):</div><div class="line">            <span class="keyword">if</span> str[i] == str[i + <span class="number">1</span>]:</div><div class="line">                <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span></div></pre></td></tr></table></figure></p>
+<h4 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h4><ul>
+<li>0 ≤ x, y &lt; 2^31.</li>
+</ul>
+<h4 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h4><p>求两个数字的汉明距离（汉明距离就是两个数字的二进制相异的位的总数）。</p>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>两种解题思路，一种就是都转成二进制树，然后循环遍历，这里就不贴代码了，第二种就是利用位运算，异或然后&amp;1就能算出来汉明距离。<br>代码实现（java）：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hammingDistance</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> res = <span class="number">0</span>, e = x ^ y;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">32</span>; i++)&#123;</div><div class="line">            res += (e&gt;&gt;i) &amp; <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>python实现：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hammingDistance</span><span class="params">(self, x, y)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type x: int</span></div><div class="line"><span class="string">        :type y: int</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        e = x ^ y</div><div class="line">        res = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">31</span>):</div><div class="line">            res += (e &gt;&gt; i) &amp; <span class="number">1</span></div><div class="line"></div><div class="line">        <span class="keyword">return</span> res</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -502,8 +497,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/24/leetCode/singleNumber/" rel="next" title="LeetCode--Single Number">
-                <i class="fa fa-chevron-left"></i> LeetCode--Single Number
+              <a href="/2017/11/03/algorithm/binaryTree/" rel="next" title="二叉搜索树--java实现">
+                <i class="fa fa-chevron-left"></i> 二叉搜索树--java实现
               </a>
             
           </div>
@@ -511,10 +506,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/24/leetCode/maxConsecutiveOnes/" rel="prev" title="LeetCode--Max Consecutive Ones">
-                LeetCode--Max Consecutive Ones <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -679,7 +670,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Binary-Number-with-Alternating-Bits"><span class="nav-number">1.</span> <span class="nav-text">Binary Number with Alternating Bits</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原题："><span class="nav-number">1.1.</span> <span class="nav-text">原题：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Example1"><span class="nav-number">1.1.1.</span> <span class="nav-text">Example1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example2"><span class="nav-number">1.1.2.</span> <span class="nav-text">Example2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example3"><span class="nav-number">1.1.3.</span> <span class="nav-text">Example3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example4"><span class="nav-number">1.1.4.</span> <span class="nav-text">Example4</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题目大意"><span class="nav-number">1.1.5.</span> <span class="nav-text">题目大意</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解题思路"><span class="nav-number">1.2.</span> <span class="nav-text">解题思路</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hamming-Distance"><span class="nav-number">1.</span> <span class="nav-text">Hamming Distance</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原题："><span class="nav-number">1.1.</span> <span class="nav-text">原题：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Example"><span class="nav-number">1.1.1.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Note"><span class="nav-number">1.1.2.</span> <span class="nav-text">Note</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题目大意"><span class="nav-number">1.1.3.</span> <span class="nav-text">题目大意</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解题思路"><span class="nav-number">1.2.</span> <span class="nav-text">解题思路</span></a></li></ol></li></ol></div>
             
 
           </div>
