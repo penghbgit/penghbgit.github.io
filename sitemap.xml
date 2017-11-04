@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/10/11/leetCode/addDigits/</loc>
+    
+    <lastmod>2017-11-04T12:04:10.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/10/16/leetCode/reverseWords3/</loc>
     
     <lastmod>2017-11-04T11:57:03.000Z</lastmod>
@@ -61,13 +68,6 @@
     <loc>http://yoursite.com/2017/10/11/leetCode/arrayPartition1/</loc>
     
     <lastmod>2017-11-04T11:51:53.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/10/11/leetCode/addDigits/</loc>
-    
-    <lastmod>2017-11-04T11:51:29.000Z</lastmod>
     
   </url>
   
