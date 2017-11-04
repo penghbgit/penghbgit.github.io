@@ -9,7 +9,7 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -71,7 +71,7 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -84,7 +84,7 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -97,7 +97,7 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -110,7 +110,7 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -123,7 +123,7 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -136,7 +136,7 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -149,7 +149,7 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -162,7 +162,7 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -175,7 +175,7 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -188,7 +188,7 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -201,7 +201,7 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -214,7 +214,7 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -227,7 +227,7 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -252,7 +252,7 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -265,7 +265,7 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -278,7 +278,7 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -291,12 +291,12 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode--keyboardRow]]></title>
+    <title><![CDATA[LeetCode--Keyboard Row]]></title>
     <url>%2F2017%2F10%2F16%2FleetCode%2FkeyboardRow%2F</url>
     <content type="text"><![CDATA[Keyboard Row原题：Given a List of words, return the words that can be typed using letters of alphabet on only one row’s of American keyboard like the image below. Example Input: [“Hello”, “Alaska”, “Dad”, “Peace”]Output: [“Alaska”, “Dad”] Note1.You may use one character in the keyboard more than once.2.You may assume the input string will only contain letters of alphabet. 翻译大意就是给定一个list输出单词都在同一行的单词。 解题思路设定每行代表一个数字初始值为0，遍历每个单词如果出现在某一行，则该代表该行的值赋为1.代码实现（java）：12345678910111213141516171819202122232425class Solution &#123; public String[] findWords(String[] words) &#123; String line1 = "QWERTYUIOP"; String line2 = "ASDFGHJKL"; String line3 = "ZXCVBNM"; List&lt;String&gt; res = new ArrayList&lt;String&gt;(); for(String word : words)&#123; char[] ch = word.toUpperCase().toCharArray(); int n1 = 0, n2 = 0, n3 = 0; for(char c : ch)&#123; if(line1.indexOf(c) &gt;= 0) n1 = 1; if(line2.indexOf(c) &gt;= 0) n2 = 1; if(line3.indexOf(c) &gt;= 0) n3 = 1; if(n1 + n2 + n3 &gt; 1) break; &#125; if(n1 + n2 + n3 == 1) res.add(word); &#125; return res.toArray(new String[0]); &#125;&#125; python实现（遍历list中的每个单词放到set中判断set中的单词是否都包含在键盘行中）：12345678910class Solution(object): def findWords(self, words): keyBoards = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"] res = [] for word in words: wordUP = word.upper() for keyBoard in keyBoards: if set(wordUP).issubset(set(keyBoard)): res.append(word) return res]]></content>
       <categories>
@@ -304,7 +304,7 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -351,7 +351,7 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -364,7 +364,7 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -377,7 +377,7 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -390,7 +390,7 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -415,7 +415,7 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -439,7 +439,7 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -452,7 +452,7 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>LeetCode</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
