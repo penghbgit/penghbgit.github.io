@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/10/16/leetCode/keyboardRow/</loc>
+    
+    <lastmod>2017-11-04T12:14:29.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/16/leetCode/reverseString/</loc>
+    
+    <lastmod>2017-11-04T12:13:12.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/10/11/leetCode/addDigits/</loc>
     
     <lastmod>2017-11-04T12:07:28.000Z</lastmod>
@@ -233,23 +247,9 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/10/16/leetCode/reverseString/</loc>
-    
-    <lastmod>2017-10-24T15:08:58.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2017/10/19/leetCode/reshapeTheMatrix/</loc>
     
     <lastmod>2017-10-24T15:08:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/10/16/leetCode/keyboardRow/</loc>
-    
-    <lastmod>2017-10-24T15:05:52.000Z</lastmod>
     
   </url>
   
