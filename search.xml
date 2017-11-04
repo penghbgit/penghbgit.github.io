@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode--Trim a Binary Search Tree]]></title>
+    <url>%2F2017%2F11%2F04%2FleetCode%2FtrimABinarySearchTree%2F</url>
+    <content type="text"><![CDATA[Trim a Binary Search Tree原题：Given a binary search tree and the lowest and highest boundaries as L and R, trim the tree so that all its elements lies in [L, R] (R &gt;= L). You might need to change the root of the tree, so the result should return the new root of the trimmed binary search tree. Example1 Example2 题目大意给定一个数求这个数的补数，补数就是这个数的二进制数，从最高的第一个1起开始翻转。之前的0不翻转。 解题思路利用位运算求出来共有多少位需要翻转，y-1就是所有需要翻转的位数都为1的一个值，然后进行异或运算。代码实现（java）：1234567891011121314151617181920212223242526/** * Definition for a binary tree node. * public class TreeNode &#123; * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public TreeNode trimBST(TreeNode root, int L, int R) &#123; TreeNode res = null; if(root == null) return null; if(root.val &lt;= R &amp;&amp; root.val &gt;= L)&#123; root.left = trimBST(root.left, L, R); root.right = trimBST(root.right, L, R); res = root; &#125; if(root.val &lt; L) res = trimBST(root.right, L, R); if(root.val &gt; R) res = trimBST(root.left, L, R); return res; &#125;&#125; python实现：123456789101112131415161718192021222324# Definition for a binary tree node.# class TreeNode(object):# def __init__(self, x):# self.val = x# self.left = None# self.right = Noneclass Solution(object): def trimBST(self, root, L, R): """ :type root: TreeNode :type L: int :type R: int :rtype: TreeNode """ if not root: return root if root.val &lt; L: return self.trimBST(root.right, L, R) if root.val &gt; R: return self.trimBST(root.left, L, R) root.left = self.trimBST(root.left, L, R) root.right = self.trimBST(root.right, L, R) return root]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>leetCode</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode--Number Complement]]></title>
+    <url>%2F2017%2F11%2F04%2FleetCode%2FnumberComplement%2F</url>
+    <content type="text"><![CDATA[Number Complement原题：Given a positive integer, output its complement number. The complement strategy is to flip the bits of its binary representation. Example1 Input: 5Output: 2Explanation: The binary representation of 5 is 101 (no leading zero bits), and its complement is 010. So you need to output 2. Example2 Input: 1Output: 0Explanation: The binary representation of 1 is 1 (no leading zero bits), and its complement is 0. So you need to output 0. Note The given integer is guaranteed to fit within the range of a 32-bit signed integer. You could assume no leading zero bit in the integer’s binary representation. 题目大意给定一个数求这个数的补数，补数就是这个数的二进制数，从最高的第一个1起开始翻转。之前的0不翻转。 解题思路利用位运算求出来共有多少位需要翻转，y-1就是所有需要翻转的位数都为1的一个值，然后进行异或运算。代码实现（java）：1234567891011class Solution &#123; public int findComplement(int num) &#123; int x = num, y = 1; while(x != 0)&#123; x = x &gt;&gt; 1; y = y &lt;&lt; 1; &#125; return num^(y-1); &#125;&#125; python实现：123456789101112class Solution(object): def findComplement(self, num): """ :type num: int :rtype: int """ x = num y = 1 while x is not 0: x = x &gt;&gt; 1 y = y &lt;&lt; 1 return num^(y - 1)]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>leetCode</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode--Merge Two Binary Trees]]></title>
+    <url>%2F2017%2F11%2F04%2FleetCode%2FmergeTwoBinaryTrees%2F</url>
+    <content type="text"><![CDATA[Merge Two Binary Trees原题：Given two binary trees and imagine that when you put one of them to cover the other, some nodes of the two trees are overlapped while the others are not. You need to merge them into a new binary tree. The merge rule is that if two nodes overlap, then sum node values up as the new value of the merged node. Otherwise, the NOT null node will be used as the node of new tree. Example Note The merging process must start from the root nodes of both trees. 题目大意合并两棵二叉树，把相同结点上的数字相加组成新的结点值。 解题思路利用递归，把相同位置的结点相加。代码实现（java）：123456789101112131415161718192021/** * Definition for a binary tree node. * public class TreeNode &#123; * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public TreeNode mergeTrees(TreeNode t1, TreeNode t2) &#123; if(t1 == null) return t2; if(t2 == null) return t1; t1.left = mergeTrees(t1.left, t2.left); t1.right = mergeTrees(t1.right, t2.right); t1.val += t2.val; return t1; &#125;&#125; python实现：12345678910111213141516171819202122# Definition for a binary tree node.# class TreeNode(object):# def __init__(self, x):# self.val = x# self.left = None# self.right = Noneclass Solution(object): def mergeTrees(self, t1, t2): """ :type t1: TreeNode :type t2: TreeNode :rtype: TreeNode """ if t1 is None: return t2 if t2 is None: return t1 t1.left = self.mergeTrees(t1.left, t2.left) t1.right = self.mergeTrees(t1.right, t2.right) t1.val += t2.val return t1]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>leetCode</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode--Hamming Distance]]></title>
     <url>%2F2017%2F11%2F04%2FleetCode%2FhammingDistance%2F</url>
     <content type="text"><![CDATA[Hamming Distance原题：The Hamming distance between two integers is the number of positions at which the corresponding bits are different. Given two integers x and y, calculate the Hamming distance. Example Input: x = 1, y = 4Output: 2Explanation:1 (0 0 0 1)4 (0 1 0 0) ↑ ↑The above arrows point to positions where the corresponding bits are different. Note 0 ≤ x, y &lt; 2^31. 题目大意求两个数字的汉明距离（汉明距离就是两个数字的二进制相异的位的总数）。 解题思路两种解题思路，一种就是都转成二进制树，然后循环遍历，这里就不贴代码了，第二种就是利用位运算，异或然后&amp;1就能算出来汉明距离。代码实现（java）：123456789class Solution &#123; public int hammingDistance(int x, int y) &#123; int res = 0, e = x ^ y; for(int i = 0; i &lt; 32; i++)&#123; res += (e&gt;&gt;i) &amp; 1; &#125; return res; &#125;&#125; python实现：12345678910111213class Solution(object): def hammingDistance(self, x, y): """ :type x: int :type y: int :rtype: int """ e = x ^ y res = 0 for i in range(0, 31): res += (e &gt;&gt; i) &amp; 1 return res]]></content>
@@ -46,8 +85,8 @@
         <category>java</category>
       </categories>
       <tags>
-        <tag>java源码</tag>
         <tag>java</tag>
+        <tag>java源码</tag>
       </tags>
   </entry>
   <entry>
@@ -433,7 +472,7 @@
   <entry>
     <title><![CDATA[leetCode题解]]></title>
     <url>%2F2017%2F10%2F01%2FleetCodeList%2F</url>
-    <content type="text"><![CDATA[leetCode是一个非常值得学习的网站，以下是本人近期刷leetCode的总结，里面的代码都是AC通过的，该博文会持续更新。 461. Hamming Distance389. Find the Difference448. Find All Numbers Disappeared in an Array371. Sum of Two Integers657. Judge Route Circle561. Array Partition I500. Keyboard Row557. Reverse Words in a String III344. Reverse String682. Baseball Game575. Distribute Candies258. Add Digits1.Two Sum125. Valid Palindrome167. Two Sum II - Input array is sorted412. Fizz Buzz566. Reshape the Matrix463. Island Perimter496. Next Greater Element I521. Longest Uncommon Subsequence I292. Nim Game136. Single Number693. Binary Number with Alternating Bits485. Max Consecutive Ones520. Detect Capital]]></content>
+    <content type="text"><![CDATA[leetCode是一个非常值得学习的网站，以下是本人近期刷leetCode的总结，里面的代码都是AC通过的，该博文会持续更新。 669. Trim a Binary Search Tree476. Number Complement617. Merge Two Binary Trees461. Hamming Distance389. Find the Difference448. Find All Numbers Disappeared in an Array371. Sum of Two Integers657. Judge Route Circle561. Array Partition I500. Keyboard Row557. Reverse Words in a String III344. Reverse String682. Baseball Game575. Distribute Candies258. Add Digits1.Two Sum125. Valid Palindrome167. Two Sum II - Input array is sorted412. Fizz Buzz566. Reshape the Matrix463. Island Perimter496. Next Greater Element I521. Longest Uncommon Subsequence I292. Nim Game136. Single Number693. Binary Number with Alternating Bits485. Max Consecutive Ones520. Detect Capital]]></content>
       <categories>
         <category>算法</category>
       </categories>
