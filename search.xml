@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Move Zeroes]]></title>
+    <url>%2F2017%2F11%2F15%2FleetCode%2FmoveZeroes%2F</url>
+    <content type="text"><![CDATA[Move Zeroes原题：Given an array nums, write a function to move all 0’s to the end of it while maintaining the relative order of the non-zero elements. For example, given nums = [0, 1, 0, 3, 12], after calling your function, nums should be [1, 3, 12, 0, 0]. Note You must do this in-place without making a copy of the array. Minimize the total number of operations. 题目大意给定一个数组 里面有0和非0的数，把所有非0的数都移动到前面，0移到后面。 解题思路定义一个标记count，依次移动非0的数，最后剩余长度补0.代码实现（java）：1234567891011121314class Solution &#123; public void moveZeroes(int[] nums) &#123; int length = nums.length; int count = 0; for(int i = 0; i &lt; nums.length; i++)&#123; if(nums[i] != 0) nums[count++] = nums[i]; &#125; while(count &lt; length) nums[count++] = 0; &#125;&#125; python实现：12345678910class Solution(object): def moveZeroes(self, nums): count = 0 for i in range(len(nums)): if(nums[i] is not 0): nums[count] = nums[i] count += 1 for i in range(count, len(nums)): nums[i] = 0]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>leetCode</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Excel Sheet Column Number]]></title>
+    <url>%2F2017%2F11%2F15%2FleetCode%2FexcelSheetColumnNumber%2F</url>
+    <content type="text"><![CDATA[Excel Sheet Column Number原题：Given a column title as appear in an Excel sheet, return its corresponding column number. Example1 A -&gt; 1 B -&gt; 2 C -&gt; 3 … Z -&gt; 26 AA -&gt; 27 AB -&gt; 28 题目大意相当于要把字符串转int，26进制转10进制，不过A是从1开始的。 解题思路按进制转换的思路做，A－&gt;1,AA-&gt; 26*1+1。代码实现（java）：123456789101112class Solution &#123; public int titleToNumber(String s) &#123; if(s.length() == 0 || s == null) return -1; int sum = 0; for (int i = 0; i &lt; s.length(); i++)&#123; sum = 26*sum + s.charAt(i)-'A' + 1; &#125; return sum; &#125;&#125; python实现：12345678910class Solution(object): def titleToNumber(self, s): """ :type s: str :rtype: int """ sum = 0 for c in s: sum = sum*26 + ord(c) - ord('A') + 1 return sum]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>leetCode</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode--Employee Importance]]></title>
+    <url>%2F2017%2F11%2F05%2FleetCode%2FemployeeImportance%2F</url>
+    <content type="text"><![CDATA[Employee Importance原题：You are given a data structure of employee information, which includes the employee’s unique id, his importance value and his direct subordinates’ id. For example, employee 1 is the leader of employee 2, and employee 2 is the leader of employee 3. They have importance value 15, 10 and 5, respectively. Then employee 1 has a data structure like [1, 15, [2]], and employee 2 has [2, 10, [3]], and employee 3 has [3, 5, []]. Note that although employee 3 is also a subordinate of employee 1, the relationship is not direct. Now given the employee information of a company, and an employee id, you need to return the total importance value of this employee and all his subordinates. Example1 Input: [[1, 5, [2, 3]], [2, 3, []], [3, 3, []]], 1Output: 11Explanation:Employee 1 has importance value 5, and he has two direct subordinates: employee 2 and employee 3. They both have importance value 3. So the total importance value of employee 1 is 5 + 3 + 3 = 11. Note One employee has at most one direct leader and may have several subordinates. The maximum number of employees won’t exceed 2000. 题目大意题目意思就是题目自定了一个数据结构，第一个值为id，第二个值为权重，第三个值为下属。一个公司每个人对应一个数据结构，给你一个人的id，让你返回他以及他的所有下属的权重和。 解题思路第一种思路：把id作为key把员工对象作为value，放在map对象中，利用递归求和。第二种思路：还是利用map，借助一个链表结构活着也可以是一个队列或者栈进行进栈和出栈操作。代码实现（java）：1234567891011121314151617181920212223242526272829303132/*// Employee infoclass Employee &#123; // It's the unique id of each node; // unique id of this employee public int id; // the importance value of this employee public int importance; // the id of direct subordinates public List&lt;Integer&gt; subordinates;&#125;;*/class Solution &#123; public int getImportance(List&lt;Employee&gt; employees, int id) &#123; Map&lt;Integer, Employee&gt; map = new HashMap&lt;&gt;(); for(Employee employee : employees)&#123; map.put(employee.id, employee); &#125; return dfs(map, id); &#125; private int dfs(Map&lt;Integer, Employee&gt; map, int id)&#123; int res = 0; Employee cur = map.get(id); res += cur.importance; for(int subId : cur.subordinates)&#123; res += dfs(map, subId); &#125; return res; &#125;&#125; 123456789101112131415161718192021222324252627282930313233/*// Employee infoclass Employee &#123; // It's the unique id of each node; // unique id of this employee public int id; // the importance value of this employee public int importance; // the id of direct subordinates public List&lt;Integer&gt; subordinates;&#125;;*/class Solution &#123; public int getImportance(List&lt;Employee&gt; employees, int id) &#123; Map&lt;Integer, Employee&gt; map = new HashMap&lt;&gt;(); for(Employee employee : employees)&#123; map.put(employee.id, employee); &#125; int res = 0; LinkedList&lt;Employee&gt; list = new LinkedList&lt;&gt;(); list.add(map.get(id)); while (!list.isEmpty())&#123; Employee employee = list.poll(); res += employee.importance; for (int i : employee.subordinates)&#123; list.add(map.get(i)); &#125; &#125; return res; &#125;&#125; python实现：123456789101112131415161718192021222324"""# Employee infoclass Employee(object): def __init__(self, id, importance, subordinates): # It's the unique id of each node. # unique id of this employee self.id = id # the importance value of this employee self.importance = importance # the id of direct subordinates self.subordinates = subordinates"""class Solution(object): def getImportance(self, employees, id): """ :type employees: Employee :type id: int :rtype: int """ map = &#123;employee.id: employee for employee in employees&#125; def dfs(id): importance = sum([dfs(id) for id in map[id].subordinates]) return importance + map[id].importance return dfs(id)]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>leetCode</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode--Trim a Binary Search Tree]]></title>
     <url>%2F2017%2F11%2F04%2FleetCode%2FtrimABinarySearchTree%2F</url>
     <content type="text"><![CDATA[Trim a Binary Search Tree原题：Given a binary search tree and the lowest and highest boundaries as L and R, trim the tree so that all its elements lies in [L, R] (R &gt;= L). You might need to change the root of the tree, so the result should return the new root of the trimmed binary search tree. Example1 Example2 题目大意给定一个数求这个数的补数，补数就是这个数的二进制数，从最高的第一个1起开始翻转。之前的0不翻转。 解题思路利用位运算求出来共有多少位需要翻转，y-1就是所有需要翻转的位数都为1的一个值，然后进行异或运算。代码实现（java）：1234567891011121314151617181920212223242526/** * Definition for a binary tree node. * public class TreeNode &#123; * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public TreeNode trimBST(TreeNode root, int L, int R) &#123; TreeNode res = null; if(root == null) return null; if(root.val &lt;= R &amp;&amp; root.val &gt;= L)&#123; root.left = trimBST(root.left, L, R); root.right = trimBST(root.right, L, R); res = root; &#125; if(root.val &lt; L) res = trimBST(root.right, L, R); if(root.val &gt; R) res = trimBST(root.left, L, R); return res; &#125;&#125; python实现：123456789101112131415161718192021222324# Definition for a binary tree node.# class TreeNode(object):# def __init__(self, x):# self.val = x# self.left = None# self.right = Noneclass Solution(object): def trimBST(self, root, L, R): """ :type root: TreeNode :type L: int :type R: int :rtype: TreeNode """ if not root: return root if root.val &lt; L: return self.trimBST(root.right, L, R) if root.val &gt; R: return self.trimBST(root.left, L, R) root.left = self.trimBST(root.left, L, R) root.right = self.trimBST(root.right, L, R) return root]]></content>
@@ -472,7 +511,7 @@
   <entry>
     <title><![CDATA[leetCode题解]]></title>
     <url>%2F2017%2F10%2F01%2FleetCodeList%2F</url>
-    <content type="text"><![CDATA[leetCode是一个非常值得学习的网站，以下是本人近期刷leetCode的总结，里面的代码都是AC通过的，该博文会持续更新。 669. Trim a Binary Search Tree476. Number Complement617. Merge Two Binary Trees461. Hamming Distance389. Find the Difference448. Find All Numbers Disappeared in an Array371. Sum of Two Integers657. Judge Route Circle561. Array Partition I500. Keyboard Row557. Reverse Words in a String III344. Reverse String682. Baseball Game575. Distribute Candies258. Add Digits1.Two Sum125. Valid Palindrome167. Two Sum II - Input array is sorted412. Fizz Buzz566. Reshape the Matrix463. Island Perimter496. Next Greater Element I521. Longest Uncommon Subsequence I292. Nim Game136. Single Number693. Binary Number with Alternating Bits485. Max Consecutive Ones520. Detect Capital]]></content>
+    <content type="text"><![CDATA[leetCode是一个非常值得学习的网站，以下是本人近期刷leetCode的总结，里面的代码都是AC通过的，该博文会持续更新。 283. Move Zeroes171. Excel Sheet Column Number690. Employee Importance669. Trim a Binary Search Tree476. Number Complement617. Merge Two Binary Trees461. Hamming Distance389. Find the Difference448. Find All Numbers Disappeared in an Array371. Sum of Two Integers657. Judge Route Circle561. Array Partition I500. Keyboard Row557. Reverse Words in a String III344. Reverse String682. Baseball Game575. Distribute Candies258. Add Digits1. Two Sum125. Valid Palindrome167. Two Sum II - Input array is sorted412. Fizz Buzz566. Reshape the Matrix463. Island Perimter496. Next Greater Element I521. Longest Uncommon Subsequence I292. Nim Game136. Single Number693. Binary Number with Alternating Bits485. Max Consecutive Ones520. Detect Capital]]></content>
       <categories>
         <category>算法</category>
       </categories>

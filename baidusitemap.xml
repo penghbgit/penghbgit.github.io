@@ -5,11 +5,83 @@
     
   <url>
     <loc>http://yoursite.com/2017/10/01/leetCodeList/</loc>
-    <lastmod>2017-11-04T14:58:28.000Z</lastmod>
+    <lastmod>2017-11-15T10:41:37.000Z</lastmod>
     <data>
         <display>
         <title>leetCode题解</title>
         <pubTime>2017-10-01T12:46:32.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+        <tag>leetCode</tag>
+         
+        <tag>数据结构</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/11/15/leetCode/moveZeroes/</loc>
+    <lastmod>2017-11-15T10:39:58.000Z</lastmod>
+    <data>
+        <display>
+        <title>Move Zeroes</title>
+        <pubTime>2017-11-15T10:38:16.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+        <tag>leetCode</tag>
+         
+        <tag>数据结构</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/11/15/leetCode/excelSheetColumnNumber/</loc>
+    <lastmod>2017-11-15T10:27:23.000Z</lastmod>
+    <data>
+        <display>
+        <title>Excel Sheet Column Number</title>
+        <pubTime>2017-11-15T10:25:35.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+        <tag>leetCode</tag>
+         
+        <tag>数据结构</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/11/05/leetCode/employeeImportance/</loc>
+    <lastmod>2017-11-05T11:53:39.000Z</lastmod>
+    <data>
+        <display>
+        <title>LeetCode--Employee Importance</title>
+        <pubTime>2017-11-05T11:51:31.000Z</pubTime>
         
         <tag>算法</tag>
          
