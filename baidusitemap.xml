@@ -4,12 +4,84 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/11/16/leetCode/minimumMovestoEqualArrayElements/</loc>
+    <lastmod>2017-11-16T07:06:02.000Z</lastmod>
+    <data>
+        <display>
+        <title>Minimum Moves to Equal Array Elements</title>
+        <pubTime>2017-11-16T07:03:30.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+        <tag>leetCode</tag>
+         
+        <tag>数据结构</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/10/01/leetCodeList/</loc>
-    <lastmod>2017-11-15T10:41:37.000Z</lastmod>
+    <lastmod>2017-11-16T07:04:52.000Z</lastmod>
     <data>
         <display>
         <title>leetCode题解</title>
         <pubTime>2017-10-01T12:46:32.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+        <tag>leetCode</tag>
+         
+        <tag>数据结构</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/11/16/leetCode/rangeAdditionII/</loc>
+    <lastmod>2017-11-16T06:44:52.000Z</lastmod>
+    <data>
+        <display>
+        <title>Range Addition II</title>
+        <pubTime>2017-11-16T06:43:18.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+        <tag>leetCode</tag>
+         
+        <tag>数据结构</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/11/16/leetCode/constructTheRectangle/</loc>
+    <lastmod>2017-11-16T02:46:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>Construct the Rectangle</title>
+        <pubTime>2017-11-16T02:43:36.000Z</pubTime>
         
         <tag>算法</tag>
          

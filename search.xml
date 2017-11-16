@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Minimum Moves to Equal Array Elements]]></title>
+    <url>%2F2017%2F11%2F16%2FleetCode%2FminimumMovestoEqualArrayElements%2F</url>
+    <content type="text"><![CDATA[Minimum Moves to Equal Array Elements原题：Given a non-empty integer array of size n, find the minimum number of moves required to make all array elements equal, where a move is incrementing n - 1 elements by 1. Example1 Input:[1,2,3] Output:3 Explanation:Only three moves are needed (remember each move increments two elements): [1,2,3] =&gt; [2,3,3] =&gt; [3,4,3] =&gt; [4,4,4] Note The range of m and n is [1,40000]. The range of a is [1,m], and the range of b is [1,n]. The range of operations size won’t exceed 10,000. 题目大意给定一个数组，每次把n-1个数字＋1，问最少多少次所有的元素能相等。 解题思路n－1个元素＋1相当于微加一的数字减1，答案就是所有元素与最小值的差值的和。代码实现（java）：123456789101112131415class Solution &#123; public int minMoves(int[] nums) &#123; int min = Integer.MAX_VALUE; for(int i : nums)&#123; min = Math.min(min, i); &#125; int res = 0; for(int i : nums)&#123; res += i - min; &#125; return res; &#125;&#125; python实现：1234567class Solution(object): def minMoves(self, nums): """ :type nums: List[int] :rtype: int """ return sum(nums) - len(nums)*min(nums)]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>leetCode</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Range Addition II]]></title>
+    <url>%2F2017%2F11%2F16%2FleetCode%2FrangeAdditionII%2F</url>
+    <content type="text"><![CDATA[Range Addition II原题：Given an m * n matrix M initialized with all 0’s and several update operations. Operations are represented by a 2D array, and each operation is represented by an array with two positive integers a and b, which means M[i][j] should be added by one for all 0 &lt;= i &lt; a and 0 &lt;= j &lt; b. You need to count and return the number of maximum integers in the matrix after performing all the operations. Example1 Input:m = 3, n = 3operations = [[2,2],[3,3]]Output: 4Explanation:Initially, M =[[0, 0, 0], [0, 0, 0], [0, 0, 0]] After performing [2,2], M =[[1, 1, 0], [1, 1, 0], [0, 0, 0]] After performing [3,3], M =[[2, 2, 1], [2, 2, 1], [1, 1, 1]] So the maximum integer in M is 2, and there are four of it in M. So return 4. Note The range of m and n is [1,40000]. The range of a is [1,m], and the range of b is [1,n]. The range of operations size won’t exceed 10,000. 题目大意输入m＊n的数组，operations数组里面的是这个范围内的数字增加1，求最大值的数量。 解题思路如果ops为空结果为m*n，不为空即为ops中最小值的乘积。代码实现（java）：1234567891011121314class Solution &#123; public int maxCount(int m, int n, int[][] ops) &#123; if(ops == null || ops.length == 0) return m*n; int a = Integer.MAX_VALUE, b = Integer.MAX_VALUE; for (int i = 0; i &lt; ops.length; i++)&#123; a = Math.min(ops[i][0], a); b = Math.min(ops[i][1], b); &#125; return a*b; &#125;&#125; python实现：1234567891011121314151617class Solution(object): def maxCount(self, m, n, ops): """ :type m: int :type n: int :type ops: List[List[int]] :rtype: int """ if not ops: return m*n a = 40000 b = 40000 for i in range(len(ops)): a = min(a, ops[i][0]) b = min(b, ops[i][1]) return a*b]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>leetCode</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Construct the Rectangle]]></title>
+    <url>%2F2017%2F11%2F16%2FleetCode%2FconstructTheRectangle%2F</url>
+    <content type="text"><![CDATA[Construct the Rectangle原题：For a web developer, it is very important to know how to design a web page’s size. So, given a specific rectangular web page’s area, your job by now is to design a rectangular web page, whose length L and width W satisfy the following requirements: The area of the rectangular web page you designed must equal to the given target area. The width W should not be larger than the length L, which means L &gt;= W. The difference between length L and width W should be as small as possible. You need to output the length L and the width W of the web page you designed in sequence. Example1 Input: 4Output: [2, 2]Explanation: The target area is 4, and all the possible ways to construct it are [1,4], [2,2], [4,1].But according to requirement 2, [1,4] is illegal; according to requirement 3, [4,1] is not optimal compared to [2,2]. So the length L is 2, and the width W is 2. Note The given area won’t exceed 10,000,000 and is a positive integer The web page’s width and length you designed must be positive integers. 题目大意给定一个数字area，求L*M=area，并且L和M的差值最小。 解题思路得到area的开根数，然后循环，如果遇到能整除的，除数和商就是解。代码实现（java）：123456789101112class Solution &#123; public int[] constructRectangle(int area) &#123; int l = 0, w = 0; for(int i = 1; i &lt;= (int)Math.sqrt(area); i++)&#123; if(area % i == 0)&#123; l = area/i; w = i; &#125; &#125; return new int[]&#123;l, w&#125;; &#125;&#125; python实现：123456789class Solution(object): def constructRectangle(self, area): sqrt = int(math.sqrt(area)) l, w = area, 1 for x in range(sqrt, 0, -1): if area % x == 0: l, w = area / x, x break return [l, w]]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>leetCode</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Move Zeroes]]></title>
     <url>%2F2017%2F11%2F15%2FleetCode%2FmoveZeroes%2F</url>
     <content type="text"><![CDATA[Move Zeroes原题：Given an array nums, write a function to move all 0’s to the end of it while maintaining the relative order of the non-zero elements. For example, given nums = [0, 1, 0, 3, 12], after calling your function, nums should be [1, 3, 12, 0, 0]. Note You must do this in-place without making a copy of the array. Minimize the total number of operations. 题目大意给定一个数组 里面有0和非0的数，把所有非0的数都移动到前面，0移到后面。 解题思路定义一个标记count，依次移动非0的数，最后剩余长度补0.代码实现（java）：1234567891011121314class Solution &#123; public void moveZeroes(int[] nums) &#123; int length = nums.length; int count = 0; for(int i = 0; i &lt; nums.length; i++)&#123; if(nums[i] != 0) nums[count++] = nums[i]; &#125; while(count &lt; length) nums[count++] = 0; &#125;&#125; python实现：12345678910class Solution(object): def moveZeroes(self, nums): count = 0 for i in range(len(nums)): if(nums[i] is not 0): nums[count] = nums[i] count += 1 for i in range(count, len(nums)): nums[i] = 0]]></content>
@@ -511,7 +550,7 @@
   <entry>
     <title><![CDATA[leetCode题解]]></title>
     <url>%2F2017%2F10%2F01%2FleetCodeList%2F</url>
-    <content type="text"><![CDATA[leetCode是一个非常值得学习的网站，以下是本人近期刷leetCode的总结，里面的代码都是AC通过的，该博文会持续更新。 283. Move Zeroes171. Excel Sheet Column Number690. Employee Importance669. Trim a Binary Search Tree476. Number Complement617. Merge Two Binary Trees461. Hamming Distance389. Find the Difference448. Find All Numbers Disappeared in an Array371. Sum of Two Integers657. Judge Route Circle561. Array Partition I500. Keyboard Row557. Reverse Words in a String III344. Reverse String682. Baseball Game575. Distribute Candies258. Add Digits1. Two Sum125. Valid Palindrome167. Two Sum II - Input array is sorted412. Fizz Buzz566. Reshape the Matrix463. Island Perimter496. Next Greater Element I521. Longest Uncommon Subsequence I292. Nim Game136. Single Number693. Binary Number with Alternating Bits485. Max Consecutive Ones520. Detect Capital]]></content>
+    <content type="text"><![CDATA[leetCode是一个非常值得学习的网站，以下是本人近期刷leetCode的总结，里面的代码都是AC通过的，该博文会持续更新。 minimumMovestoEqualArrayElements453. Minimum Moves to Equal Array Elements598. Range Addition II492. Construct the Rectangle283. Move Zeroes171. Excel Sheet Column Number690. Employee Importance669. Trim a Binary Search Tree476. Number Complement617. Merge Two Binary Trees461. Hamming Distance389. Find the Difference448. Find All Numbers Disappeared in an Array371. Sum of Two Integers657. Judge Route Circle561. Array Partition I500. Keyboard Row557. Reverse Words in a String III344. Reverse String682. Baseball Game575. Distribute Candies258. Add Digits1. Two Sum125. Valid Palindrome167. Two Sum II - Input array is sorted412. Fizz Buzz566. Reshape the Matrix463. Island Perimter496. Next Greater Element I521. Longest Uncommon Subsequence I292. Nim Game136. Single Number693. Binary Number with Alternating Bits485. Max Consecutive Ones520. Detect Capital]]></content>
       <categories>
         <category>算法</category>
       </categories>
