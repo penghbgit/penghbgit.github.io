@@ -1,15 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Ransom Note]]></title>
+    <url>%2F2017%2F11%2F17%2FleetCode%2FransomNote%2F</url>
+    <content type="text"><![CDATA[Ransom Note原题：Given an arbitrary ransom note string and another string containing letters from all the magazines, write a function that will return true if the ransom note can be constructed from the magazines ; otherwise, it will return false. Each letter in the magazine string can only be used once in your ransom note. Note You may assume that both strings contain only lowercase letters. canConstruct(“a”, “b”) -&gt; falsecanConstruct(“aa”, “ab”) -&gt; falsecanConstruct(“aa”, “aab”) -&gt; true 题目大意给两个字符串，第二个字符串要包含第一个字符串的所有字母，每个字母只能用一次（忽略大小写）。 解题思路利用数组统计每次字母出现的次数，然后进行比较。代码实现（java）：1234567891011121314class Solution &#123; public boolean canConstruct(String ransomNote, String magazine) &#123; int[] words = new int[26]; for(int i = 0; i &lt; magazine.length(); i++)&#123; words[magazine.charAt(i) - 'a']++; &#125; for(int i = 0; i &lt; ransomNote.length(); i++)&#123; if(--words[ransomNote.charAt(i) - 'a'] &lt; 0) return false; &#125; return true; &#125;&#125; python实现：python用collections.Counter类统计字符个数，然后比较即可。12345678910111213141516171819from collections import Counterclass Solution(object): def canConstruct(self, ransomNote, magazine): """ :type ransomNote: str :type magazine: str :rtype: bool """ if ransomNote == '': return True if magazine == '': return False ransomNoteCount = Counter(ransomNote) magazineCount = Counter(magazine) for i in ransomNoteCount.keys(): if None == magazineCount.get(i) or ransomNoteCount[i] &gt; magazineCount.get(i): return False else: return True]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>leetCode</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Intersection of Two Arrays]]></title>
+    <url>%2F2017%2F11%2F17%2FleetCode%2FintersectionOfTwoArrays%2F</url>
+    <content type="text"><![CDATA[Intersection of Two Arrays原题：Given two arrays, write a function to compute their intersection. Example1 Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2]. Note Each element in the result must be unique. The result can be in any order. 题目大意给两个数组，求两个数组的交集，顺序可以随便，但是结果中的元素唯一。 解题思路解题思路有很多，这里自己看代码吧，不做解释了。代码实现（java）：1234567891011121314151617181920212223class Solution &#123; public int[] intersection(int[] nums1, int[] nums2) &#123; Set&lt;Integer&gt; set = new HashSet&lt;&gt;(); for(int i = 0; i &lt; nums1.length; i++)&#123; set.add(nums1[i]); &#125; List&lt;Integer&gt; list = new ArrayList&lt;&gt;(); for(int i = 0; i &lt; nums2.length; i++)&#123; if(set.contains(nums2[i]))&#123; list.add(nums2[i]); set.remove(nums2[i]); &#125; &#125; int[] res = new int[list.size()]; for(int i = 0; i &lt; list.size(); i++)&#123; res[i] = list.get(i); &#125; return res; &#125;&#125; python实现：12345678class Solution(object): def intersection(self, nums1, nums2): """ :type nums1: List[int] :type nums2: List[int] :rtype: List[int] """ return list(set(nums1) &amp; set(nums2))]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>leetCode</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Best Time to Buy and Sell Stock II]]></title>
-    <url>%2F2017%2F11%2F16%2FbestTimetoBuyAndSellStockII%2F</url>
+    <url>%2F2017%2F11%2F16%2FleetCode%2FbestTimetoBuyAndSellStockII%2F</url>
     <content type="text"><![CDATA[Best Time to Buy and Sell Stock II原题：Say you have an array for which the i^th element is the price of a given stock on day i. Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times). However, you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again). 题目大意假设有一个数组，它的第i个元素是一个给定的股票在第i天的价格。设计一个算法来找到最大的利润。你可以完成尽可能多的交易(多次买卖股票)。然而,你不能同时参与多个交易(你必须在再次购买前出售股票)。 解题思路运用贪心算法，每次把比前一个大的差值都加入结果中。代码实现（java）：123456789101112class Solution &#123; public int maxProfit(int[] prices) &#123; if(prices == null || prices.length == 0) return 0; int res = 0; for(int i = 1; i &lt; prices.length; i++)&#123; if(prices[i] &gt; prices[i - 1]) res += prices[i] - prices[i - 1]; &#125; return res; &#125;&#125; python实现：123456789101112class Solution(object): def maxProfit(self, prices): """ :type prices: List[int] :rtype: int """ res = 0 for i in range(1, len(prices)): c = prices[i] - prices[i - 1] if c &gt; 0: res += c return res]]></content>
       <categories>
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -21,8 +47,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -34,8 +60,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -47,8 +73,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -60,8 +86,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -73,8 +99,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -86,8 +112,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -99,8 +125,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -112,8 +138,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -125,8 +151,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -138,8 +164,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -176,8 +202,8 @@
         <category>java</category>
       </categories>
       <tags>
-        <tag>java</tag>
         <tag>java源码</tag>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -200,8 +226,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -213,8 +239,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -226,8 +252,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -239,8 +265,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -252,8 +278,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -265,8 +291,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -278,8 +304,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -291,8 +317,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -304,8 +330,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -317,8 +343,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -330,8 +356,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -343,8 +369,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -356,8 +382,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -381,8 +407,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -394,8 +420,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -407,8 +433,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -420,8 +446,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -433,8 +459,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -480,8 +506,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -493,8 +519,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -506,8 +532,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -519,8 +545,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -544,8 +570,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -563,13 +589,13 @@
   <entry>
     <title><![CDATA[leetCode题解]]></title>
     <url>%2F2017%2F10%2F01%2FleetCodeList%2F</url>
-    <content type="text"><![CDATA[leetCode是一个非常值得学习的网站，以下是本人近期刷leetCode的总结，里面的代码都是AC通过的，该博文会持续更新。 122. Best Time to Buy and Sell Stock II453. Minimum Moves to Equal Array Elements598. Range Addition II492. Construct the Rectangle283. Move Zeroes171. Excel Sheet Column Number690. Employee Importance669. Trim a Binary Search Tree476. Number Complement617. Merge Two Binary Trees461. Hamming Distance389. Find the Difference448. Find All Numbers Disappeared in an Array371. Sum of Two Integers657. Judge Route Circle561. Array Partition I500. Keyboard Row557. Reverse Words in a String III344. Reverse String682. Baseball Game575. Distribute Candies258. Add Digits1. Two Sum125. Valid Palindrome167. Two Sum II - Input array is sorted412. Fizz Buzz566. Reshape the Matrix463. Island Perimter496. Next Greater Element I521. Longest Uncommon Subsequence I292. Nim Game136. Single Number693. Binary Number with Alternating Bits485. Max Consecutive Ones520. Detect Capital]]></content>
+    <content type="text"><![CDATA[leetCode是一个非常值得学习的网站，以下是本人近期刷leetCode的总结，里面的代码都是AC通过的，该博文会持续更新。 383. Ransom Note349. Intersection of Two Arrays122. Best Time to Buy and Sell Stock II453. Minimum Moves to Equal Array Elements598. Range Addition II492. Construct the Rectangle283. Move Zeroes171. Excel Sheet Column Number690. Employee Importance669. Trim a Binary Search Tree476. Number Complement617. Merge Two Binary Trees461. Hamming Distance389. Find the Difference448. Find All Numbers Disappeared in an Array371. Sum of Two Integers657. Judge Route Circle561. Array Partition I500. Keyboard Row557. Reverse Words in a String III344. Reverse String682. Baseball Game575. Distribute Candies258. Add Digits1. Two Sum125. Valid Palindrome167. Two Sum II - Input array is sorted412. Fizz Buzz566. Reshape the Matrix463. Island Perimter496. Next Greater Element I521. Longest Uncommon Subsequence I292. Nim Game136. Single Number693. Binary Number with Alternating Bits485. Max Consecutive Ones520. Detect Capital]]></content>
       <categories>
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -581,8 +607,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetCode</tag>
         <tag>算法</tag>
+        <tag>leetCode</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
