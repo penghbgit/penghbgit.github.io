@@ -1,6 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[1-bit and 2-bit Characters]]></title>
+    <url>%2F2017%2F11%2F21%2FleetCode%2F1-bitAnd2-bitCharacters%2F</url>
+    <content type="text"><![CDATA[1-bit and 2-bit Characters原题：We have two special characters. The first character can be represented by one bit 0. The second character can be represented by two bits (10 or 11). Now given a string represented by several bits. Return whether the last character must be a one-bit character or not. The given string will always end with a zero. Example1 Input:bits = [1, 0, 0]Output: TrueExplanation:The only way to decode it is two-bit character and one-bit character. So the last character is one-bit character. Example2 Input:bits = [1, 1, 1, 0]Output: FalseExplanation:The only way to decode it is two-bit character and two-bit character. So the last character is NOT one-bit character. Note 1 &lt;= len(bits) &lt;= 1000. bits[i] is always 0 or 1. 题目大意读懂题发现该题并不难，就是给一个字符串，由0和10或11组成，最后一位总是0.问给定的字符串最后一位的0属于0还是10 解题思路做循环判断就行，如果遇到1指针加2遇到0指针加1然后判断长度。代码实现（java）：12345678910111213class Solution &#123; public boolean isOneBitCharacter(int[] bits) &#123; int i = 0; while( i &lt; bits.length - 1)&#123; if(bits[i] == 1) i += 2; else i++; &#125; return i == bits.length - 1; &#125;&#125; python实现：123456789101112131415class Solution(object): def isOneBitCharacter(self, bits): """ :type bits: List[int] :rtype: bool """ i = 0 while(i &lt; len(bits)): if i == len(bits) - 1: return True if bits[i] == 1: i += 2 else: i += 1 return False]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>leetCode</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Invert Binary Tree]]></title>
+    <url>%2F2017%2F11%2F21%2FleetCode%2FinvertBinaryTree%2F</url>
+    <content type="text"><![CDATA[Invert Binary Tree原题：Invert a binary tree. Example1 Input: 4 / \ 2 7 / \ / \1 3 6 9Output: 4 / \ 7 2 / \ / \9 6 3 1 题目大意如例子反转二叉树。 解题思路可以用递归或者借助栈或者bfs（广度优先搜索）做解，这里附上递归的代码。代码实现（java）：123456789101112131415161718192021222324/** * Definition for a binary tree node. * public class TreeNode &#123; * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public TreeNode invertTree(TreeNode root) &#123; if (root == null) return root; TreeNode node = root.right; root.right = root.left; root.left = node; invertTree(root.left); invertTree(root.right); return root; &#125;&#125; python实现：12345678910111213141516171819# Definition for a binary tree node.# class TreeNode(object):# def __init__(self, x):# self.val = x# self.left = None# self.right = Noneclass Solution(object): def invertTree(self, root): """ :type root: TreeNode :rtype: TreeNode """ if root == None: return root node = root.left root.left = self.invertTree(root.right) root.right = self.invertTree(node) return root]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>leetCode</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Maximum Depth of Binary Tree]]></title>
+    <url>%2F2017%2F11%2F20%2FleetCode%2FmaximumDepthofBinaryTree%2F</url>
+    <content type="text"><![CDATA[Maximum Depth of Binary Tree原题：Given a binary tree, find its maximum depth. The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node. 题目大意给定一个二叉树，求最大的深度。 解题思路可以用递归和非递归两种方法实现。代码实现（java）：12345678910111213141516/** * Definition for a binary tree node. * public class TreeNode &#123; * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public int maxDepth(TreeNode root) &#123; if(root == null) return 0; return Math.max(maxDepth(root.left),maxDepth(root.right))+1; &#125;&#125; 1234567891011121314151617181920212223242526272829303132333435363738/** * Definition for a binary tree node. * public class TreeNode &#123; * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public int maxDepth(TreeNode root) &#123; if(root == null) return 0; int level = 0; LinkedList&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;(); queue.add(root); int curNum = 1; int nextNum = 0; while(!queue.isEmpty()) &#123; TreeNode n = queue.poll(); curNum--; if(n.left!=null) &#123; queue.add(n.left); nextNum++; &#125; if(n.right!=null) &#123; queue.add(n.right); nextNum++; &#125; if(curNum == 0) &#123; curNum = nextNum; nextNum = 0; level++; &#125; &#125; return level; &#125;&#125; python实现：12345678910111213141516# Definition for a binary tree node.# class TreeNode(object):# def __init__(self, x):# self.val = x# self.left = None# self.right = Noneclass Solution(object): def maxDepth(self, root): """ :type root: TreeNode :rtype: int """ if root == None: return 0 return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>leetCode</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Average of Levels in Binary Tree]]></title>
+    <url>%2F2017%2F11%2F20%2FleetCode%2FaverageofLevelsinBinaryTree%2F</url>
+    <content type="text"><![CDATA[Average of Levels in Binary Tree原题：Given a non-empty binary tree, return the average value of the nodes on each level in the form of an array. Example1 Input: 3 / \ 9 20 / \ 15 7Output: [3, 14.5, 11]Explanation:The average value of nodes on level 0 is 3, on level 1 is 14.5, and on level 2 is 11. Hence return [3, 14.5, 11]. Note The range of node’s value is in the range of 32-bit signed integer. 题目大意给定一个非空的二叉树，求每一层的平均值。 解题思路这里想到了广度优先搜索，利用广度优先搜索算法求解。代码实现（java）：1234567891011121314151617181920212223242526272829303132333435/** * Definition for a binary tree node. * public class TreeNode &#123; * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public List&lt;Double&gt; averageOfLevels(TreeNode root) &#123; List&lt;Double&gt; list = new ArrayList&lt;&gt;(); if (root == null) return list; Queue&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;(); queue.offer(root); while (!queue.isEmpty())&#123; int size = queue.size(); long sum = 0; for (int i = 0; i &lt; size; i++)&#123; TreeNode node = queue.poll(); sum += node.val; if (node.left != null) queue.offer(node.left); if (node.right != null) queue.offer(node.right); &#125; double res = (double)sum/size; list.add(res); &#125; return list; &#125;&#125; python实现：1234567891011121314151617181920212223# Definition for a binary tree node.# class TreeNode(object):# def __init__(self, x):# self.val = x# self.left = None# self.right = Noneclass Solution(object): def averageOfLevels(self, root): """ :type root: TreeNode :rtype: List[float] """ res = [] queue = [root] while queue: res.append(1.0 * sum([n.val for n in queue]) / len(queue)) nqueue = [] for n in queue: if n.left: nqueue.append(n.left) if n.right: nqueue.append(n.right) queue = nqueue return res]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>leetCode</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Ransom Note]]></title>
     <url>%2F2017%2F11%2F17%2FleetCode%2FransomNote%2F</url>
     <content type="text"><![CDATA[Ransom Note原题：Given an arbitrary ransom note string and another string containing letters from all the magazines, write a function that will return true if the ransom note can be constructed from the magazines ; otherwise, it will return false. Each letter in the magazine string can only be used once in your ransom note. Note You may assume that both strings contain only lowercase letters. canConstruct(“a”, “b”) -&gt; falsecanConstruct(“aa”, “ab”) -&gt; falsecanConstruct(“aa”, “aab”) -&gt; true 题目大意给两个字符串，第二个字符串要包含第一个字符串的所有字母，每个字母只能用一次（忽略大小写）。 解题思路利用数组统计每次字母出现的次数，然后进行比较。代码实现（java）：1234567891011121314class Solution &#123; public boolean canConstruct(String ransomNote, String magazine) &#123; int[] words = new int[26]; for(int i = 0; i &lt; magazine.length(); i++)&#123; words[magazine.charAt(i) - 'a']++; &#125; for(int i = 0; i &lt; ransomNote.length(); i++)&#123; if(--words[ransomNote.charAt(i) - 'a'] &lt; 0) return false; &#125; return true; &#125;&#125; python实现：python用collections.Counter类统计字符个数，然后比较即可。12345678910111213141516171819from collections import Counterclass Solution(object): def canConstruct(self, ransomNote, magazine): """ :type ransomNote: str :type magazine: str :rtype: bool """ if ransomNote == '': return True if magazine == '': return False ransomNoteCount = Counter(ransomNote) magazineCount = Counter(magazine) for i in ransomNoteCount.keys(): if None == magazineCount.get(i) or ransomNoteCount[i] &gt; magazineCount.get(i): return False else: return True]]></content>
@@ -589,7 +641,7 @@
   <entry>
     <title><![CDATA[leetCode题解]]></title>
     <url>%2F2017%2F10%2F01%2FleetCodeList%2F</url>
-    <content type="text"><![CDATA[leetCode是一个非常值得学习的网站，以下是本人近期刷leetCode的总结，里面的代码都是AC通过的，该博文会持续更新。 383. Ransom Note349. Intersection of Two Arrays122. Best Time to Buy and Sell Stock II453. Minimum Moves to Equal Array Elements598. Range Addition II492. Construct the Rectangle283. Move Zeroes171. Excel Sheet Column Number690. Employee Importance669. Trim a Binary Search Tree476. Number Complement617. Merge Two Binary Trees461. Hamming Distance389. Find the Difference448. Find All Numbers Disappeared in an Array371. Sum of Two Integers657. Judge Route Circle561. Array Partition I500. Keyboard Row557. Reverse Words in a String III344. Reverse String682. Baseball Game575. Distribute Candies258. Add Digits1. Two Sum125. Valid Palindrome167. Two Sum II - Input array is sorted412. Fizz Buzz566. Reshape the Matrix463. Island Perimter496. Next Greater Element I521. Longest Uncommon Subsequence I292. Nim Game136. Single Number693. Binary Number with Alternating Bits485. Max Consecutive Ones520. Detect Capital]]></content>
+    <content type="text"><![CDATA[leetCode是一个非常值得学习的网站，以下是本人近期刷leetCode的总结，里面的代码都是AC通过的，该博文会持续更新。 717. 1-bit and 2-bit Characters226. Invert Binary Tree104. Maximum Depth of Binary Tree637. Average of Levels in Binary Tree383. Ransom Note349. Intersection of Two Arrays122. Best Time to Buy and Sell Stock II453. Minimum Moves to Equal Array Elements598. Range Addition II492. Construct the Rectangle283. Move Zeroes171. Excel Sheet Column Number690. Employee Importance669. Trim a Binary Search Tree476. Number Complement617. Merge Two Binary Trees461. Hamming Distance389. Find the Difference448. Find All Numbers Disappeared in an Array371. Sum of Two Integers657. Judge Route Circle561. Array Partition I500. Keyboard Row557. Reverse Words in a String III344. Reverse String682. Baseball Game575. Distribute Candies258. Add Digits1. Two Sum125. Valid Palindrome167. Two Sum II - Input array is sorted412. Fizz Buzz566. Reshape the Matrix463. Island Perimter496. Next Greater Element I521. Longest Uncommon Subsequence I292. Nim Game136. Single Number693. Binary Number with Alternating Bits485. Max Consecutive Ones520. Detect Capital]]></content>
       <categories>
         <category>算法</category>
       </categories>

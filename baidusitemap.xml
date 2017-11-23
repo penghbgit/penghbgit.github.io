@@ -5,11 +5,107 @@
     
   <url>
     <loc>http://yoursite.com/2017/10/01/leetCodeList/</loc>
-    <lastmod>2017-11-17T07:43:10.000Z</lastmod>
+    <lastmod>2017-11-21T09:09:00.000Z</lastmod>
     <data>
         <display>
         <title>leetCode题解</title>
         <pubTime>2017-10-01T12:46:32.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+        <tag>leetCode</tag>
+         
+        <tag>数据结构</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/11/21/leetCode/1-bitAnd2-bitCharacters/</loc>
+    <lastmod>2017-11-21T09:07:43.000Z</lastmod>
+    <data>
+        <display>
+        <title>1-bit and 2-bit Characters</title>
+        <pubTime>2017-11-21T09:05:58.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+        <tag>leetCode</tag>
+         
+        <tag>数据结构</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/11/21/leetCode/invertBinaryTree/</loc>
+    <lastmod>2017-11-21T07:55:04.000Z</lastmod>
+    <data>
+        <display>
+        <title>Invert Binary Tree</title>
+        <pubTime>2017-11-21T07:53:40.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+        <tag>leetCode</tag>
+         
+        <tag>数据结构</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/11/20/leetCode/maximumDepthofBinaryTree/</loc>
+    <lastmod>2017-11-20T08:53:10.000Z</lastmod>
+    <data>
+        <display>
+        <title>Maximum Depth of Binary Tree</title>
+        <pubTime>2017-11-20T08:51:30.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+        <tag>leetCode</tag>
+         
+        <tag>数据结构</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/11/20/leetCode/averageofLevelsinBinaryTree/</loc>
+    <lastmod>2017-11-20T07:45:27.000Z</lastmod>
+    <data>
+        <display>
+        <title>Average of Levels in Binary Tree</title>
+        <pubTime>2017-11-20T07:43:16.000Z</pubTime>
         
         <tag>算法</tag>
          
