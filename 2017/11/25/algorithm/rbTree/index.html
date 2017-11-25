@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<meta name="baidu-site-verification" content="z0lL91JrTA" />
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="算法,数据结构,java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="前面介绍了二叉搜索树，它可以支持任何一种基本动态集合的操作，其时间复杂度O(n)。因此，如果搜索树的高度较低时，这些集合操作执行的会较快。然而如果树的高度较高时，这些操纵可能并不比在链表上执行得快。红黑树是许多平衡搜索树的一种，可以保证在最坏的情况下基本动态集合操作的时间复杂度为O(lgn)。 红黑树性质红黑树是二叉搜索树，它在每个结点上增加了一个存储位来表示结点的颜色，可以是红色或者黑色。红黑树">
+<meta name="keywords" content="算法,数据结构,java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="红黑树－－java实现">
+<meta property="og:url" content="http://yoursite.com/2017/11/25/algorithm/rbTree/index.html">
+<meta property="og:site_name" content="海滨小筑">
+<meta property="og:description" content="前面介绍了二叉搜索树，它可以支持任何一种基本动态集合的操作，其时间复杂度O(n)。因此，如果搜索树的高度较低时，这些集合操作执行的会较快。然而如果树的高度较高时，这些操纵可能并不比在链表上执行得快。红黑树是许多平衡搜索树的一种，可以保证在最坏的情况下基本动态集合操作的时间复杂度为O(lgn)。 红黑树性质红黑树是二叉搜索树，它在每个结点上增加了一个存储位来表示结点的颜色，可以是红色或者黑色。红黑树">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2017/11/25/algorithm/rbTree/rbTree2.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/25/algorithm/rbTree/rbTree3.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/25/algorithm/rbTree/rbTree1.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/25/algorithm/rbTree/rbTree4.png">
+<meta property="og:updated_time" content="2017-11-25T10:48:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="红黑树－－java实现">
+<meta name="twitter:description" content="前面介绍了二叉搜索树，它可以支持任何一种基本动态集合的操作，其时间复杂度O(n)。因此，如果搜索树的高度较低时，这些集合操作执行的会较快。然而如果树的高度较高时，这些操纵可能并不比在链表上执行得快。红黑树是许多平衡搜索树的一种，可以保证在最坏的情况下基本动态集合操作的时间复杂度为O(lgn)。 红黑树性质红黑树是二叉搜索树，它在每个结点上增加了一个存储位来表示结点的颜色，可以是红色或者黑色。红黑树">
+<meta name="twitter:image" content="http://yoursite.com/2017/11/25/algorithm/rbTree/rbTree2.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/25/algorithm/rbTree/"/>
+
+
+
+
+
+  <title>红黑树－－java实现 | 海滨小筑</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">海滨小筑</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/25/algorithm/rbTree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="彭海滨">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="海滨小筑">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">红黑树－－java实现</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-25T18:33:31+08:00">
+                2017-11-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2017/11/25/algorithm/rbTree/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/11/25/algorithm/rbTree/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,812
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>前面介绍了二叉搜索树，它可以支持任何一种基本动态集合的操作，其时间复杂度O(n)。因此，如果搜索树的高度较低时，这些集合操作执行的会较快。然而如果树的高度较高时，这些操纵可能并不比在链表上执行得快。<strong>红黑树</strong>是许多平衡搜索树的一种，可以保证在最坏的情况下基本动态集合操作的时间复杂度为O(lgn)。</p>
+<h3 id="红黑树性质"><a href="#红黑树性质" class="headerlink" title="红黑树性质"></a>红黑树性质</h3><p>红黑树是二叉搜索树，它在每个结点上增加了一个存储位来表示结点的颜色，可以是<strong>红色</strong>或者<strong>黑色</strong>。红黑树确保没有一条路径会比其他路径长出两倍，因而是近似于平衡的。<br>一棵红黑树是满足下面红黑性质的二叉搜索树：<br>1.每个结点或是红色的或是黑色的。<br>2.根结点是黑色的。<br>3.每个叶子结点（NIL）是黑色的。（这里的叶子结点为null或NIL）<br>4.如果一个结点是红色的，则它的两个叶子结点都是黑色的。<br>5.对每个结点，从该结点到其后代叶结点的简单路径上，均包含相同数目的黑色结点。</p>
+<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>红黑树的时间复杂度为: O(lgn)</p>
+<p>从某个结点x出发到达一个叶结点的任意一条简单路径上的黑色结点个数称为该结点的黑高。</p>
+<blockquote>
+<p>一棵有n个内部结点的红黑树的高度至多为2lg(n+1)</p>
+</blockquote>
+<h3 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h3><p>红黑树的基本操作有<strong>插入</strong>、<strong>删除</strong>运行时间为O(lgn)。由于这两个操作对树做了修改，可能违反红黑树的性质，为了维护这些性质，通过<strong>旋转</strong>改变树中的某些结点的颜色以及指针。<br>旋转分为两种：左旋和右旋。如下图：<br><img src="/2017/11/25/algorithm/rbTree/rbTree2.png" alt="images"></p>
+<p>左旋的java代码实现如下（参考《算法导论》）：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">rotateLeft</span><span class="params">(Node x)</span></span>&#123;</div><div class="line">       Node y = x.right; <span class="comment">//设置y结点，为x结点的右结点</span></div><div class="line">       <span class="comment">//旋转开始</span></div><div class="line">       x.right = y.left; <span class="comment">//x的右结点设置为y的左结点</span></div><div class="line">       <span class="keyword">if</span> (y.left != <span class="keyword">null</span>)</div><div class="line">           y.left.parent = x; <span class="comment">//把y左结点的父结点指向x结点</span></div><div class="line">       y.parent = x.parent; <span class="comment">//把y的父结点改为x的父结点</span></div><div class="line">       <span class="keyword">if</span> (x.parent == <span class="keyword">null</span>)</div><div class="line">           <span class="keyword">this</span>.root = y; <span class="comment">//如果x的父结点为空。那么y就是root结点</span></div><div class="line">       <span class="keyword">else</span> <span class="keyword">if</span> (x == x.parent.left) <span class="comment">//x为它父结点的左结点</span></div><div class="line">           x.parent.left = y; <span class="comment">//把x的父结点的左结点改为y结点</span></div><div class="line">       <span class="keyword">else</span> x.parent.right = y; <span class="comment">//把x的父结点的右结点改为y</span></div><div class="line">       y.left = x; <span class="comment">//y结点的左结点为x</span></div><div class="line">       x.parent = y; <span class="comment">//x的父结点为y</span></div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>下图是一个左旋修改红黑树的例子：<br><img src="/2017/11/25/algorithm/rbTree/rbTree3.png" alt="images"></p>
+<p>右旋的操作和左旋的代码是对称的，左旋和右旋的时间复杂度均为O(1)。旋转过程中只改变了指针，其他属性不变。</p>
+<p>右旋的java代码实现：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">rotateRight</span><span class="params">(Node y)</span></span>&#123;</div><div class="line">       Node&lt;K&gt; x = y.left; <span class="comment">//设置x结点，为y结点的左结点</span></div><div class="line">       <span class="comment">//旋转开始</span></div><div class="line">       y.left = x.right; <span class="comment">//y的左结点设置为x的右结点</span></div><div class="line">       <span class="keyword">if</span> (x.right != <span class="keyword">null</span>)</div><div class="line">           x.right.parent = y; <span class="comment">//把x右结点的父结点指向y结点</span></div><div class="line">       x.parent = y.parent; <span class="comment">//把x的父结点改为y的父结点</span></div><div class="line">       <span class="keyword">if</span> (y.parent == <span class="keyword">null</span>)</div><div class="line">           <span class="keyword">this</span>.root = x; <span class="comment">//如果y的父结点为空。那么x就是root结点</span></div><div class="line">       <span class="keyword">else</span> <span class="keyword">if</span> (y == y.parent.left) <span class="comment">//y为它父结点的左结点</span></div><div class="line">           y.parent.left = x; <span class="comment">//把y的父结点的左结点改为x结点</span></div><div class="line">       <span class="keyword">else</span> y.parent.right = x; <span class="comment">//把y的父结点的右结点改为x结点</span></div><div class="line">       x.right = y; <span class="comment">//x结点的右结点为y</span></div><div class="line">       y.parent = x; <span class="comment">//y的父结点为x</span></div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>总结：<br>1.在任何一棵有n的结点的红黑树中，有n-1种可能的旋转。<br>2.对x进行左旋，意味着，将x的右孩子变为x的父亲节点；即将x变成了一个左节点(x成了为y的左孩子)。 因此，左旋中的左，意味着<strong>被旋转的节点将变成一个左节点</strong>。<br>3.对y进行右旋，意味着，将y的左结点变为y的父亲结点；即将y变成了一个右节点(y成了为x的右孩子)。 因此，右旋中的右，意味着<strong>被旋转的节点将变成一个右节点</strong>。</p>
+<h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><p>我们可以在O(lgn)的时间内完成向一棵n个结点的红黑树中插入一个新的结点。为了做到这一点，利用二叉搜索树的insert过程的一个略作修改的版本将结点z插入到树中，为了保证红黑树的性质继续保持，我们调用一个辅助方法fixUp对结点重新着色并旋转。<br>insert方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(Node&lt;K&gt; z)</span></span>&#123;</div><div class="line">       Node&lt;K&gt; y = <span class="keyword">null</span>;</div><div class="line">       Node&lt;K&gt; x = <span class="keyword">this</span>.root;</div><div class="line">       <span class="keyword">int</span> com;</div><div class="line">       <span class="keyword">while</span> (x != <span class="keyword">null</span>)&#123; <span class="comment">// 如果根结点不为空，循环比较z的key的大小</span></div><div class="line">           y = x;</div><div class="line">           com = z.key.compareTo(x.key);</div><div class="line">           <span class="keyword">if</span> (com &lt; <span class="number">0</span>)</div><div class="line">               x = x.left;</div><div class="line">           <span class="keyword">else</span> x = x.right;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       z.parent = y; <span class="comment">// y是x结点的父结点，把z结点定义为y结点的子结点</span></div><div class="line">       <span class="keyword">if</span> (y == <span class="keyword">null</span>)</div><div class="line">           <span class="keyword">this</span>.root = z; <span class="comment">//如果y为null的话，z即为root结点</span></div><div class="line">       <span class="keyword">else</span>&#123;</div><div class="line">           com = z.key.compareTo(y.key);</div><div class="line">           <span class="keyword">if</span> (com &lt; <span class="number">0</span>) <span class="comment">//如果z的key小于y的key，即为左结点</span></div><div class="line">               y.left = z;</div><div class="line">           <span class="keyword">else</span> y.right = z;<span class="comment">//反之为右结点</span></div><div class="line">       &#125;</div><div class="line"></div><div class="line">       z.color = RED;<span class="comment">//新增结点颜色定义为红色，不违反红黑树性质的第五条</span></div><div class="line">       fixUp(z);<span class="comment">//做颜色上的调整</span></div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>利用fixUp做着色和旋转处理，结点初始值为红色，为什么是红色呢 因为红色的话可以少违反一条性质（性质5）：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">fixUp</span><span class="params">(Node&lt;K&gt; z)</span></span>&#123;</div><div class="line">       <span class="keyword">while</span> (z.parent != <span class="keyword">null</span> &amp;&amp; z.parent.color)&#123; <span class="comment">//若当前z结点的父结点是红色</span></div><div class="line">           <span class="keyword">if</span> (z.parent == z.parent.parent.left)&#123; <span class="comment">//若z的父结点是z的祖父结点的左结点</span></div><div class="line">               Node&lt;K&gt; y = z.parent.parent.right; <span class="comment">//定义y结点为z的祖父结点的右结点</span></div><div class="line">               <span class="keyword">if</span> (y != <span class="keyword">null</span> &amp;&amp; y.color)&#123; <span class="comment">//case1: 如果y是红色</span></div><div class="line">                   z.parent.color = BLACK; <span class="comment">//z的父结点为黑色</span></div><div class="line">                   y.color = BLACK; <span class="comment">//z的叔叔结点为黑色</span></div><div class="line">                   z.parent.parent.color = RED; <span class="comment">//祖父结点为红色</span></div><div class="line">                   z = z.parent.parent; <span class="comment">//将祖父节点设为当前节点(红色节点)</span></div><div class="line">               &#125;<span class="keyword">else</span> &#123;</div><div class="line">                   <span class="keyword">if</span> (z == z.parent.right)&#123; <span class="comment">//case2: y是黑色，且当前结点为右结点</span></div><div class="line">                       z = z.parent; <span class="comment">//将父节点作为新的当前节点。</span></div><div class="line">                       rotateLeft(z); <span class="comment">//以新的当前节点为支点进行左旋。</span></div><div class="line">                   &#125;</div><div class="line">                   <span class="comment">//case3: y是黑色，且当前节点是左结点。</span></div><div class="line">                   z.parent.color = BLACK; <span class="comment">//设置父结点为黑色</span></div><div class="line">                   z.parent.parent.color = RED; <span class="comment">//祖父结点为红色</span></div><div class="line">                   rotateRight(z.parent.parent); <span class="comment">//以z的祖父结点为支点右旋</span></div><div class="line">               &#125;</div><div class="line">           &#125;<span class="keyword">else</span> &#123; <span class="comment">//若z的父结点是z的祖父结点的右结点</span></div><div class="line">               Node&lt;K&gt; y = z.parent.parent.left; <span class="comment">//定义y结点为z的祖父结点的左结点</span></div><div class="line">               <span class="comment">//case1：y结点是红色</span></div><div class="line">               <span class="keyword">if</span> (y.color) &#123;</div><div class="line">                   z.parent.color = BLACK;</div><div class="line">                   y.color = BLACK;</div><div class="line">                   z.parent.parent.color = RED;</div><div class="line">                   z = z.parent.parent; <span class="comment">//将祖父节点设为当前节点(红色节点)</span></div><div class="line">               &#125; <span class="keyword">else</span> &#123;</div><div class="line">                   <span class="comment">//case2：y是黑色，且当前节点是左结点</span></div><div class="line">                   <span class="keyword">if</span> (z == z.parent.left)&#123;</div><div class="line">                       z = z.parent; <span class="comment">//将父节点作为新的当前节点。</span></div><div class="line">                       rotateRight(z); <span class="comment">//以新的当前节点为支点进行右旋。</span></div><div class="line">                   &#125;</div><div class="line">                   <span class="comment">//case3: y是黑色，且当前节点是右结点。</span></div><div class="line">                   z.parent.color = BLACK; <span class="comment">//设置父结点为黑色</span></div><div class="line">                   z.parent.parent.color = RED; <span class="comment">//祖父结点为红色</span></div><div class="line">                   rotateLeft(z.parent.parent); <span class="comment">//以z的祖父结点为支点左旋</span></div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">this</span>.root.color = BLACK;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>下图给出了fixUp的工作原理：<br><img src="/2017/11/25/algorithm/rbTree/rbTree1.png" alt="images"></p>
+<p>总体来说，插入就是插入一个新的结点，按照红黑树的性质对树的结构进行调整。</p>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>与n个结点的红黑树上的其他基本操作一样，删除一个结点要花费的时间也是O(lgn)。与插入操作相比删除操作更复杂一些。从一棵红黑树中删除结点的过程是基于二叉搜索树的delete过程的。同样也需要一个transplant子过程：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">transplant</span><span class="params">(Node&lt;K&gt; u, Node&lt;K&gt; v)</span></span>&#123;</div><div class="line">       <span class="keyword">if</span> (u.parent == <span class="keyword">null</span>)</div><div class="line">           <span class="keyword">this</span>.root = v;</div><div class="line">       <span class="keyword">else</span> <span class="keyword">if</span> (u == u.parent.left)</div><div class="line">           u.parent.left = v;</div><div class="line">       <span class="keyword">else</span></div><div class="line">           u.parent.right = v;</div><div class="line">       v.parent = u.parent;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>这段代码不做讲解了，可以参考前一篇博文。<br>delete方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(Node&lt;K&gt; z)</span></span>&#123; <span class="comment">//z是被删除结点</span></div><div class="line">       <span class="comment">//x是取代节点的右孩子，也是需要调整的节点。</span></div><div class="line">       Node&lt;K&gt; x, parent;</div><div class="line">       <span class="keyword">boolean</span> color;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> ((z.left != <span class="keyword">null</span>) &amp;&amp; (z.right != <span class="keyword">null</span>) ) &#123; <span class="comment">//被删除节点的左右结点都不为空的情况。</span></div><div class="line">           Node&lt;K&gt; y = z; <span class="comment">//被删节点的后继节点。用它来取代被删节点的位置，然后再将被删节点去掉。</span></div><div class="line">           y = y.right; <span class="comment">//获取后继节点</span></div><div class="line">           <span class="keyword">while</span> (y.left != <span class="keyword">null</span>)</div><div class="line">               y = y.left;</div><div class="line">           <span class="keyword">if</span> (z.parent != <span class="keyword">null</span>) &#123; <span class="comment">//要删除的结点不是根结点</span></div><div class="line">               <span class="keyword">if</span> (z.parent.left == z)</div><div class="line">                   z.parent.left = y;</div><div class="line">               <span class="keyword">else</span></div><div class="line">                   z.parent.right = y;</div><div class="line">           &#125; <span class="keyword">else</span> &#123;</div><div class="line">               <span class="keyword">this</span>.root = y; <span class="comment">//是根结点</span></div><div class="line">           &#125;</div><div class="line"></div><div class="line">           x = y.right;</div><div class="line">           parent = y.parent;</div><div class="line">           <span class="comment">//保存取代节点的颜色</span></div><div class="line">           color = y.color;</div><div class="line"></div><div class="line">           <span class="comment">//被删除节点是它的后继节点的父节点</span></div><div class="line">           <span class="keyword">if</span> (parent == z) &#123;</div><div class="line">               parent = y;</div><div class="line">           &#125; <span class="keyword">else</span> &#123;</div><div class="line">               <span class="comment">//x不为空</span></div><div class="line">               <span class="keyword">if</span> (x != <span class="keyword">null</span>)</div><div class="line">                   x.parent = parent;</div><div class="line">               parent.left = x;</div><div class="line"></div><div class="line">               y.right = z.right;</div><div class="line">               z.right.parent = y;</div><div class="line">           &#125;</div><div class="line"></div><div class="line">           y.parent = z.parent;</div><div class="line">           y.color = z.color;</div><div class="line">           y.left = z.left;</div><div class="line">           z.left.parent = y;</div><div class="line"></div><div class="line">           <span class="keyword">if</span> (color == BLACK)</div><div class="line">               deleteFixUp(x, parent);</div><div class="line">           <span class="keyword">return</span> ;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (z.left != <span class="keyword">null</span>) &#123;</div><div class="line">           x = z.left;</div><div class="line">       &#125; <span class="keyword">else</span> &#123;</div><div class="line">           x = z.right;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       parent = z.parent;</div><div class="line">       <span class="comment">//保存取代节点的颜色</span></div><div class="line">       color = z.color;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (x != <span class="keyword">null</span>)</div><div class="line">           x.parent = parent;</div><div class="line"></div><div class="line">       <span class="comment">//不是根节点</span></div><div class="line">       <span class="keyword">if</span> (parent != <span class="keyword">null</span>) &#123;</div><div class="line">           <span class="keyword">if</span> (parent.left == z)</div><div class="line">               parent.left = x;</div><div class="line">           <span class="keyword">else</span></div><div class="line">               parent.right = x;</div><div class="line">       &#125; <span class="keyword">else</span> &#123;</div><div class="line">           <span class="keyword">this</span>.root = x;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (color == BLACK)</div><div class="line">           deleteFixUp(x, parent);</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>deleteFixUp方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">deleteFixUp</span><span class="params">(Node&lt;K&gt; x, Node&lt;K&gt; parent)</span></span>&#123;</div><div class="line">       Node&lt;K&gt; w;</div><div class="line">       <span class="keyword">while</span> ((x == <span class="keyword">null</span> || x.color == BLACK) &amp;&amp; (x != <span class="keyword">this</span>.root)) &#123;</div><div class="line">           <span class="keyword">if</span> (parent.left == x) &#123; <span class="comment">//如果x是它父结点的左结点</span></div><div class="line">               w = parent.right;</div><div class="line">               <span class="keyword">if</span> (w.color == RED) &#123;</div><div class="line">                   <span class="comment">//case1: x的兄弟w是红色的</span></div><div class="line">                   <span class="comment">//因为w必须有黑色子结点，所以可以改变w和x.parent的颜色，然后对x.parent做一次左旋</span></div><div class="line">                   w.color = BLACK;</div><div class="line">                   parent.color = RED;</div><div class="line">                   rotateLeft(parent);</div><div class="line">                   w = parent.right;</div><div class="line">               &#125;</div><div class="line"></div><div class="line">               <span class="keyword">if</span> ((w.left == <span class="keyword">null</span> || w.left.color == BLACK) &amp;&amp;</div><div class="line">                       (w.right == <span class="keyword">null</span> || w.right.color == BLACK)) &#123;</div><div class="line">                   <span class="comment">//case2: x的兄弟w是黑色，且w的俩个孩子也都是黑色的</span></div><div class="line">                   <span class="comment">//因为w也是黑色，所以从x上去掉一重黑色，使x只有一重黑色而w为红色，在原来的x.parent上新增一重额外的黑色，通过将x.parent作为新的结点来重复循环实现。</span></div><div class="line">                   w.color = RED;</div><div class="line">                   x = parent;</div><div class="line">                   parent = x != <span class="keyword">null</span> ? x.parent : <span class="keyword">null</span>;</div><div class="line">               &#125; <span class="keyword">else</span> &#123;</div><div class="line">                   <span class="keyword">if</span> (w.right == <span class="keyword">null</span> || w.right.color == BLACK) &#123;</div><div class="line">                       <span class="comment">//case3: x的兄弟w是黑色的，并且w的左孩子是红色，右孩子为黑色</span></div><div class="line">                       <span class="comment">//交换w和其左孩子的颜色，然后对w进行右旋</span></div><div class="line">                       w.left.color = BLACK;</div><div class="line">                       w.color = RED;</div><div class="line">                       rotateRight(w);</div><div class="line">                       w = parent.right;</div><div class="line">                   &#125;</div><div class="line">                   <span class="comment">//case4: x的兄弟w是黑色的；并且w的右孩子是红色的</span></div><div class="line">                   <span class="comment">//修改w，x.parent, w.right颜色，对x.parent进行左旋，设置x为root结束循环</span></div><div class="line">                   w.color = parent != <span class="keyword">null</span> ? parent.color : BLACK;</div><div class="line">                   parent.color = BLACK;</div><div class="line">                   w.right.color = BLACK;</div><div class="line">                   rotateLeft(parent);</div><div class="line">                   x = <span class="keyword">this</span>.root;</div><div class="line">                   <span class="keyword">break</span>;</div><div class="line">               &#125;</div><div class="line">           &#125; <span class="keyword">else</span> &#123; <span class="comment">//x是父结点的右结点时情况和上面相反</span></div><div class="line">               w = parent.left;</div><div class="line">               <span class="keyword">if</span> (w.color == RED) &#123;</div><div class="line">                   w.color = BLACK;</div><div class="line">                   parent.color = RED;</div><div class="line">                   rotateRight(parent);</div><div class="line">                   w = parent.left;</div><div class="line">               &#125;</div><div class="line"></div><div class="line">               <span class="keyword">if</span> ((w.left == <span class="keyword">null</span> || w.left.color == BLACK) &amp;&amp;</div><div class="line">                       (w.right == <span class="keyword">null</span> || w.right.color == BLACK)) &#123;</div><div class="line">                   w.color = RED;</div><div class="line">                   x = parent;</div><div class="line">                   parent = x != <span class="keyword">null</span> ? x.parent : <span class="keyword">null</span>;</div><div class="line">               &#125; <span class="keyword">else</span> &#123;</div><div class="line">                   <span class="keyword">if</span> (w.left == <span class="keyword">null</span> || w.left.color == BLACK) &#123;</div><div class="line">                       w.right.color = BLACK;</div><div class="line">                       w.color = RED;</div><div class="line">                       rotateLeft(w);</div><div class="line">                       w = parent.left;</div><div class="line">                   &#125;</div><div class="line"></div><div class="line">                   w.color = parent != <span class="keyword">null</span> ? parent.color : BLACK;</div><div class="line">                   parent.color = BLACK;</div><div class="line">                   w.left.color = BLACK;</div><div class="line">                   rotateRight(parent);</div><div class="line">                   x = <span class="keyword">this</span>.root;</div><div class="line">                   <span class="keyword">break</span>;</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (x != <span class="keyword">null</span>)</div><div class="line">           x.color = BLACK;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>下图给出了deleteFixUp的几种情况:<br><img src="/2017/11/25/algorithm/rbTree/rbTree4.png" alt="images"></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>《算法导论》第3版<br><a href="https://www.cnblogs.com/skywang12345/p/3245399.html" target="_blank" rel="external">https://www.cnblogs.com/skywang12345/p/3245399.html</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持为我更添写作的动力</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpeg" alt="彭海滨 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpeg" alt="彭海滨 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/21/leetCode/1-bitAnd2-bitCharacters/" rel="next" title="1-bit and 2-bit Characters">
+                <i class="fa fa-chevron-left"></i> 1-bit and 2-bit Characters
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/uploads/avatar.png"
+              alt="彭海滨" />
+          
+            <p class="site-author-name" itemprop="name">彭海滨</p>
+            <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">55</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#红黑树性质"><span class="nav-number">1.</span> <span class="nav-text">红黑树性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间复杂度"><span class="nav-number">2.</span> <span class="nav-text">时间复杂度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#旋转"><span class="nav-number">3.</span> <span class="nav-text">旋转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入"><span class="nav-number">4.</span> <span class="nav-text">插入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除"><span class="nav-number">5.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">彭海滨</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">
+      43.9k
+    </span>
+  
+</div>
+
+
+  <div class="powered-by">个人专属</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">博客 &mdash;  Codeagles</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytf4EXyb';
+      var conf = '7427f2c96cc596de7e6d279b88d16e73';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
