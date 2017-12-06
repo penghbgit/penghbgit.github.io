@@ -5,11 +5,59 @@
     
   <url>
     <loc>http://yoursite.com/2017/10/01/leetCodeList/</loc>
-    <lastmod>2017-12-05T07:34:46.000Z</lastmod>
+    <lastmod>2017-12-06T09:55:18.000Z</lastmod>
     <data>
         <display>
         <title>leetCode题解</title>
         <pubTime>2017-10-01T12:46:32.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+        <tag>leetCode</tag>
+         
+        <tag>数据结构</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/12/06/leetCode/convertBSTtoGreaterTree/</loc>
+    <lastmod>2017-12-06T07:18:57.000Z</lastmod>
+    <data>
+        <display>
+        <title>Convert BST to Greater Tree</title>
+        <pubTime>2017-12-06T07:16:34.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+        <tag>leetCode</tag>
+         
+        <tag>数据结构</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/12/06/leetCode/constructStringfromBinaryTree/</loc>
+    <lastmod>2017-12-06T07:17:31.000Z</lastmod>
+    <data>
+        <display>
+        <title>Construct String from Binary Tree</title>
+        <pubTime>2017-12-06T06:42:09.000Z</pubTime>
         
         <tag>算法</tag>
          
