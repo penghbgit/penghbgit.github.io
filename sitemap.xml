@@ -2,9 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/12/13/designpatterns/proxy/</loc>
+    
+    <lastmod>2017-12-13T15:16:54.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/12/05/designpatterns/strategy/</loc>
+    
+    <lastmod>2017-12-13T15:16:40.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/10/01/leetCodeList/</loc>
     
-    <lastmod>2017-12-06T09:55:18.000Z</lastmod>
+    <lastmod>2017-12-12T08:24:35.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/12/12/leetCode/deleteNodeinaLinkedList/</loc>
+    
+    <lastmod>2017-12-12T08:23:15.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/12/12/leetCode/firstUniqueCharacterinaString/</loc>
+    
+    <lastmod>2017-12-12T06:43:21.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/12/11/leetCode/sumofLeftLeaves/</loc>
+    
+    <lastmod>2017-12-11T11:20:50.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/12/11/leetCode/majorityElement/</loc>
+    
+    <lastmod>2017-12-11T09:45:59.000Z</lastmod>
     
   </url>
   
@@ -26,13 +68,6 @@
     <loc>http://yoursite.com/2017/12/05/leetCode/countBinarySubstrings/</loc>
     
     <lastmod>2017-12-05T07:33:21.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/12/05/designpatterns/strategy/</loc>
-    
-    <lastmod>2017-12-05T02:53:11.000Z</lastmod>
     
   </url>
   

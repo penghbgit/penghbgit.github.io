@@ -69,19 +69,19 @@
 
 
 
-<meta name="description" content="定义在《大话设计模式》一书中，程杰老师是这样描述策略模式的：  策略模式（Strategy）：它定义了算法家族，分别封装起来，让他们之间可以相互替换，此模式让算法的变化，不会影响到使用算法的客户。  结构下面是策略模式的结构图： 举例该书中举了一个很形象的收银系统，打折和满减。面向对象的编程，并不是类越多越好，类的划分是为了封装，但分类的基础是抽象，具有相同属性和功能的对象的抽象集合才是类。打一折">
+<meta name="description" content="定义在《大话设计模式》一书中，程杰老师是这样描述策略模式的：  策略模式（Strategy）：它定义了算法家族，分别封装起来，让他们之间可以相互替换，此模式让算法的变化，不会影响到使用算法的客户。  结构下面是策略模式的结构图： 实例该书中举了一个很形象的收银系统，打折和满减。面向对象的编程，并不是类越多越好，类的划分是为了封装，但分类的基础是抽象，具有相同属性和功能的对象的抽象集合才是类。打一折">
 <meta name="keywords" content="java,设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式－－策略模式(Strategy)">
 <meta property="og:url" content="http://yoursite.com/2017/12/05/designpatterns/strategy/index.html">
 <meta property="og:site_name" content="海滨小筑">
-<meta property="og:description" content="定义在《大话设计模式》一书中，程杰老师是这样描述策略模式的：  策略模式（Strategy）：它定义了算法家族，分别封装起来，让他们之间可以相互替换，此模式让算法的变化，不会影响到使用算法的客户。  结构下面是策略模式的结构图： 举例该书中举了一个很形象的收银系统，打折和满减。面向对象的编程，并不是类越多越好，类的划分是为了封装，但分类的基础是抽象，具有相同属性和功能的对象的抽象集合才是类。打一折">
+<meta property="og:description" content="定义在《大话设计模式》一书中，程杰老师是这样描述策略模式的：  策略模式（Strategy）：它定义了算法家族，分别封装起来，让他们之间可以相互替换，此模式让算法的变化，不会影响到使用算法的客户。  结构下面是策略模式的结构图： 实例该书中举了一个很形象的收银系统，打折和满减。面向对象的编程，并不是类越多越好，类的划分是为了封装，但分类的基础是抽象，具有相同属性和功能的对象的抽象集合才是类。打一折">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2017/12/05/designpatterns/strategy/strategy1.png">
-<meta property="og:updated_time" content="2017-12-05T02:53:11.000Z">
+<meta property="og:updated_time" content="2017-12-13T15:16:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式－－策略模式(Strategy)">
-<meta name="twitter:description" content="定义在《大话设计模式》一书中，程杰老师是这样描述策略模式的：  策略模式（Strategy）：它定义了算法家族，分别封装起来，让他们之间可以相互替换，此模式让算法的变化，不会影响到使用算法的客户。  结构下面是策略模式的结构图： 举例该书中举了一个很形象的收银系统，打折和满减。面向对象的编程，并不是类越多越好，类的划分是为了封装，但分类的基础是抽象，具有相同属性和功能的对象的抽象集合才是类。打一折">
+<meta name="twitter:description" content="定义在《大话设计模式》一书中，程杰老师是这样描述策略模式的：  策略模式（Strategy）：它定义了算法家族，分别封装起来，让他们之间可以相互替换，此模式让算法的变化，不会影响到使用算法的客户。  结构下面是策略模式的结构图： 实例该书中举了一个很形象的收银系统，打折和满减。面向对象的编程，并不是类越多越好，类的划分是为了封装，但分类的基础是抽象，具有相同属性和功能的对象的抽象集合才是类。打一折">
 <meta name="twitter:image" content="http://yoursite.com/2017/12/05/designpatterns/strategy/strategy1.png">
 
 
@@ -430,7 +430,7 @@
 <p>策略模式（Strategy）：它定义了算法家族，分别封装起来，让他们之间可以相互替换，此模式让算法的变化，不会影响到使用算法的客户。</p>
 </blockquote>
 <h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p>下面是策略模式的结构图：<br><img src="/2017/12/05/designpatterns/strategy/strategy1.png" alt="image"></p>
-<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p>该书中举了一个很形象的收银系统，打折和满减。<strong>面向对象的编程，并不是类越多越好，类的划分是为了封装，但分类的基础是抽象，具有相同属性和功能的对象的抽象集合才是类。</strong>打一折和打九折只是形式不同，抽象分析出来，所有的打折算法都是一样的，所以打折算法应该是一个类；满减算法应该是一个类。</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>该书中举了一个很形象的收银系统，打折和满减。<strong>面向对象的编程，并不是类越多越好，类的划分是为了封装，但分类的基础是抽象，具有相同属性和功能的对象的抽象集合才是类。</strong>打一折和打九折只是形式不同，抽象分析出来，所有的打折算法都是一样的，所以打折算法应该是一个类；满减算法应该是一个类。</p>
 <p>策略模式代码实现<br>定义了一个收银的接口Cash，三种收银策略CashNormal（正常）、CashRebate（打折）、CashReturn（满减）；还有使用某种具体策略的类Context。</p>
 <h4 id="策略接口（收银接口）："><a href="#策略接口（收银接口）：" class="headerlink" title="策略接口（收银接口）："></a>策略接口（收银接口）：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> designpatterns.strategy;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Cash</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">double</span> <span class="title">acceptCash</span><span class="params">(<span class="keyword">double</span> money)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4 id="三种策略实现类："><a href="#三种策略实现类：" class="headerlink" title="三种策略实现类："></a>三种策略实现类：</h4><p>正常收费<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> designpatterns.strategy;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CashNormal</span> <span class="keyword">implements</span> <span class="title">Cash</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">acceptCash</span><span class="params">(<span class="keyword">double</span> money)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> money;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -628,7 +628,7 @@ var jiathis_config={
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">62</span>
+                <span class="site-state-item-count">67</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -699,7 +699,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构"><span class="nav-number">2.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#举例"><span class="nav-number">3.</span> <span class="nav-text">举例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#策略接口（收银接口）："><span class="nav-number">3.1.</span> <span class="nav-text">策略接口（收银接口）：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三种策略实现类："><span class="nav-number">3.2.</span> <span class="nav-text">三种策略实现类：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用具体策略的类"><span class="nav-number">3.3.</span> <span class="nav-text">使用具体策略的类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试类"><span class="nav-number">3.4.</span> <span class="nav-text">测试类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结果"><span class="nav-number">3.5.</span> <span class="nav-text">结果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析"><span class="nav-number">4.</span> <span class="nav-text">解析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">4.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">4.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构"><span class="nav-number">2.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例"><span class="nav-number">3.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#策略接口（收银接口）："><span class="nav-number">3.1.</span> <span class="nav-text">策略接口（收银接口）：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三种策略实现类："><span class="nav-number">3.2.</span> <span class="nav-text">三种策略实现类：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用具体策略的类"><span class="nav-number">3.3.</span> <span class="nav-text">使用具体策略的类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试类"><span class="nav-number">3.4.</span> <span class="nav-text">测试类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结果"><span class="nav-number">3.5.</span> <span class="nav-text">结果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析"><span class="nav-number">4.</span> <span class="nav-text">解析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">4.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">4.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
@@ -737,7 +737,7 @@ var jiathis_config={
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
     <span title="Site words total count">
-      47.1k
+      48.6k
     </span>
   
 </div>
