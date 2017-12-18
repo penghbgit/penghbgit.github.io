@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://yoursite.com/2017/12/13/designpatterns/proxy/</loc>
-    <lastmod>2017-12-13T15:27:27.000Z</lastmod>
+    <lastmod>2017-12-18T02:05:07.000Z</lastmod>
     <data>
         <display>
         <title>设计模式－－代理模式(Proxy)</title>
@@ -14,6 +14,30 @@
         <tag>java</tag>
          
         <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="设计模式" url="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/12/18/designpatterns/dynproxy/</loc>
+    <lastmod>2017-12-18T02:01:22.000Z</lastmod>
+    <data>
+        <display>
+        <title>springAop中的动态代理（jdk和cglib）</title>
+        <pubTime>2017-12-18T01:57:11.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>设计模式</tag>
+         
+        <tag>spring</tag>
          
          
            
