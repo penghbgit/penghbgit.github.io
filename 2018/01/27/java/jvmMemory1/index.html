@@ -69,19 +69,19 @@
 
 
 
-<meta name="description" content="JVM学习笔记－－java内存区域（一）java与c++之间有一堵由内存动态分配和垃圾回收技术所围成的‘墙’，墙外面的人想进来，墙里面的人却想出来。java虽然不容易出现内存泄露和内存溢出的问题，但是一旦出现问题，如果不了解jvm是如何使用内存的，排查问题就会显得尤为困难，以前也零零散散的看过一些文章，这次我打算深入系统的去学习一下jvm。 jvm内存模型根据java虚拟机规范，java虚拟机所管">
+<meta name="description" content="java与c++之间有一堵由内存动态分配和垃圾回收技术所围成的‘墙’，墙外面的人想进来，墙里面的人却想出来。java虽然不容易出现内存泄露和内存溢出的问题，但是一旦出现问题，如果不了解jvm是如何使用内存的，排查问题就会显得尤为困难，以前也零零散散的看过一些文章，这次我打算深入系统的去学习一下jvm。 jvm内存模型根据java虚拟机规范，java虚拟机所管理的内存将会包括以下几个运行时数据区域：">
 <meta name="keywords" content="java,JVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM学习笔记－－java内存区域(一)">
 <meta property="og:url" content="http://yoursite.com/2018/01/27/java/jvmMemory1/index.html">
 <meta property="og:site_name" content="海滨小筑">
-<meta property="og:description" content="JVM学习笔记－－java内存区域（一）java与c++之间有一堵由内存动态分配和垃圾回收技术所围成的‘墙’，墙外面的人想进来，墙里面的人却想出来。java虽然不容易出现内存泄露和内存溢出的问题，但是一旦出现问题，如果不了解jvm是如何使用内存的，排查问题就会显得尤为困难，以前也零零散散的看过一些文章，这次我打算深入系统的去学习一下jvm。 jvm内存模型根据java虚拟机规范，java虚拟机所管">
+<meta property="og:description" content="java与c++之间有一堵由内存动态分配和垃圾回收技术所围成的‘墙’，墙外面的人想进来，墙里面的人却想出来。java虽然不容易出现内存泄露和内存溢出的问题，但是一旦出现问题，如果不了解jvm是如何使用内存的，排查问题就会显得尤为困难，以前也零零散散的看过一些文章，这次我打算深入系统的去学习一下jvm。 jvm内存模型根据java虚拟机规范，java虚拟机所管理的内存将会包括以下几个运行时数据区域：">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/01/27/java/jvmMemory1/jvmMemory.png">
-<meta property="og:updated_time" content="2018-01-27T08:40:12.000Z">
+<meta property="og:updated_time" content="2018-01-27T08:44:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM学习笔记－－java内存区域(一)">
-<meta name="twitter:description" content="JVM学习笔记－－java内存区域（一）java与c++之间有一堵由内存动态分配和垃圾回收技术所围成的‘墙’，墙外面的人想进来，墙里面的人却想出来。java虽然不容易出现内存泄露和内存溢出的问题，但是一旦出现问题，如果不了解jvm是如何使用内存的，排查问题就会显得尤为困难，以前也零零散散的看过一些文章，这次我打算深入系统的去学习一下jvm。 jvm内存模型根据java虚拟机规范，java虚拟机所管">
+<meta name="twitter:description" content="java与c++之间有一堵由内存动态分配和垃圾回收技术所围成的‘墙’，墙外面的人想进来，墙里面的人却想出来。java虽然不容易出现内存泄露和内存溢出的问题，但是一旦出现问题，如果不了解jvm是如何使用内存的，排查问题就会显得尤为困难，以前也零零散散的看过一些文章，这次我打算深入系统的去学习一下jvm。 jvm内存模型根据java虚拟机规范，java虚拟机所管理的内存将会包括以下几个运行时数据区域：">
 <meta name="twitter:image" content="http://yoursite.com/2018/01/27/java/jvmMemory1/jvmMemory.png">
 
 
@@ -388,7 +388,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,375
+                  1,364
                 </span>
               
 
@@ -425,7 +425,7 @@
       
 
       
-        <p>JVM学习笔记－－java内存区域（一）<br>java与c++之间有一堵由内存动态分配和垃圾回收技术所围成的‘墙’，墙外面的人想进来，墙里面的人却想出来。<br>java虽然不容易出现内存泄露和内存溢出的问题，但是一旦出现问题，如果不了解jvm是如何使用内存的，排查问题就会显得尤为困难，以前也零零散散的看过一些文章，这次我打算深入系统的去学习一下jvm。</p>
+        <p>java与c++之间有一堵由内存动态分配和垃圾回收技术所围成的‘墙’，墙外面的人想进来，墙里面的人却想出来。<br>java虽然不容易出现内存泄露和内存溢出的问题，但是一旦出现问题，如果不了解jvm是如何使用内存的，排查问题就会显得尤为困难，以前也零零散散的看过一些文章，这次我打算深入系统的去学习一下jvm。</p>
 <h4 id="jvm内存模型"><a href="#jvm内存模型" class="headerlink" title="jvm内存模型"></a>jvm内存模型</h4><p>根据java虚拟机规范，java虚拟机所管理的内存将会包括以下几个运行时数据区域：<br><img src="/2018/01/27/java/jvmMemory1/jvmMemory.png" alt="image"></p>
 <h4 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h4><p>程序计数器也叫PC寄存器，它是一块较小的内存空间，可以看作是当前线程所执行的字节码的行号指示器。java虚拟机的多线程工作是通过多线程轮流切换并分配处理器执行时间的方式来实现的，在任何一个时刻，一个处理器（多核的指一个内核）都只会执行一条线程中的指令。因此，每个线程都有自己的程序计数器（线程私有）。<br>如果线程正在执行java方法，则计数器记录的是正在执行的虚拟机字节码指令地址；如果执行的是native方法，这个计数器则为空。这快内存区域是java虚拟机规范中没有规定任何OutOfMemoryError情况的区域。</p>
 <h4 id="java虚拟机栈"><a href="#java虚拟机栈" class="headerlink" title="java虚拟机栈"></a>java虚拟机栈</h4><p>java虚拟机栈也是线程私有的，他的生命周期和线程一样。每个方法之行时都会创建一个栈帧（Stack Frame）用于存放局部变量表、操作数栈、动态链接、方法出口等信息。在java虚拟机规范中，对这个区域定义了两种异常状态：如果线程请求的栈的深度大于虚拟机所允许的深度，抛出StackOverflowError异常；虚拟机栈动态扩展时（虚拟机规范中也允许固定长度的虚拟机栈）无法申请到足够的内存也会抛出OutOfMemoryError。</p>
@@ -433,7 +433,7 @@
 <h4 id="java堆"><a href="#java堆" class="headerlink" title="java堆"></a>java堆</h4><p>java堆是所有线程共享的一块内存空间，一般来说它是java虚拟机管理的最大的一块内存。这快内存的唯一目的就是存放对象实例的，但是随着JIT编译技术的发展与逃逸分析技术逐渐成熟，栈上分配、标量替换优化技术将会使得在堆上分配变得不是那么绝对了。</p>
 <h4 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h4><p>方法区与java堆一样，也是各个线程共享的内存区域，它用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。虽然java虚拟机规范把方法区描述为堆的一个逻辑部分，但是它也有一个别名叫做Non-Heap（非堆）。<br>在HotSpot虚拟机上，很多人都把方法区称为‘永久代’，其实两者本质上并不相同，仅仅是HotSpot虚拟机的设计团队把GC分代回收扩展到方法区而已。但是用永久代来实现方法区并不是一个非常好的主意，因为这样更容易产生内存溢出的问题，因此HotSpot虚拟机从JDK7开始已经慢慢放弃永久代并逐渐改为采用本地内存，直到JDK8为止，已经完全摒弃了永久代，取而代之的是一个叫Metaspace（元空间） 的东西。下面我们就来看看 Metaspace 与 PermGen space 的区别。</p>
 <h4 id="元空间（Metaspace）"><a href="#元空间（Metaspace）" class="headerlink" title="元空间（Metaspace）"></a>元空间（Metaspace）</h4><p>元空间的本质和永久代类似，都是对JVM规范中方法区的实现。不过元空间与永久代之间最大的区别在于：元空间并不在虚拟机中，而是使用本地内存。因此，默认情况下，元空间的大小仅受本地内存限制，但可以通过以下参数来指定元空间的大小：<br>　　-XX:MetaspaceSize，初始空间大小，达到该值就会触发垃圾收集进行类型卸载，同时GC会对该值进行调整：如果释放了大量的空间，就适当降低该值；如果释放了很少的空间，那么在不超过MaxMetaspaceSize时，适当提高该值。<br>　　-XX:MaxMetaspaceSize，最大空间，默认是没有限制的。<br>　　除了上面两个指定大小的选项以外，还有两个与 GC 相关的属性：<br>　　-XX:MinMetaspaceFreeRatio，在GC之后，最小的Metaspace剩余空间容量的百分比，减少为分配空间所导致的垃圾收集。<br>　　-XX:MaxMetaspaceFreeRatio，在GC之后，最大的Metaspace剩余空间容量的百分比，减少为释放空间所导致的垃圾收集。<br>在jdk8中JVM参数PermSize 和 MaxPermSize会被忽略，并且在启动时会有警告信息。</p>
-<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>1.字符串存在永久代中，容易出现性能问题和内存溢出。<br>2.在JDK8中完全移除了永久代。<br>3.元空间的大小最好还是设置并监控一下，不然出现内存泄露的情况会无限制的消耗本机内存。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>1.字符串存在永久代中，容易出现性能问题和内存溢出。<br>2.在JDK8中完全移除了永久代。<br>3.元空间的大小最好还是设置并监控一下，不然出现内存泄露的情况会无限制的消耗本机内存。</p>
 
       
     </div>
@@ -682,7 +682,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#jvm内存模型"><span class="nav-number">1.</span> <span class="nav-text">jvm内存模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#程序计数器"><span class="nav-number">2.</span> <span class="nav-text">程序计数器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java虚拟机栈"><span class="nav-number">3.</span> <span class="nav-text">java虚拟机栈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地方法栈"><span class="nav-number">4.</span> <span class="nav-text">本地方法栈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java堆"><span class="nav-number">5.</span> <span class="nav-text">java堆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法区"><span class="nav-number">6.</span> <span class="nav-text">方法区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元空间（Metaspace）"><span class="nav-number">7.</span> <span class="nav-text">元空间（Metaspace）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结："><span class="nav-number">8.</span> <span class="nav-text">总结：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#jvm内存模型"><span class="nav-number">1.</span> <span class="nav-text">jvm内存模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#程序计数器"><span class="nav-number">2.</span> <span class="nav-text">程序计数器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java虚拟机栈"><span class="nav-number">3.</span> <span class="nav-text">java虚拟机栈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地方法栈"><span class="nav-number">4.</span> <span class="nav-text">本地方法栈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java堆"><span class="nav-number">5.</span> <span class="nav-text">java堆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法区"><span class="nav-number">6.</span> <span class="nav-text">方法区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元空间（Metaspace）"><span class="nav-number">7.</span> <span class="nav-text">元空间（Metaspace）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
