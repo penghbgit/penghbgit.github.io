@@ -4,8 +4,32 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/02/07/designpatterns/activeObject/</loc>
+    <lastmod>2018-02-07T09:03:26.000Z</lastmod>
+    <data>
+        <display>
+        <title>设计模式－－Active Object（主动对象）</title>
+        <pubTime>2018-02-07T08:58:01.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>并发</tag>
+         
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="设计模式" url="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/01/27/java/jvmMemory1/</loc>
-    <lastmod>2018-01-27T08:44:02.000Z</lastmod>
+    <lastmod>2018-02-05T02:48:56.000Z</lastmod>
     <data>
         <display>
         <title>JVM学习笔记－－java内存区域(一)</title>

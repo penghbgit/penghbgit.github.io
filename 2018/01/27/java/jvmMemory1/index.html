@@ -78,7 +78,7 @@
 <meta property="og:description" content="java与c++之间有一堵由内存动态分配和垃圾回收技术所围成的‘墙’，墙外面的人想进来，墙里面的人却想出来。java虽然不容易出现内存泄露和内存溢出的问题，但是一旦出现问题，如果不了解jvm是如何使用内存的，排查问题就会显得尤为困难，以前也零零散散的看过一些文章，这次我打算深入系统的去学习一下jvm。 jvm内存模型根据java虚拟机规范，java虚拟机所管理的内存将会包括以下几个运行时数据区域：">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/01/27/java/jvmMemory1/jvmMemory.png">
-<meta property="og:updated_time" content="2018-01-27T08:44:02.000Z">
+<meta property="og:updated_time" content="2018-02-05T02:48:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM学习笔记－－java内存区域(一)">
 <meta name="twitter:description" content="java与c++之间有一堵由内存动态分配和垃圾回收技术所围成的‘墙’，墙外面的人想进来，墙里面的人却想出来。java虽然不容易出现内存泄露和内存溢出的问题，但是一旦出现问题，如果不了解jvm是如何使用内存的，排查问题就会显得尤为困难，以前也零零散散的看过一些文章，这次我打算深入系统的去学习一下jvm。 jvm内存模型根据java虚拟机规范，java虚拟机所管理的内存将会包括以下几个运行时数据区域：">
@@ -388,7 +388,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,364
+                  1,747
                 </span>
               
 
@@ -404,7 +404,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  6
                 </span>
               
             </div>
@@ -432,7 +432,29 @@
 <h4 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h4><p>本地方法栈和java虚拟机栈的作用非常相似，他们之间的区别就是java虚拟机栈的为java方法服务的，本地方法栈是为native方法服务。</p>
 <h4 id="java堆"><a href="#java堆" class="headerlink" title="java堆"></a>java堆</h4><p>java堆是所有线程共享的一块内存空间，一般来说它是java虚拟机管理的最大的一块内存。这快内存的唯一目的就是存放对象实例的，但是随着JIT编译技术的发展与逃逸分析技术逐渐成熟，栈上分配、标量替换优化技术将会使得在堆上分配变得不是那么绝对了。</p>
 <h4 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h4><p>方法区与java堆一样，也是各个线程共享的内存区域，它用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。虽然java虚拟机规范把方法区描述为堆的一个逻辑部分，但是它也有一个别名叫做Non-Heap（非堆）。<br>在HotSpot虚拟机上，很多人都把方法区称为‘永久代’，其实两者本质上并不相同，仅仅是HotSpot虚拟机的设计团队把GC分代回收扩展到方法区而已。但是用永久代来实现方法区并不是一个非常好的主意，因为这样更容易产生内存溢出的问题，因此HotSpot虚拟机从JDK7开始已经慢慢放弃永久代并逐渐改为采用本地内存，直到JDK8为止，已经完全摒弃了永久代，取而代之的是一个叫Metaspace（元空间） 的东西。下面我们就来看看 Metaspace 与 PermGen space 的区别。</p>
+<blockquote>
+<p>运行时常量池（Runtime Constant Pool）是方法区的一部分（JDK7放在堆中，JDK8中已经分配到Metaspace），Class文件中除了有类的版本、字段、方法、接口等描述信息外，还有一项信息是常量池（Constant Pool Table），用于存放编译器生成的各种字面量和符号引用，这部分内容将在类加载后进入的运行时常量池中。</p>
+</blockquote>
 <h4 id="元空间（Metaspace）"><a href="#元空间（Metaspace）" class="headerlink" title="元空间（Metaspace）"></a>元空间（Metaspace）</h4><p>元空间的本质和永久代类似，都是对JVM规范中方法区的实现。不过元空间与永久代之间最大的区别在于：元空间并不在虚拟机中，而是使用本地内存。因此，默认情况下，元空间的大小仅受本地内存限制，但可以通过以下参数来指定元空间的大小：<br>　　-XX:MetaspaceSize，初始空间大小，达到该值就会触发垃圾收集进行类型卸载，同时GC会对该值进行调整：如果释放了大量的空间，就适当降低该值；如果释放了很少的空间，那么在不超过MaxMetaspaceSize时，适当提高该值。<br>　　-XX:MaxMetaspaceSize，最大空间，默认是没有限制的。<br>　　除了上面两个指定大小的选项以外，还有两个与 GC 相关的属性：<br>　　-XX:MinMetaspaceFreeRatio，在GC之后，最小的Metaspace剩余空间容量的百分比，减少为分配空间所导致的垃圾收集。<br>　　-XX:MaxMetaspaceFreeRatio，在GC之后，最大的Metaspace剩余空间容量的百分比，减少为释放空间所导致的垃圾收集。<br>在jdk8中JVM参数PermSize 和 MaxPermSize会被忽略，并且在启动时会有警告信息。</p>
+<p>元空间的特点：</p>
+<ul>
+<li>充分利用了Java语言规范中的好处：类及相关的元数据的生命周期与类加载器的一致。</li>
+<li>每个加载器有专门的存储空间</li>
+<li>只进行线性分配</li>
+<li>不会单独回收某个类</li>
+<li>省掉了GC扫描及压缩的时间</li>
+<li>元空间里的对象的位置是固定的</li>
+<li>如果GC发现某个类加载器不再存活了，会把相关的空间整个回收掉</li>
+</ul>
+<h5 id="元空间的内存分配模型"><a href="#元空间的内存分配模型" class="headerlink" title="元空间的内存分配模型"></a>元空间的内存分配模型</h5><ul>
+<li>绝大多数的类元数据的空间都从本地内存中分配</li>
+<li>用来描述类元数据的类也被删除了</li>
+<li>为元数据分配了多个虚拟内存空间</li>
+<li>给每个类加载器分配一个内存块的列表。块的大小取决于类加载器的类型; sun/反射/代理对应的类加载器的块会小一些</li>
+<li>归还内存块，释放内存块列表</li>
+<li>一旦元空间的数据被清空了，虚拟内存的空间会被回收掉</li>
+<li>减少碎片的策略</li>
+</ul>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>1.字符串存在永久代中，容易出现性能问题和内存溢出。<br>2.在JDK8中完全移除了永久代。<br>3.元空间的大小最好还是设置并监控一下，不然出现内存泄露的情况会无限制的消耗本机内存。</p>
 
       
@@ -504,6 +526,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/07/designpatterns/activeObject/" rel="prev" title="设计模式－－Active Object（主动对象）">
+                设计模式－－Active Object（主动对象） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -611,7 +637,7 @@ var jiathis_config={
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">72</span>
+                <span class="site-state-item-count">73</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -633,7 +659,7 @@ var jiathis_config={
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -682,7 +708,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#jvm内存模型"><span class="nav-number">1.</span> <span class="nav-text">jvm内存模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#程序计数器"><span class="nav-number">2.</span> <span class="nav-text">程序计数器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java虚拟机栈"><span class="nav-number">3.</span> <span class="nav-text">java虚拟机栈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地方法栈"><span class="nav-number">4.</span> <span class="nav-text">本地方法栈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java堆"><span class="nav-number">5.</span> <span class="nav-text">java堆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法区"><span class="nav-number">6.</span> <span class="nav-text">方法区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元空间（Metaspace）"><span class="nav-number">7.</span> <span class="nav-text">元空间（Metaspace）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#jvm内存模型"><span class="nav-number">1.</span> <span class="nav-text">jvm内存模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#程序计数器"><span class="nav-number">2.</span> <span class="nav-text">程序计数器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java虚拟机栈"><span class="nav-number">3.</span> <span class="nav-text">java虚拟机栈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地方法栈"><span class="nav-number">4.</span> <span class="nav-text">本地方法栈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java堆"><span class="nav-number">5.</span> <span class="nav-text">java堆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法区"><span class="nav-number">6.</span> <span class="nav-text">方法区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元空间（Metaspace）"><span class="nav-number">7.</span> <span class="nav-text">元空间（Metaspace）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#元空间的内存分配模型"><span class="nav-number">7.1.</span> <span class="nav-text">元空间的内存分配模型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -720,7 +746,7 @@ var jiathis_config={
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
     <span title="Site words total count">
-      56.0k
+      59.4k
     </span>
   
 </div>
