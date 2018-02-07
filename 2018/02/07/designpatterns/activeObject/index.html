@@ -53,7 +53,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="java,并发,设计模式," />
+  <meta name="keywords" content="java,设计模式,并发," />
 
 
 
@@ -69,19 +69,19 @@
 
 
 
-<meta name="description" content="这个文章介绍主动对象模式，主动对象是内部拥有自己的控制线程的对象。为了简化异步调用的复杂性，这个模式分离了方法的执行和调用。使用这个模式，一个对象中无论是否有独立的线程，客户从外部访问它时，感觉是一样的。生产者/消费者，读者/写者，这两个应用广泛的模型中，这种策略非常适合。这个模式常用在多线程的，分布式系统中。另外，一些客户端应用，如：视窗系统和网络浏览器，也可以使用主动对象模式，对并行的、异步调">
-<meta name="keywords" content="java,并发,设计模式">
+<meta name="description" content="这篇文章主要介绍主动对象模式，主动对象是内部拥有自己的控制线程的对象。为了简化异步调用的复杂性，这个模式分离了方法的执行和调用。使用这个模式，一个对象中无论是否有独立的线程，客户从外部访问它时，感觉是一样的。生产者/消费者，读者/写者，这两个应用广泛的模型中，这种策略非常适合。这个模式常用在多线程的，分布式系统中。另外，一些客户端应用，如：视窗系统和网络浏览器，也可以使用主动对象模式，对并行的、异">
+<meta name="keywords" content="java,设计模式,并发">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式－－Active Object（主动对象）">
 <meta property="og:url" content="http://yoursite.com/2018/02/07/designpatterns/activeObject/index.html">
 <meta property="og:site_name" content="海滨小筑">
-<meta property="og:description" content="这个文章介绍主动对象模式，主动对象是内部拥有自己的控制线程的对象。为了简化异步调用的复杂性，这个模式分离了方法的执行和调用。使用这个模式，一个对象中无论是否有独立的线程，客户从外部访问它时，感觉是一样的。生产者/消费者，读者/写者，这两个应用广泛的模型中，这种策略非常适合。这个模式常用在多线程的，分布式系统中。另外，一些客户端应用，如：视窗系统和网络浏览器，也可以使用主动对象模式，对并行的、异步调">
+<meta property="og:description" content="这篇文章主要介绍主动对象模式，主动对象是内部拥有自己的控制线程的对象。为了简化异步调用的复杂性，这个模式分离了方法的执行和调用。使用这个模式，一个对象中无论是否有独立的线程，客户从外部访问它时，感觉是一样的。生产者/消费者，读者/写者，这两个应用广泛的模型中，这种策略非常适合。这个模式常用在多线程的，分布式系统中。另外，一些客户端应用，如：视窗系统和网络浏览器，也可以使用主动对象模式，对并行的、异">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/02/07/designpatterns/activeObject/activeObject.png">
-<meta property="og:updated_time" content="2018-02-07T09:03:26.000Z">
+<meta property="og:updated_time" content="2018-02-07T09:10:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式－－Active Object（主动对象）">
-<meta name="twitter:description" content="这个文章介绍主动对象模式，主动对象是内部拥有自己的控制线程的对象。为了简化异步调用的复杂性，这个模式分离了方法的执行和调用。使用这个模式，一个对象中无论是否有独立的线程，客户从外部访问它时，感觉是一样的。生产者/消费者，读者/写者，这两个应用广泛的模型中，这种策略非常适合。这个模式常用在多线程的，分布式系统中。另外，一些客户端应用，如：视窗系统和网络浏览器，也可以使用主动对象模式，对并行的、异步调">
+<meta name="twitter:description" content="这篇文章主要介绍主动对象模式，主动对象是内部拥有自己的控制线程的对象。为了简化异步调用的复杂性，这个模式分离了方法的执行和调用。使用这个模式，一个对象中无论是否有独立的线程，客户从外部访问它时，感觉是一样的。生产者/消费者，读者/写者，这两个应用广泛的模型中，这种策略非常适合。这个模式常用在多线程的，分布式系统中。另外，一些客户端应用，如：视窗系统和网络浏览器，也可以使用主动对象模式，对并行的、异">
 <meta name="twitter:image" content="http://yoursite.com/2018/02/07/designpatterns/activeObject/activeObject.png">
 
 
@@ -388,7 +388,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,016
+                  3,025
                 </span>
               
 
@@ -425,10 +425,10 @@
       
 
       
-        <p>这个文章介绍主动对象模式，主动对象是内部拥有自己的控制线程的对象。为了简化异步调用的复杂性，这个模式分离了方法的执行和调用。使用这个模式，一个对象中无论是否有独立的线程，客户从外部访问它时，感觉是一样的。生产者/消费者，读者/写者，这两个应用广泛的模型中，这种策略非常适合。这个模式常用在多线程的，分布式系统中。另外，一些客户端应用，如：视窗系统和网络浏览器，也可以使用主动对象模式，对并行的、异步调起的IO操作简化处理。</p>
+        <p>这篇文章主要介绍主动对象模式，主动对象是内部拥有自己的控制线程的对象。为了简化异步调用的复杂性，这个模式分离了方法的执行和调用。使用这个模式，一个对象中无论是否有独立的线程，客户从外部访问它时，感觉是一样的。生产者/消费者，读者/写者，这两个应用广泛的模型中，这种策略非常适合。这个模式常用在多线程的，分布式系统中。另外，一些客户端应用，如：视窗系统和网络浏览器，也可以使用主动对象模式，对并行的、异步调起的IO操作简化处理。</p>
 <h3 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h3><p>一种异步编程思想，允许任务的提交（相当于对异步方法的调用）和任务的执行（相当于异步方法的真正执行）分离，实现了异步编程。<br>有利于提高并发性，从而提高系统的吞吐率。</p>
 <h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><p>适合分解一个比较耗时的任务（如I/O任务）已减少主线程的等待时间。</p>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>下面以一个实例来帮助大家理解active object模式。<br>有一个用户类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> designpatterns.activeObject;</div><div class="line"></div><div class="line"><span class="keyword">import</span> lombok.Data;</div><div class="line"></div><div class="line"><span class="meta">@Data</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Integer age;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"user [name="</span> + name + <span class="string">", age="</span> + age + <span class="string">"]"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>下面以一个实例来帮助大家理解active object模式，<a href="https://github.com/penghbgit/penghb/tree/master/src/main/java/designpatterns/activeObject" target="_blank" rel="external">github上的代码例子。</a><br>有一个用户类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> designpatterns.activeObject;</div><div class="line"></div><div class="line"><span class="keyword">import</span> lombok.Data;</div><div class="line"></div><div class="line"><span class="meta">@Data</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Integer age;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"user [name="</span> + name + <span class="string">", age="</span> + age + <span class="string">"]"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>用户服务类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> designpatterns.activeObject;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserService</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> User <span class="title">getUserInfo</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="comment">// 模拟耗时操作,调用该方法的线程,要挂起5s</span></div><div class="line">            Thread.sleep(<span class="number">5</span> * <span class="number">1000</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">catch</span> (InterruptedException e) &#123;&#125;</div><div class="line"></div><div class="line">        User user = <span class="keyword">new</span> User();</div><div class="line">        user.setAge(<span class="number">25</span>);</div><div class="line">        user.setName(<span class="string">"penghb"</span>);</div><div class="line">        <span class="keyword">return</span> user;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>测试代码，进行同步调用<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> designpatterns.activeObject;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        User user = UserService.getUserInfo();</div><div class="line"></div><div class="line">        System.out.println(<span class="string">"出去玩"</span>);</div><div class="line"></div><div class="line">        System.out.println(<span class="string">"去吃饭"</span>);</div><div class="line"></div><div class="line">        System.out.println(<span class="string">"得到用户信息: "</span> + user.toString());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>如果获取用户信息的代码不执行完毕，后续的流程是不会执行的，实际上后续的流程是不依赖于获取用户信息的，显然效率就会低下，下面我将用异步调用的方式来解决这个问题。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> designpatterns.activeObject;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Proxy</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Future <span class="title">getUserInfo</span><span class="params">()</span> </span>&#123;</div><div class="line">        Future future = <span class="keyword">new</span> Future();</div><div class="line">        System.out.println(<span class="number">1</span>);</div><div class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> Task(future)).start();</div><div class="line">        <span class="keyword">return</span> future;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -564,9 +564,9 @@
           
             <a href="/tags/java/" rel="tag"># java</a>
           
-            <a href="/tags/并发/" rel="tag"># 并发</a>
-          
             <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
+          
+            <a href="/tags/并发/" rel="tag"># 并发</a>
           
         </div>
       
