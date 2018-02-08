@@ -89,7 +89,7 @@
 <meta property="og:description" content="java与c++之间有一堵由内存动态分配和垃圾回收技术所围成的‘墙’，墙外面的人想进来，墙里面的人却想出来。java虽然不容易出现内存泄露和内存溢出的问题，但是一旦出现问题，如果不了解jvm是如何使用内存的，排查问题就会显得尤为困难，以前也零零散散的看过一些文章，这次我打算深入系统的去学习一下jvm。 jvm内存模型根据java虚拟机规范，java虚拟机所管理的内存将会包括以下几个运行时数据区域：">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/01/27/java/jvmMemory1/jvmMemory.png">
-<meta property="og:updated_time" content="2018-02-05T02:48:56.000Z">
+<meta property="og:updated_time" content="2018-02-08T02:55:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM学习笔记－－java内存区域(一)">
 <meta name="twitter:description" content="java与c++之间有一堵由内存动态分配和垃圾回收技术所围成的‘墙’，墙外面的人想进来，墙里面的人却想出来。java虽然不容易出现内存泄露和内存溢出的问题，但是一旦出现问题，如果不了解jvm是如何使用内存的，排查问题就会显得尤为困难，以前也零零散散的看过一些文章，这次我打算深入系统的去学习一下jvm。 jvm内存模型根据java虚拟机规范，java虚拟机所管理的内存将会包括以下几个运行时数据区域：">
@@ -399,7 +399,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,747
+                  1,744
                 </span>
               
 
@@ -444,7 +444,7 @@
 <h4 id="java堆"><a href="#java堆" class="headerlink" title="java堆"></a>java堆</h4><p>java堆是所有线程共享的一块内存空间，一般来说它是java虚拟机管理的最大的一块内存。这快内存的唯一目的就是存放对象实例的，但是随着JIT编译技术的发展与逃逸分析技术逐渐成熟，栈上分配、标量替换优化技术将会使得在堆上分配变得不是那么绝对了。</p>
 <h4 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h4><p>方法区与java堆一样，也是各个线程共享的内存区域，它用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。虽然java虚拟机规范把方法区描述为堆的一个逻辑部分，但是它也有一个别名叫做Non-Heap（非堆）。<br>在HotSpot虚拟机上，很多人都把方法区称为‘永久代’，其实两者本质上并不相同，仅仅是HotSpot虚拟机的设计团队把GC分代回收扩展到方法区而已。但是用永久代来实现方法区并不是一个非常好的主意，因为这样更容易产生内存溢出的问题，因此HotSpot虚拟机从JDK7开始已经慢慢放弃永久代并逐渐改为采用本地内存，直到JDK8为止，已经完全摒弃了永久代，取而代之的是一个叫Metaspace（元空间） 的东西。下面我们就来看看 Metaspace 与 PermGen space 的区别。</p>
 <blockquote>
-<p>运行时常量池（Runtime Constant Pool）是方法区的一部分（JDK7放在堆中，JDK8中已经分配到Metaspace），Class文件中除了有类的版本、字段、方法、接口等描述信息外，还有一项信息是常量池（Constant Pool Table），用于存放编译器生成的各种字面量和符号引用，这部分内容将在类加载后进入的运行时常量池中。</p>
+<p>运行时常量池（Runtime Constant Pool）是方法区的一部分（JDK7以后已经放在堆中），Class文件中除了有类的版本、字段、方法、接口等描述信息外，还有一项信息是常量池（Constant Pool Table），用于存放编译器生成的各种字面量和符号引用，这部分内容将在类加载后进入的运行时常量池中。</p>
 </blockquote>
 <h4 id="元空间（Metaspace）"><a href="#元空间（Metaspace）" class="headerlink" title="元空间（Metaspace）"></a>元空间（Metaspace）</h4><p>元空间的本质和永久代类似，都是对JVM规范中方法区的实现。不过元空间与永久代之间最大的区别在于：元空间并不在虚拟机中，而是使用本地内存。因此，默认情况下，元空间的大小仅受本地内存限制，但可以通过以下参数来指定元空间的大小：<br>　　-XX:MetaspaceSize，初始空间大小，达到该值就会触发垃圾收集进行类型卸载，同时GC会对该值进行调整：如果释放了大量的空间，就适当降低该值；如果释放了很少的空间，那么在不超过MaxMetaspaceSize时，适当提高该值。<br>　　-XX:MaxMetaspaceSize，最大空间，默认是没有限制的。<br>　　除了上面两个指定大小的选项以外，还有两个与 GC 相关的属性：<br>　　-XX:MinMetaspaceFreeRatio，在GC之后，最小的Metaspace剩余空间容量的百分比，减少为分配空间所导致的垃圾收集。<br>　　-XX:MaxMetaspaceFreeRatio，在GC之后，最大的Metaspace剩余空间容量的百分比，减少为释放空间所导致的垃圾收集。<br>在jdk8中JVM参数PermSize 和 MaxPermSize会被忽略，并且在启动时会有警告信息。</p>
 <p>元空间的特点：</p>
