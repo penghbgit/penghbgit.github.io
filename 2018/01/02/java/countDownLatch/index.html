@@ -80,19 +80,19 @@
 
 
 
-<meta name="description" content="java.util.concurrent.CountDownLatch是在jdk1.5中开始提供的，主要实现了一个类似计数器的功能。比如当前有一个或多个任务 需要其他几个任务都结束后才能运行，这时候CountDownLatch就派上用场了。其实这种场景利用 wait notify也是可以实现的，只不过实现起来比较复杂，没有CountDownLatch这么简单，下面先看一个例子，再继续分析。 实例1">
+<meta name="description" content="建议参考CyclicBarrie一起阅读.java.util.concurrent.CountDownLatch是在jdk1.5中开始提供的，主要实现了一个类似计数器的功能。比如当前有一个或多个任务 需要其他几个任务都结束后才能运行，这时候CountDownLatch就派上用场了。其实这种场景利用 wait notify也是可以实现的，只不过实现起来比较复杂，没有CountDownLatch这么简">
 <meta name="keywords" content="java源码,java,多线程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CountDownLatch的使用及分析（jdk1.8）">
 <meta property="og:url" content="http://yoursite.com/2018/01/02/java/countDownLatch/index.html">
 <meta property="og:site_name" content="海滨小筑">
-<meta property="og:description" content="java.util.concurrent.CountDownLatch是在jdk1.5中开始提供的，主要实现了一个类似计数器的功能。比如当前有一个或多个任务 需要其他几个任务都结束后才能运行，这时候CountDownLatch就派上用场了。其实这种场景利用 wait notify也是可以实现的，只不过实现起来比较复杂，没有CountDownLatch这么简单，下面先看一个例子，再继续分析。 实例1">
+<meta property="og:description" content="建议参考CyclicBarrie一起阅读.java.util.concurrent.CountDownLatch是在jdk1.5中开始提供的，主要实现了一个类似计数器的功能。比如当前有一个或多个任务 需要其他几个任务都结束后才能运行，这时候CountDownLatch就派上用场了。其实这种场景利用 wait notify也是可以实现的，只不过实现起来比较复杂，没有CountDownLatch这么简">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/01/02/java/countDownLatch/countDownLatch.png">
-<meta property="og:updated_time" content="2018-02-09T06:13:15.000Z">
+<meta property="og:updated_time" content="2018-02-09T06:18:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CountDownLatch的使用及分析（jdk1.8）">
-<meta name="twitter:description" content="java.util.concurrent.CountDownLatch是在jdk1.5中开始提供的，主要实现了一个类似计数器的功能。比如当前有一个或多个任务 需要其他几个任务都结束后才能运行，这时候CountDownLatch就派上用场了。其实这种场景利用 wait notify也是可以实现的，只不过实现起来比较复杂，没有CountDownLatch这么简单，下面先看一个例子，再继续分析。 实例1">
+<meta name="twitter:description" content="建议参考CyclicBarrie一起阅读.java.util.concurrent.CountDownLatch是在jdk1.5中开始提供的，主要实现了一个类似计数器的功能。比如当前有一个或多个任务 需要其他几个任务都结束后才能运行，这时候CountDownLatch就派上用场了。其实这种场景利用 wait notify也是可以实现的，只不过实现起来比较复杂，没有CountDownLatch这么简">
 <meta name="twitter:image" content="http://yoursite.com/2018/01/02/java/countDownLatch/countDownLatch.png">
 
 
@@ -399,7 +399,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,154
+                  1,163
                 </span>
               
 
@@ -436,7 +436,7 @@
       
 
       
-        <p>java.util.concurrent.CountDownLatch是在jdk1.5中开始提供的，主要实现了一个类似计数器的功能。比如当前有一个或多个任务 需要其他几个任务都结束后才能运行，这时候CountDownLatch就派上用场了。其实这种场景利用 wait notify也是可以实现的，只不过实现起来比较复杂，没有CountDownLatch这么简单，下面先看一个例子，再继续分析。</p>
+        <p>建议参考<a href="http://penghb.com/2018/02/09/cyclicBarrier/#more" target="_blank" rel="external">CyclicBarrie</a>一起阅读.<br>java.util.concurrent.CountDownLatch是在jdk1.5中开始提供的，主要实现了一个类似计数器的功能。比如当前有一个或多个任务 需要其他几个任务都结束后才能运行，这时候CountDownLatch就派上用场了。其实这种场景利用 wait notify也是可以实现的，只不过实现起来比较复杂，没有CountDownLatch这么简单，下面先看一个例子，再继续分析。</p>
 <h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        CountDownLatch countDownLatch = <span class="keyword">new</span> CountDownLatch(<span class="number">2</span>);</div><div class="line"></div><div class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                System.out.println(<span class="string">"线程"</span> + Thread.currentThread().getName() + <span class="string">"运行开始"</span>);</div><div class="line">                Thread.sleep(<span class="number">3000</span>);</div><div class="line">                System.out.println(<span class="string">"线程"</span> + Thread.currentThread().getName() + <span class="string">"运行完毕"</span>);</div><div class="line">                countDownLatch.countDown();</div><div class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">        &#125;).start();</div><div class="line"></div><div class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                System.out.println(<span class="string">"线程"</span> + Thread.currentThread().getName() + <span class="string">"运行开始"</span>);</div><div class="line">                Thread.sleep(<span class="number">3000</span>);</div><div class="line">                System.out.println(<span class="string">"线程"</span> + Thread.currentThread().getName() + <span class="string">"运行完毕"</span>);</div><div class="line">                countDownLatch.countDown();</div><div class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">        &#125;).start();</div><div class="line"></div><div class="line"></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            System.out.println(<span class="string">"等待2个线程执行完毕..."</span>);</div><div class="line">            countDownLatch.await();</div><div class="line">            System.out.println(<span class="string">"2个线程已经执行完毕"</span>);</div><div class="line">            System.out.println(<span class="string">"继续执行主线程"</span>);</div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">线程Thread-0运行开始</div><div class="line">线程Thread-1运行开始</div><div class="line">等待2个线程执行完毕...</div><div class="line">线程Thread-0运行完毕</div><div class="line">线程Thread-1运行完毕</div><div class="line">2个线程已经执行完毕</div><div class="line">继续执行主线程</div></pre></td></tr></table></figure></p>
 <p>从上面的例子可以看出主线程等待线程Thread-0和线程Thread-1执行完成后开始继续执行。</p>
@@ -750,7 +750,7 @@ var jiathis_config={
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
     <span title="Site words total count">
-      61.0k
+      61.1k
     </span>
   
 </div>
