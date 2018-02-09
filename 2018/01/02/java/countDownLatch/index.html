@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="java,java源码," />
+  <meta name="keywords" content="java源码,java,多线程," />
 
 
 
@@ -81,7 +81,7 @@
 
 
 <meta name="description" content="java.util.concurrent.CountDownLatch是在jdk1.5中开始提供的，主要实现了一个类似计数器的功能。比如当前有一个或多个任务 需要其他几个任务都结束后才能运行，这时候CountDownLatch就派上用场了。其实这种场景利用 wait notify也是可以实现的，只不过实现起来比较复杂，没有CountDownLatch这么简单，下面先看一个例子，再继续分析。 实例1">
-<meta name="keywords" content="java,java源码">
+<meta name="keywords" content="java源码,java,多线程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CountDownLatch的使用及分析（jdk1.8）">
 <meta property="og:url" content="http://yoursite.com/2018/01/02/java/countDownLatch/index.html">
@@ -89,7 +89,7 @@
 <meta property="og:description" content="java.util.concurrent.CountDownLatch是在jdk1.5中开始提供的，主要实现了一个类似计数器的功能。比如当前有一个或多个任务 需要其他几个任务都结束后才能运行，这时候CountDownLatch就派上用场了。其实这种场景利用 wait notify也是可以实现的，只不过实现起来比较复杂，没有CountDownLatch这么简单，下面先看一个例子，再继续分析。 实例1">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/01/02/java/countDownLatch/countDownLatch.png">
-<meta property="og:updated_time" content="2018-01-02T10:03:28.000Z">
+<meta property="og:updated_time" content="2018-02-09T06:13:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CountDownLatch的使用及分析（jdk1.8）">
 <meta name="twitter:description" content="java.util.concurrent.CountDownLatch是在jdk1.5中开始提供的，主要实现了一个类似计数器的功能。比如当前有一个或多个任务 需要其他几个任务都结束后才能运行，这时候CountDownLatch就派上用场了。其实这种场景利用 wait notify也是可以实现的，只不过实现起来比较复杂，没有CountDownLatch这么简单，下面先看一个例子，再继续分析。 实例1">
@@ -504,9 +504,11 @@
       
         <div class="post-tags">
           
+            <a href="/tags/java源码/" rel="tag"><i class="fa fa-tag"></i> java源码</a>
+          
             <a href="/tags/java/" rel="tag"><i class="fa fa-tag"></i> java</a>
           
-            <a href="/tags/java源码/" rel="tag"><i class="fa fa-tag"></i> java源码</a>
+            <a href="/tags/多线程/" rel="tag"><i class="fa fa-tag"></i> 多线程</a>
           
         </div>
       
@@ -639,7 +641,7 @@ var jiathis_config={
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">73</span>
+                <span class="site-state-item-count">74</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -661,7 +663,7 @@ var jiathis_config={
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -748,7 +750,7 @@ var jiathis_config={
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
     <span title="Site words total count">
-      59.4k
+      61.0k
     </span>
   
 </div>
