@@ -4,6 +4,50 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/02/27/java/jvm/objectCreateLayoutVisit/</loc>
+    <lastmod>2018-02-27T02:10:26.000Z</lastmod>
+    <data>
+        <display>
+        <title>JVM学习笔记－－HotSpot虚拟机在Java堆中对象是如何创建、如何布局以及如何访问</title>
+        <pubTime>2018-02-27T01:57:19.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>JVM</tag>
+         
+         
+           
+             
+              <breadCrumb title="JVM" url="http://yoursite.com/categories/JVM/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/01/27/java/jvm/jvmMemory1/</loc>
+    <lastmod>2018-02-27T02:10:21.000Z</lastmod>
+    <data>
+        <display>
+        <title>JVM学习笔记－－java内存区域</title>
+        <pubTime>2018-01-27T08:36:20.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>JVM</tag>
+         
+         
+           
+             
+              <breadCrumb title="JVM" url="http://yoursite.com/categories/JVM/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/01/02/java/countDownLatch/</loc>
     <lastmod>2018-02-09T06:18:07.000Z</lastmod>
     <data>
@@ -52,28 +96,6 @@
 
     
   <url>
-    <loc>http://yoursite.com/2018/01/27/java/jvmMemory1/</loc>
-    <lastmod>2018-02-08T02:55:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>JVM学习笔记－－java内存区域(一)</title>
-        <pubTime>2018-01-27T08:36:20.000Z</pubTime>
-        
-        <tag>java</tag>
-         
-        <tag>JVM</tag>
-         
-         
-           
-             
-              <breadCrumb title="JVM" url="http://yoursite.com/categories/JVM/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yoursite.com/2018/02/07/designpatterns/activeObject/</loc>
     <lastmod>2018-02-07T09:10:30.000Z</lastmod>
     <data>
@@ -83,9 +105,9 @@
         
         <tag>java</tag>
          
-        <tag>设计模式</tag>
-         
         <tag>并发</tag>
+         
+        <tag>设计模式</tag>
          
          
            
@@ -201,9 +223,9 @@
         
         <tag>java</tag>
          
-        <tag>spring</tag>
-         
         <tag>设计模式</tag>
+         
+        <tag>spring</tag>
          
          
            
