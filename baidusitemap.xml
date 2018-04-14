@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/04/14/java/jvm/oom/</loc>
+    <lastmod>2018-04-14T06:41:39.000Z</lastmod>
+    <data>
+        <display>
+        <title>JVM学习笔记－－java中的OutOfMemoryError异常</title>
+        <pubTime>2018-04-14T06:31:48.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>JVM</tag>
+         
+         
+           
+             
+              <breadCrumb title="JVM" url="http://yoursite.com/categories/JVM/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/10/01/leetCodeList/</loc>
     <lastmod>2018-03-01T09:39:17.000Z</lastmod>
     <data>
