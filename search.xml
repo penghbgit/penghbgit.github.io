@@ -111,8 +111,8 @@
       </categories>
       <tags>
         <tag>java</tag>
-        <tag>设计模式</tag>
         <tag>并发</tag>
+        <tag>设计模式</tag>
       </tags>
   </entry>
   <entry>
@@ -175,8 +175,8 @@
       </categories>
       <tags>
         <tag>java</tag>
-        <tag>spring</tag>
         <tag>设计模式</tag>
+        <tag>spring</tag>
       </tags>
   </entry>
   <entry>
@@ -987,7 +987,7 @@
   <entry>
     <title><![CDATA[leetCode题解]]></title>
     <url>%2F2017%2F10%2F01%2FleetCodeList%2F</url>
-    <content type="text"><![CDATA[leetCode是一个非常值得学习的网站，以下是本人近期刷leetCode的总结，里面的代码都是AC通过的，该博文会持续更新。 771. Jewels and Stones766. Toeplitz Matrix728. Self Dividing Numbers717. 1-bit and 2-bit Characters696. Count Binary Substrings695. Max Area of Island693. Binary Number with Alternating Bits682. Baseball Game669. Trim a Binary Search Tree657. Judge Route Circle653. Two Sum IV - Input is a BST637. Average of Levels in Binary Tree617. Merge Two Binary Trees606. Construct String from Binary Tree598. Range Addition II575. Distribute Candies566. Reshape the Matrix561. Array Partition I557. Reverse Words in a String III538. Convert BST to Greater Tree521. Longest Uncommon Subsequence I520. Detect Capital500. Keyboard Row496. Next Greater Element I492. Construct the Rectangle485. Max Consecutive Ones476. Number Complement463. Island Perimter461. Hamming Distance453. Minimum Moves to Equal Array Elements448. Find All Numbers Disappeared in an Array412. Fizz Buzz404. Sum of Left Leaves389. Find the Difference387. First Unique Character in a String383. Ransom Note371. Sum of Two Integers349. Intersection of Two Arrays344. Reverse String292. Nim Game283. Move Zeroes258. Add Digits237. Delete Node in a Linked List226. Invert Binary Tree206. Reverse Linked List171. Excel Sheet Column Number169. Majority Element167. Two Sum II - Input array is sorted136. Single Number125. Valid Palindrome122. Best Time to Buy and Sell Stock II104. Maximum Depth of Binary Tree88. Merge Sorted Array4. Median of Two Sorted Arrays1. Two Sum]]></content>
+    <content type="text"><![CDATA[leetCode是一个非常值得学习的网站，以下是本人近期刷leetCode的总结，里面的代码都是AC通过的，该博文会持续更新。PS：最近突然发现leetcode有中文版的了，以后的更新会都基于中文版，并且刚开始打算学习golang，代码的实现部分会有go的实现版本。 804. 唯一摩尔斯密码词(Unique Morse Code Words)771. Jewels and Stones766. Toeplitz Matrix728. Self Dividing Numbers717. 1-bit and 2-bit Characters696. Count Binary Substrings695. Max Area of Island693. Binary Number with Alternating Bits682. Baseball Game669. Trim a Binary Search Tree657. Judge Route Circle653. Two Sum IV - Input is a BST637. Average of Levels in Binary Tree617. Merge Two Binary Trees606. Construct String from Binary Tree598. Range Addition II575. Distribute Candies566. Reshape the Matrix561. Array Partition I557. Reverse Words in a String III538. Convert BST to Greater Tree521. Longest Uncommon Subsequence I520. Detect Capital500. Keyboard Row496. Next Greater Element I492. Construct the Rectangle485. Max Consecutive Ones476. Number Complement463. Island Perimter461. Hamming Distance453. Minimum Moves to Equal Array Elements448. Find All Numbers Disappeared in an Array412. Fizz Buzz404. Sum of Left Leaves389. Find the Difference387. First Unique Character in a String383. Ransom Note371. Sum of Two Integers349. Intersection of Two Arrays344. Reverse String292. Nim Game283. Move Zeroes258. Add Digits237. Delete Node in a Linked List226. Invert Binary Tree206. Reverse Linked List171. Excel Sheet Column Number169. Majority Element167. Two Sum II - Input array is sorted136. Single Number125. Valid Palindrome122. Best Time to Buy and Sell Stock II104. Maximum Depth of Binary Tree88. Merge Sorted Array4. Median of Two Sorted Arrays1. Two Sum]]></content>
       <categories>
         <category>算法</category>
       </categories>
