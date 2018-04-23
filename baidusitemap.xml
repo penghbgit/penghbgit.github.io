@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://yoursite.com/2018/04/23/java/jvm/objectDeadOrLife/</loc>
-    <lastmod>2018-04-23T15:56:07.000Z</lastmod>
+    <lastmod>2018-04-23T16:01:37.000Z</lastmod>
     <data>
         <display>
         <title>JVM学习笔记－－垃圾收集器与内存分配策略(一)</title>
@@ -293,9 +293,9 @@
         
         <tag>java</tag>
          
-        <tag>设计模式</tag>
-         
         <tag>并发</tag>
+         
+        <tag>设计模式</tag>
          
          
            
