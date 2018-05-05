@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/05/05/rotatedDigits/</loc>
+    
+    <lastmod>2018-05-05T05:38:50.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/10/01/leetCodeList/</loc>
     
     <lastmod>2018-05-02T14:30:30.000Z</lastmod>

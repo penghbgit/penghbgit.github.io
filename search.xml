@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode--旋转数字(Rotated Digits)]]></title>
+    <url>%2F2018%2F05%2F05%2FrotatedDigits%2F</url>
+    <content type="text"><![CDATA[我们称一个数 X 为好数, 如果它的每位数字逐个地被旋转 180 度后，我们仍可以得到一个有效的，且和 X 不同的数。要求每位数字都要被旋转。 如果一个数的每位数字被旋转以后仍然还是一个数字， 则这个数是有效的。0, 1, 和 8 被旋转后仍然是它们自己；2 和 5 可以互相旋转成对方；6 和 9 同理，除了这些以外其他的数字旋转以后都不再是有效的数字。 现在我们有一个正整数 N, 计算从 1 到 N 中有多少个数 X 是好数？ 示例:输入: 10输出: 4解释:在[1, 10]中有四个好数： 2, 5, 6, 9。注意 1 和 10 不是好数, 因为他们在旋转之后不变。 解题思路遍历0到N之间的数，只要包含3，4，7则不为好数，剩下的包涵2，5，6，9的则为好数 代码实现（java）：12345678910111213class Solution &#123; public int rotatedDigits(int N) &#123; int res = 0; for (int i = 0; i &lt;= N; i++)&#123; String iStr = String.valueOf(i); if (iStr.contains("3")|| iStr.contains("4") || iStr.contains("7")) continue; else if (iStr.contains("2")|| iStr.contains("5") || iStr.contains("6") || iStr.contains("9")) res += 1; &#125; return res; &#125;&#125; python实现：1234567891011121314class Solution(object): def rotatedDigits(self, N): """ :type N: int :rtype: int """ res = 0 for i in range(1,N + 1): s = str(i) if '3' in s or '4' in s or '7'in s: continue elif '2' in s or '5' in s or '9' in s or '6' in s: res += 1 return res go实现123456789101112func rotatedDigits(N int) int &#123; res := 0 for i := 0; i &lt; N + 1; i++ &#123; iStr := strconv.Itoa(i) if strings.Contains(iStr, "3") || strings.Contains(iStr, "4") || strings.Contains(iStr, "7")&#123; continue &#125;else if strings.Contains(iStr, "2") || strings.Contains(iStr, "5") || strings.Contains(iStr, "6") || strings.Contains(iStr, "9")&#123; res += 1 &#125; &#125; return res&#125;]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>leetCode</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode--罗马数字转整数(Roman To Integer)]]></title>
     <url>%2F2018%2F05%2F02%2FromanToInteger%2F</url>
     <content type="text"><![CDATA[罗马数字包含以下七种字符：I， V， X， L，C，D 和 M。 字符&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数值I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1V&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10L&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;50C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;100D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;500M&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1000 例如，罗马数字2写做II ，即为两个并列的1。12写做XII ，即为X + II。27写做XXVII, 即为XX + V + II 。 通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如4不写做IIII，而是IV。数字1在数字5的左边，所表示的数等于大数5减小数1得到的数值4。同样地，数字9表示为IX。这个特殊的规则只适用于以下六种情况：I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。给定一个罗马数字，将其转换成整数。输入确保在 1 到 3999 的范围内。 示例 1:输入: “III”输出: 3 示例 2:输入: “IV”输出: 4 示例 3:输入: “IX”输出: 9 示例 4:输入: “LVIII”输出: 58解释: C = 100, L = 50, XXX = 30, III = 3. 示例 5:输入: “MCMXCIV”输出: 1994解释: M = 1000, CM = 900, XC = 90, IV = 4. 解题思路依次遍历字符串，如果当前一个大于后一个字符，结果加上当前字符，如果当前结果小于后一个字符，结果减去当前字符，最后加上最后一个字符。 代码实现（java）：1234567891011121314151617181920212223242526272829class Solution &#123; public int romanToInt(String s) &#123; if (s == null ||s.length() == 0) return 0; int sum = 0; for(int i = 0; i &lt; s.length() - 1 ; i++)&#123; if(getRomanValue(s.charAt(i)) &gt;= getRomanValue(s.charAt(i + 1)))&#123; sum += getRomanValue(s.charAt(i)); &#125;else&#123; sum -= getRomanValue(s.charAt(i)); &#125; &#125; sum += getRomanValue(s.charAt(s.length() - 1)); return sum; &#125; public int getRomanValue(char c) &#123; switch (c) &#123; case 'I': return 1; case 'V': return 5; case 'X': return 10; case 'L': return 50; case 'C': return 100; case 'D': return 500; case 'M': return 1000; default: return 0; &#125; &#125;&#125; python实现：12345678910111213141516class Solution(object): def romanToInt(self, s): """ :type s: str :rtype: int """ if s is None: return 0 dict = &#123;'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000&#125; res = 0 for i in range(len(s)-1): if dict[s[i]] &lt; dict[s[i + 1]]: res = res - dict[s[i]] else: res = res + dict[s[i]] return res + dict[s[len(s) - 1]] go实现12345678910111213141516func romanToInt(s string) int &#123; distMap := map[rune] int &#123;'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000&#125; res := 0 r := []rune(s) for i := 0; i &lt; len([]rune(s)) - 1; i++ &#123; if distMap[r[i]] &gt;= distMap[r[i + 1]] &#123; res += distMap[r[i]] &#125; else &#123; res -= distMap[r[i]] &#125; &#125; res += distMap[r[len([]rune(s)) - 1]] return res&#125;]]></content>
@@ -149,8 +162,8 @@
       </categories>
       <tags>
         <tag>java</tag>
-        <tag>设计模式</tag>
         <tag>并发</tag>
+        <tag>设计模式</tag>
       </tags>
   </entry>
   <entry>
@@ -213,8 +226,8 @@
       </categories>
       <tags>
         <tag>java</tag>
-        <tag>spring</tag>
         <tag>设计模式</tag>
+        <tag>spring</tag>
       </tags>
   </entry>
   <entry>
