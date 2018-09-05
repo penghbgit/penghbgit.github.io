@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/09/05/redis/sds/</loc>
+    
+    <lastmod>2018-09-05T13:58:04.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/09/05/protocol/http2/</loc>
     
     <lastmod>2018-09-05T06:33:01.000Z</lastmod>

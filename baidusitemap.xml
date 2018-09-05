@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/09/05/redis/sds/</loc>
+    <lastmod>2018-09-05T13:58:04.000Z</lastmod>
+    <data>
+        <display>
+        <title>《redis设计与实现》－－SDS（简单动态字符串）</title>
+        <pubTime>2018-09-05T13:43:33.000Z</pubTime>
+        
+        <tag>redis</tag>
+         
+         
+           
+             
+              <breadCrumb title="redis" url="http://yoursite.com/categories/redis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/09/05/protocol/http2/</loc>
     <lastmod>2018-09-05T06:33:01.000Z</lastmod>
     <data>
